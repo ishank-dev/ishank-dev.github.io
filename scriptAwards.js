@@ -7,7 +7,7 @@ var i = 0,
 // Typerwrite text content. Use a pipe to indicate the start of the second line "|".  
 var textArray = [
   "He has been|...", 
-  "Gold Medallist in | Science Olympiad 2016...", 
+  "Gold Medalist in | Science Olympiad 2016...", 
   "Silver Medalist in|Science Olympiad 2015.... ", 
   "First Runners Up |at Microsoft Innovation Series Hackathon....",
   "First Runners Up | Smart India Internal Hackathon...",

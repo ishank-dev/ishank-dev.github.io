@@ -3,7 +3,12 @@ html {
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   overflow: hidden;
 }
-
+.bg-dark {
+    background-color: 
+    #111111 !important;
+    height: 60px;
+}
+#demo-canvas{
 #stars {
   width: 1px;
   height: 1px;
@@ -173,12 +178,7 @@ nav.fill ul li a:hover:after {
 body {
   background-color: #333;
 }
-.bg-dark {
-    background-color: 
-    #111111 !important;
-    height: 60px;
-}
-#demo-canvas{
+
    position: relative;
    bottom:200px;
 }
