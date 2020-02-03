@@ -7,7 +7,6 @@ var i = 0,
 // Typerwrite text content. Use a pipe to indicate the start of the second line "|".  
 var textArray = [
   "Hello Captain!!|Thanks for joining this great mission...", 
-  "Please turn on the music on top to begin",
   "Your mission is |to find and kill the most demonic person of our galaxy...",
   "Known by the name Ishank Sharma ;) | ", 
   "Our recent intel suggests that he has been hiding on planet Terra | also known as earth..",
