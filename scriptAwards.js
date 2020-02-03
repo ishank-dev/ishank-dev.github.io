@@ -6,18 +6,13 @@ var i = 0,
 
 // Typerwrite text content. Use a pipe to indicate the start of the second line "|".  
 var textArray = [
-  "Hello Captain!!|Thanks for joining this great mission...", 
-  "Please turn on the music on top to begin",
-  "Your mission is |to find and kill the most demonic person of our galaxy...",
-  "Known by the name Ishank Sharma ;) | ", 
-  "Our recent intel suggests that he has been hiding on planet Terra | also known as earth..",
-  "All our missions to catch him were a failure till now|..",
-  "But with your help this time chances are high that we'll catch him for sure|",
-  "On the top panel you can find his details that were collected by our secret agencies|Chances are that these information has a hidden key that can give us his exact details...",
-  "Your job is to find that hidden link| That will lead us to him",
-  "Once we get the exact location|His game will be over... ",
-  "In the meanwhile |I'll arrange some required weapons and tools",
-  "Lets finish this once and for all"
+  "He has been|...", 
+  "Gold Medallist in | Science Olympiad 2016...", 
+  "Silver Medalist in|Science Olympiad 2015.... ", 
+  "First Runners Up |at Microsoft Innovation Series Hackathon....",
+  "First Runners Up | Smart India Internal Hackathon...",
+  "Second Runners Up | at Reverie Language Hackathon....",
+  "Consolation Prize Winner| GE Healthcare Hackathon 2020...."
 ];
 
 // Speed (in milliseconds) of typing.

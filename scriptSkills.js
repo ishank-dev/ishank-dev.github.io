@@ -6,18 +6,17 @@ var i = 0,
 
 // Typerwrite text content. Use a pipe to indicate the start of the second line "|".  
 var textArray = [
-  "Hello Captain!!|Thanks for joining this great mission...", 
-  "Please turn on the music on top to begin",
-  "Your mission is |to find and kill the most demonic person of our galaxy...",
-  "Known by the name Ishank Sharma ;) | ", 
-  "Our recent intel suggests that he has been hiding on planet Terra | also known as earth..",
-  "All our missions to catch him were a failure till now|..",
-  "But with your help this time chances are high that we'll catch him for sure|",
-  "On the top panel you can find his details that were collected by our secret agencies|Chances are that these information has a hidden key that can give us his exact details...",
-  "Your job is to find that hidden link| That will lead us to him",
-  "Once we get the exact location|His game will be over... ",
-  "In the meanwhile |I'll arrange some required weapons and tools",
-  "Lets finish this once and for all"
+  "In order to attack someone one should know their strenghts!!|...", 
+  "Ishank's strengths are |The list is long enough to realise how tough of a person he is...", 
+  "Creative Thinking.. |He thinks creatively and has the ability to combine knowledge from multiple places.... ", 
+  "Task prioritization |He knows his priorities pretty well....",
+  "Discipline and determination| A little lazy at times but knows whats important and acts according to the situation....",
+  "Analytical thinking|He has been gifted with the art of Analytical thinking....",
+  "Dedication and enthusiasm| He keeps quite but does his work with great dedication....",
+  "He respect those who respects him|And forgets those who forgets him... ",
+  "He is great at multitasking|....",
+  "He never lets his weakness overpower him|Life has taught him great lessons....",
+  "So he makes sure never to repeat his mistakes...."
 ];
 
 // Speed (in milliseconds) of typing.
