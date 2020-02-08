@@ -1,19 +1,13 @@
-// values to keep track of the number of letters typed, which quote to use. etc. Don't change these values.
+ // values to keep track of the number of letters typed, which quote to use. etc. Don't change these values.
 var i = 0,
     a = 0,
     isBackspacing = false,
     isParagraph = false;
 
 // Typerwrite text content. Use a pipe to indicate the start of the second line "|".  
-var textArray = [
-  "Awards....|", 
-  "Gold Medalist in | Natinal Science Olympiad 2016...", 
-  "Silver Medalist in|National Science Olympiad 2015.... ", 
-  "First Runner Up |at Microsoft Innovation Series Hackathon....",
-  "First Runner Up | Smart India Internal Hackathon...",
-  "Second Runner Up | at Reverie Language Hackathon 2020....",
-  "Consolation Prize Winner| GE Healthcare Hackathon 2020...."
-];
+var textArray = ["I respect those who respect me | and I forget those who forgot me| as simple as that !",
+"Thats it you won't find much here","I'll soon be releasing |my own chatbot | which will contain my full life history",
+"Even after I am dead it will be alive| living on the cloud !", "Thats it you won't find much here"];
 
 // Speed (in milliseconds) of typing.
 var speedForward = 70, //Typing Speed
