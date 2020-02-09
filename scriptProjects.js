@@ -6,13 +6,7 @@ var i = 0,
 
 // Typerwrite text content. Use a pipe to indicate the start of the second line "|".  
 var textArray = [
-  "Web Development |Intermediate ****", 
-  "C++ |Intermediate ****", 
-  "Python |Intermediate ***", 
-  "AWS |Beginner *",
-  "Google Cloud Platform |Beginner **",
-  "Machine Learning |Still learning :p",
-  "PHP + Mysql |Beginner ***"
+  "|List of projects I contributed to."
 ];
 
 // Speed (in milliseconds) of typing.
