@@ -1,36 +1,87 @@
-<!doctype html>
-<html lang="en" class="no-js">
+<!DOCTYPE html>
+<html lang="en" >
 <head>
-  <base target="_blank">
-  <meta charset="UTF-8" />
-  <title>Ishank Sharma</title>
-  <link rel="shortcut icon" type="image/png" href="assets/favicon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous" type="text/css">
-  <script type="text/javascript" src="js/jquery.particleground.js"></script>
-  <script type="text/javascript" src="js/demo.js"></script>
+  <meta charset="UTF-8">
+  <title>HyperLoop SpaceShip</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
-
 <body>
+<!-- partial:index.partial.html -->
+<nav class="navbar navbar-expand-lg navbar-dark" style = "background-color:#111111">
+  <a href = "index1.html"class="navbar-brand">
+    <img src="./assets/images/0.jpeg" style = "width:40px; border-radius: 20px">
+  </a>
+  <!-- <a class="navbar-brand" href="#">My PortFolio</a> -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-<div id="particles">
-  <div id="intro">
-      <h2 style="font-family: 'Syncopate', sans-serif; font-weight: 10;">Ishank - Cosmos Lover<a href="resume.pdf" style="color: white;">
-        <hr style="width: 50%; background-color: #E83951; border-color: #E83951;">
-    <a href="https://www.linkedin.com/in/ishank-sharma-438a32144/" style="color: white;"><i class="fab fa-linkedin" style="font-size: 2em;"></i></a>
-    &nbsp
-    <a href="https://github.com/ishank-dev" style="color: white;"><i class="fab fa-github" style="font-size: 2em;"></i></a>
-        &nbsp
-    <a href="index.html" style="color: white;"><i class="fas fa-code" style="font-size: 2em;"></i></a>
-          <li class = "nav-item active">
-        <audio id = "music" controls autoplay = "false" loop style = "width: 220px;
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link active" href="https://docs.google.com/document/d/1R6hsTsuNPs5KaTDljxk-5VH29DlYBwZoYXGHiSP56NM/edit?usp=sharing">Resume <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">Home   <span class="sr-only">(current)</span></a>
+      </li>
+
+      <li class="nav-item active">
+        <a class="nav-link" href="skills.html">Skills <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="awards.html">Awards <span class="sr-only">(current)</span></a>
+      </li>&nbsp      
+      <li class="nav-item active">
+        <a class="nav-link" href="projects.html">Projects <span class="sr-only">(current)</span></a>
+      </li>&nbsp
+            <li class="nav-item active">
+        <a class="nav-link" href="hobbies.html">About me <span class="sr-only">(current)</span></a>
+      </li>&nbsp
+      <li class = "nav-item active">
+        <audio id = "music" controls autoplay = "true" loop style = "width: 220px;
     height: 40px;">
-              <source src="./assets/music/music4.mp3" type="audio/mp3">
+              <source src="./assets/music/music.mp3" type="audio/mp3">
         </audio>
 </li>
+    </ul>
   </div>
+</nav>
+
+<div class="demo">
+   <div class="content">
+          <div id="large-header" class="large-header">
+
+            <span>
+              <div class="container py-5">
+                <div class="output" id="output">
+                  <h1 class="cursor"></h1>
+                  <p></p>
+                </div>
+              </div>
+            </span>
+         <canvas id="demo-canvas"></canvas>
+         <!-- <h1 class="main-title"><span class="thin">Explore</span> Space</h1> -->
+         <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+
+          <div id='stars'></div>
+          <div id='stars2'></div>
+          <div id='stars3'></div>
+          <div id='title'>
+
+          </div>
+
+      </div>
+   </div>
 </div>
 
+<!-- partial -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/TweenLite.min.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/EasePack.min.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/demo.js'></script><script  src="./assets/js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>
