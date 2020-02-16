@@ -6,13 +6,13 @@ var i = 0,
 
 // Typerwrite text content. Use a pipe to indicate the start of the second line "|".  
 var textArray = [
-  "Awards....|", 
-  "Gold Medalist in | Natinal Science Olympiad 2016...", 
-  "Silver Medalist in|National Science Olympiad 2015.... ", 
-  "First Runner Up |at Microsoft Innovation Series Hackathon....",
-  "First Runner Up | Smart India Internal Hackathon...",
-  "Second Runner Up | at Reverie Language Hackathon 2020....",
-  "Consolation Prize Winner| GE Healthcare Hackathon 2020...."
+  "Awards|", 
+  "Gold Medalist in | Natinal Science Olympiad 2016", 
+  "Silver Medalist in|National Science Olympiad 2015 ", 
+  "First Runner Up |at Microsoft Innovation Series Hackathon",
+  "First Runner Up | Smart India Internal Hackathon",
+  "Second Runner Up | at Reverie Language Hackathon 2020",
+  "Consolation Prize Winner| GE Healthcare Hackathon 2020"
 ];
 
 // Speed (in milliseconds) of typing.
