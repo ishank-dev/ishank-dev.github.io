@@ -1,7 +1,6 @@
 # super-space-tour
 Fun-Portfolio<br>
 Hosted At - https://ishank-dev.github.io/super-space-tour/<br>
-## Features<br>
-Added Music Autoplay [Might not be supported by all browsers though]<br>
-Music - [Sudo - A Rift In Time](https://www.youtube.com/watch?v=0q7JVqZp6fc) <br>
-
+## Desclaimer<br>
+I do not own any copyright of the music used<br>
+Music - [Droid Bishop - Moon Runner](https://www.youtube.com/watch?v=V3fihk8FbT0&list=RDV3fihk8FbT0&start_radio=1&t=45) <br>
