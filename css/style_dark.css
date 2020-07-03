@@ -102,26 +102,41 @@ p {
 }
 
 .linkedin{
-font-size: 2em;
-color: #F5F5F4;
+  font-size: 7em;
+  margin:15px;
+  color: #F5F5F8;
 }
 .github{
-font-size: 2em;
-color: #F5F5F4;
+  font-size: 7em;
+  margin:15px;
+  color: #F5F5F8;
 }
 .codewars{
-font-size: 2em;
-color: #F5F5F4;
+  font-size: 7em;
+  margin:15px;
+  color: #F5F5F8;
 
 }
 .fastronaut{
-font-size: 2em;
-color: #F5F5F4;
+  font-size: 7em;
+  margin:15px;
+  color: #F5F5F8;
 
 }
 .astronaut{
-color: #F5F5F4;
-cursor: pointer;
+  font-size: 4em;
+  margin: 15px;
+  color: #F5F5F8;
+  cursor: pointer;
+  position: relative;
+  right:7px
+}
+
+.medium{
+  font-size: 7em;
+  margin:15px;
+  color: #F5F5F8;
+  cursor: pointer;
 }
 @media only screen and (max-width: 1000px) {
   h1 {
