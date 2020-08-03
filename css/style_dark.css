@@ -16,7 +16,7 @@ body {
 .intro {
   position: absolute;
   left: 0;
-  top: 20%;
+  top: 10%;
   padding: 0 10px;
   width: 100%;
   text-align: center;
@@ -50,6 +50,10 @@ h3 {
   letter-spacing: 0.09em;
   font-family: 'Open Sans', sans-serif ;
 
+}
+.container {
+  padding-left: 140px;
+  padding-right: 140px;
 }
 
 p {
