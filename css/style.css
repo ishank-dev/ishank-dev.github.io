@@ -1,21 +1,21 @@
-
 /* particleground demo */
 
 * {
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
 }
 
 body {
-  background: #DEDEDE !important;
-  font-family: 'Montserrat', sans-serif;
+  background: #fffefe;
+  font-family: "Montserrat", sans-serif;
   color: rgb(0, 0, 0);
   line-height: 1.3;
   -webkit-font-smoothing: antialiased;
@@ -30,78 +30,73 @@ body {
 .intro {
   position: absolute;
   left: 0;
-  top: 10%;
+  top: 5%;
   padding: 0 10px;
   width: 100%;
   text-align: center;
 }
 h2 {
-  font-size: 40px;
-  font-weight: 200;
+  font-size: 30px;
+  /* font-weight: 200; */
   color: #343a40;
-  letter-spacing: 0.05em;
-  font-family: 'Open Sans', sans-serif ;
-
+  /* letter-spacing: 0.05em; */
+  font-family: "Open Sans", sans-serif;
 }
 h3 {
   font-size: 23px;
-  font-weight: 100;
+  /* font-weight: 100; */
   color: #343a40;
-  letter-spacing: 0.09em;
-  font-family: 'Open', sans-serif ;
-
+  /* letter-spacing: 0.09em; */
+  font-family: "Open Sans", sans-serif;
 }
 .container {
   padding-left: 140px;
   padding-right: 140px;
 }
 p {
+  font-size: 16px;
   font-weight: 400;
   color: #000000;
-  font-family: 'Open Sans', sans-serif ;
-  font-size: 20px;
+  font-family: "Open Sans", sans-serif;
   text-align: center;
-} 
-.linkedin{
-  font-size: 4em;
-  margin:15px;
+}
+.linkedin {
+  font-size: 3em;
+  margin: 15px;
   color: #272822;
 }
-.github{
-  font-size: 4em;
-  margin:15px;
+.github {
+  font-size: 3em;
+  margin: 15px;
   color: #272822;
 }
-.codewars{
-  font-size: 4em;
-  margin:15px;
+.codewars {
+  font-size: 3em;
+  margin: 15px;
   color: #272822;
-
 }
-.fastronaut{
-  font-size: 4em;
-  margin:15px;
+.fastronaut {
+  font-size: 3em;
+  margin: 15px;
   color: #272822;
-
 }
-.twitter{
-  font-size: 4em;
+.twitter {
+  font-size: 3em;
   margin: 15px;
   color: #272822;
   cursor: pointer;
   position: relative;
-  right:7px
-
+  right: 7px;
 }
-.medium{
-  font-size: 4em;
-  margin:15px;
+.medium {
+  font-size: 3em;
+  margin: 15px;
   color: #272822;
   cursor: pointer;
 }
-.astronaut{
-  font-size: 2.5em;
-  margin:15px;
+.astronaut {
+  font-size: 2em;
+  margin: 15px;
   color: #272822;
   cursor: pointer;
 }
