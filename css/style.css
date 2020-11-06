@@ -14,7 +14,7 @@ body {
 }
 
 body {
-  background: #fffefe;
+  background: #DEE1E6;
   font-family: "Montserrat", sans-serif;
   color: rgb(0, 0, 0);
   line-height: 1.3;
@@ -36,15 +36,15 @@ body {
   text-align: center;
 }
 h2 {
-  font-size: 30px;
-  /* font-weight: 200; */
+  font-size: 50px;
+  font-weight: 500;
   color: #343a40;
   /* letter-spacing: 0.05em; */
   font-family: "Open Sans", sans-serif;
 }
 h3 {
-  font-size: 23px;
-  /* font-weight: 100; */
+  font-size: 20px;
+  font-weight: 100;
   color: #343a40;
   /* letter-spacing: 0.09em; */
   font-family: "Open Sans", sans-serif;
@@ -54,8 +54,8 @@ h3 {
   padding-right: 140px;
 }
 p {
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 19px;
+  font-weight: 200;
   color: #000000;
   font-family: "Open Sans", sans-serif;
   text-align: center;

@@ -379,15 +379,15 @@
     maxSpeedY: 0.9,
     directionX: 'center', // 'center', 'left' or 'right'. 'center' = dots bounce off edges
     directionY: 'center', // 'center', 'up' or 'down'. 'center' = dots bounce off edges
-    density: 13000, // How many particles will be generated: one particle every n pixels
+    density: 14000, // How many particles will be generated: one particle every n pixels
     dotColor: '#666666',
     lineColor: '#666666',
-    particleRadius: 8, // Dot size
-    lineWidth: 1,
+    particleRadius: 6.5, // Dot size
+    lineWidth: 0.7,
     curvedLines: false,
-    proximity: 100, // How close two dots need to be before they join
+    proximity: 70, // How close two dots need to be before they join
     parallax: true,
-    parallaxMultiplier: 4, // The lower the number, the more extreme the parallax effect
+    parallaxMultiplier: 4.5, // The lower the number, the more extreme the parallax effect
     onInit: function () { },
     onDestroy: function () { }
   };
