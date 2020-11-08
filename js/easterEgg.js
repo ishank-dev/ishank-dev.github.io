@@ -29,7 +29,12 @@ const init = () => {
 			moveHorizontal(avatar, -50);
 			avatar.style.transform = 'scale(-1,1)';
 		}
-		if (isTouching(avatar, coin)) moveCoin();
+		if (isTouching(avatar, coin)){
+            score+=1;
+            title = document.getElementById('score');
+            title.innerHTML = '<h2>Score: '+score+'</h2>'
+            moveCoin();
+        } 
 	});
 };
 
@@ -48,17 +53,9 @@ const extractPos = (pos) => {
 };
 
 const moveCoin = () => {
-	const x = Math.floor(Math.random() * window.innerWidth);
-	const y = Math.floor(Math.random() * window.innerHeight);
+	const x = Math.floor(Math.random() * 1000);
+	const y = Math.floor(Math.random() * 500);
 	coin.style.top = `${y}px`;
-    coin.style.left = `${x}px`;
-    score+=1;
-    if(score>=2){
-        title = document.getElementById('score');
-        title.innerHTML = '<h2>Score '+score+'</h2>'
-    }
-
-    
+    coin.style.left = `${x}px`;   
+    console.log(x,y); 
 };
-
-init();

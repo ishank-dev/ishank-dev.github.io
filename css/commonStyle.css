@@ -5,7 +5,9 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
 }
-
+#score {
+  display: none;
+}
 .intro {
   position: absolute;
   left: 0;

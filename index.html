@@ -45,7 +45,9 @@
       <p>Open Source 💙 | Linux 💻 | FIFA 🎮 | Space Science 🚀</p>
       <p>Winner SIH 2020 🏅</p>
     </div>
-    <div id = 'score'></div>
+    <div id = 'score'>
+      <h1>Score: 0</h1>
+    </div>
   <img id="player" src="https://i.pinimg.com/originals/ab/be/28/abbe28a943ed44fcd98452687f7c46c9.gif" alt="">
   <img id="coin" src="https://i.pinimg.com/originals/c1/2d/c5/c12dc536b8f8797b629eb9942a2dbbf1.gif" alt="">
   <br>
@@ -115,13 +117,17 @@
     var score = 0
   if(count == 2){
     alert('Congratulations! You have unlocked an easter egg')
+    init();
     newContent = document.querySelector('.summary');
     message = '<h1>Pokemon Easter Egg</h1><img id = "party" src = "https://emojis.slackmojis.com/emojis/images/1563480763/5999/meow_party.gif?1563480763"><p>Use the arrow keys on your keyboard to move move your pikachu around</p>'
     newContent.innerHTML = message;
+
     var x = document.getElementById('musicMario');
     x.play();
+
     pikachu = document.getElementById("player");
     coin = document.getElementById("coin")
+    document.getElementById('score').style.display = 'block';
     if(pikachu.style.display == 'block'){
       pikachu.style.display = 'none';
     }
