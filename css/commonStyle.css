@@ -1,0 +1,93 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.intro {
+  position: absolute;
+  left: 0;
+  top: 5%;
+  padding: 0 10px;
+  width: 100%;
+  text-align: center;
+}
+#particles {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+#party {
+  top: 0px;
+  position: relative;
+  left: -24px;
+}
+#intro {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  padding: 0 10px;
+  width: 100%;
+  text-align: center;
+}
+.container {
+  padding-left: 140px;
+  padding-right: 140px;
+}
+#player {
+  display: none;
+}
+#coin {
+  display: none;
+}
+img {
+  width: 100px;
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  z-index: 999;
+}
+@media only screen and (max-width: 1000px) {
+  h1 {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 100px) {
+  h1 {
+    font-size: 15px;
+  }
+  h1::after {
+    height: 8px;
+  }
+}
+
+@media only screen and (max-width: 100px) {
+  #intro {
+    padding: 0 10px;
+  }
+  h1 {
+    font-size: 15px;
+  }
+  h1::after {
+    height: 6px;
+  }
+  p {
+    font-size: 18px;
+  }
+  .btn {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 100px) {
+  h1 {
+    font-size: 15px;
+  }
+  h1::after {
+    height: 4px;
+  }
+}
