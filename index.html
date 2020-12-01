@@ -115,7 +115,7 @@
   function toggle() {
     count+=1;
     var score = 0
-  if(count == 2){
+  if(count == 3){
     alert('Congratulations! You have unlocked an easter egg')
     init();
     newContent = document.querySelector('.summary');
@@ -124,11 +124,15 @@
 
     var x = document.getElementById('musicMario');
     x.play();
+    
     var y = document.getElementById('music');
     y.pause();
+    
     pikachu = document.getElementById("player");
     coin = document.getElementById("coin")
+    
     document.getElementById('score').style.display = 'block';
+    
     if(pikachu.style.display == 'block'){
       pikachu.style.display = 'none';
     }
