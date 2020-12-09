@@ -19,7 +19,7 @@ html {
   line-height: 19px;
   height: 20px;
   text-align: center;
-  background-color: #1a222c;
+  background-color: #1a222c !important;
 }
 #score {
   display: none;
