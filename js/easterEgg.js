@@ -1,7 +1,6 @@
 var count = 0;
 function toggle() {
   count += 1;
-  defaultStatus;
   var score = 0;
   if (count == 3) {
     alert("Congratulations! You have unlocked an easter egg");
