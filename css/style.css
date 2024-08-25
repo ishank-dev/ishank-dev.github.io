@@ -196,3 +196,18 @@ p, ul, h1, h5 {
         margin-bottom: 10px;
     }
 }
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Space between buttons */
+}
+
+.btn-rounded {
+    border-radius: 30px; /* Makes the buttons round */
+    padding: 10px 20px; /* Adjust padding for button size */
+    text-decoration: none; /* Remove the underline */
+}
+
+.btn-rounded:hover {
+    background-color: #005bb5; /* Slightly darker blue on hover */
+}
