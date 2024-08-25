@@ -1248,7 +1248,7 @@ parcelRequire = (function (init) {
       this.root = root;
       this.rate = 1;
       this.setSize();
-      var folder = controller.addFolder('Projects Coming Soon!');
+      var folder = controller.addFolder('Thanks for visiting my site!');
       this.datData = controller.addData($a87C$var$data, {
         folder: folder
       });
@@ -1474,7 +1474,7 @@ parcelRequire = (function (init) {
     return Constructor;
   }
   
-  var $m6Ky$var$TEXT = 'Projects Coming Soon';
+  var $m6Ky$var$TEXT = 'Thanks for visiting the site!';
   var $m6Ky$var$FONT_SIZE = 30;
   var $m6Ky$var$FONT_SIZE_SP = 24;
   var $m6Ky$var$FONT_SIZE_MIN = 20;

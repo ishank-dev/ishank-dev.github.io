@@ -1,147 +1,313 @@
-<!doctype html>
-<html lang="en" class="no-js">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-  <!-- <base target="_blank"> -->
-  <meta charset="UTF-8">
-  <!-- SEO Meta Data -->
-  <meta name="description"
-    content="I like learning new things everyday, and I believe that knowledge should be free and easily accessible by everyone!">
-  <meta name="keywords" content="Backend Developer,UI Developer Tech enthusiast, NodeJS, JavaScript, python, Open Source">
-  <meta name="author" content="Ishank Sharma">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Ishank Developer</title>
-  <link rel="shortcut icon" type="image/png" href="assets/favicon.png">
-  <!-- Google Analytics -->
-  <meta name="google-site-verification" content="XeP3vwktOBLiL4Wf-S6IbmmlTF523poQedSDS8HaTug" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Imports -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <link id="stylesheet" rel="stylesheet" type="text/css" href="css/commonStyle.css" />
-  
-  <link id="stylesheet1" rel="stylesheet" type="text/css" href="css/style_dark.css" />
-
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
-    integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous"
-    type="text/css">
-  <link rel="stylesheet" href="./css/starCursor.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ishank Sharma | Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  <div id="particles">
-    <div class="intro">
-      <br>
-
-      <div class = 'summary'>   
-        <h2>Ishank Sharma </h2>
-        <hr style="width: 42%; background-color: #837c94; border-color: #E83951;">
-        <h3>MS CS Student @ CSULB</h3>
-        <hr style="width: 40%; background-color: #837c94; border-color: #E83951;">
-        <p>Python | JavaScript | Snowflake | Databricks</p>
-        <hr style="width: 40%; background-color: #837c94; border-color: #E83951;">
-        <p>Passionate about building AI Projects</p>
-        <p>Open Source 💙 | Linux 💻 | LangChain 🦜</p>
-        <p>Winner SIH 2020 🏅</p>
-      </div>
-    <!-- Hidden HTML to be displayed Easter Egg -->
-      <div id = 'score'>
-        <h1>Score: 0</h1>
-      </div>
-
-    <img id="player" src="https://i.pinimg.com/originals/ab/be/28/abbe28a943ed44fcd98452687f7c46c9.gif" alt="">
-    <img id="coin" src="https://i.pinimg.com/originals/c1/2d/c5/c12dc536b8f8797b629eb9942a2dbbf1.gif" alt="">
-  <br>
-      <div class="container">
+    <div class="container-fluid">
         <div class="row">
-          <div class="col-md text-center">
-            <a href="https://www.linkedin.com/in/ishank-sharma-438a32144/"><i class=" fab fa-linkedin linkedin"></i></a>
-            <h6>LinkedIn</h6>
-          </div>
+            <!-- Left Side - About Me -->
+            <div class="col-md-3 p-4 bg-light text-center">
+                <img src="https://avatars.githubusercontent.com/u/45262592?v=4" alt="Ishank Sharma"
+                    class="img-fluid rounded-circle mb-3" style="width: 120px; height: 120px;">
+                <h1>Ishank Sharma</h1>
+                <p>Software Engineer | CS Grad Student @CSULB</p>
+                <button class="btn btn-outline-dark">Transcripts</button>
+                <button class="btn btn-outline-dark">Resume </button>
+                <hr>
+                <p><strong>Frontend:</strong> ReactJS, Next.js.</p>
+                <p><strong>Backend:</strong> Node.js, Flask, SpringBoot</p>
+                <p><strong>Programming Languages:</strong> Python, JavaScript, Java</p>
+                <p><strong>Database Technologies:</strong> MySQL, Snowflake, Databricks, MongoDB</p>
+                <p><strong>Cloud Technologies:</strong> AWS</p>
+                <p><strong>Big Data:</strong> Apache Spark</p>
+            </div>
 
-          <div class="col-md text-center">
-            <a href="https://github.com/ishank-dev"><i class="fab fa-github github"></i></a>
-            <h6>Github</h6>
-          </div>
+            <!-- Right Side - Tabs and Content -->
+            <div class="col-md-9 p-4">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="experience-tab" data-bs-toggle="tab"
+                            data-bs-target="#experience" type="button" role="tab" aria-controls="experience"
+                            aria-selected="true">Experience</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="projects-tab" data-bs-toggle="tab" data-bs-target="#projects"
+                            type="button" role="tab" aria-controls="projects" aria-selected="false">Projects </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="education-tab" data-bs-toggle="tab" data-bs-target="#education"
+                            type="button" role="tab" aria-controls="education" aria-selected="false">Education</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="blogs-tab" data-bs-toggle="tab" data-bs-target="#blogs"
+                            type="button" role="tab" aria-controls="blogs" aria-selected="false">Blogs</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="awards-tab" data-bs-toggle="tab" data-bs-target="#awards" type="button"
+                            role="tab" aria-controls="awards" aria-selected="false">Awards 🏅</button>
+                    </li>
+                </ul>
+                <div class="tab-content mt-4" id="myTabContent">
+                    <div class="tab-pane fade show active" id="experience" role="tabpanel"
+                        aria-labelledby="experience-tab">
+                        <!-- Experience 1: Software Development Engineer 2 at CommerceIQ -->
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Software Development Engineer 2</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">CommerceIQ, Bengaluru, India</h6>
+                                <p class="card-text"><small class="text-muted">Aug 2023 - July 2024</small></p>
+                                <ul>
+                                    <li>Designed a budget prediction system using historical e-commerce data, improving
+                                        sales and customer satisfaction.</li>
+                                    <li>Solved the cold start problem by building a Spark Java pipeline, enhancing
+                                        prediction accuracy for new customers.</li>
+                                    <li>Reduced Snowflake pipeline costs by 70% through specific date-based backfilling
+                                        for historical data.</li>
+                                    <li>Migrated the tech stack to Databricks, cutting infrastructure costs by 52%.</li>
+                                    <li>Delivered AI-driven projects with high quality and less time.
+                                </ul>
+                            </div>
+                        </div>
 
-          <div class="col-md text-center">
-            <a href="https://www.codewars.com/users/ishank-dev"><i class="fab fa-jedi-order codewars"></i></a>
-            <h6>Problem Solving Profile</h6>
-          </div>
+                        <!-- Experience 2: Software Development Engineer 1 at CommerceIQ -->
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Software Development Engineer 1</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">CommerceIQ, Bengaluru, India</h6>
+                                <p class="card-text"><small class="text-muted">May 2021 - July 2023</small></p>
+                                <ul>
+                                    <li>Implemented efficient ETL pipelines using Snowflake, ensuring timely data
+                                        ingestion and meeting SLAs for daily processing.</li>
+                                    <li>Developed real-time dashboards for Ads and Sales data, enabling users to perform
+                                        real-time bidding on the CommerceIQ platform.</li>
+                                    <li>Created a self-serve dashboard platform, improving user experience and
+                                        increasing product adoption by 60%.</li>
+                                    <li>Optimized TP99 page load times through performance improvements.</li>
+                                    <li>Conducted database performance POC evaluations on Snowflake, Firebolt, and
+                                        Databricks to guide scalable database technology decisions.</li>
+                                </ul>
+                            </div>
+                        </div>
 
-          <div class="col-md text-center">
-            <a href="https://medium.com/@ishankdev"><i class="fab fa-medium-m medium"></i></a>
-            <h6>Blogs</h6>
-          </div>
+                        <!-- Experience 3: Open Source Contributor at Internet Archive -->
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Open Source Contributor</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Internet Archive, San Francisco, California
+                                    (Remote)</h6>
+                                <p class="card-text"><small class="text-muted">Mar 2020 - Dec 2020</small></p>
+                                <ul>
+                                    <li>Contributed to Archive.org by adding keyboard support for zooming in/out on
+                                        Safari and increasing test coverage.</li>
+                                    <li>Enhanced SEO for OpenLibrary.org by adding metadata to the index page, improving
+                                        search visibility and ranking.</li>
+                                    <li>Developed an XML parser for identifying page types in Internet Archive books and
+                                        introduced additional stop words for improved text cleanup in the
+                                        BookGenomeProject.org.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Projects Tab -->
+                    <div class="tab-pane fade" id="projects" role="tabpanel" aria-labelledby="projects-tab">
+                        <!-- Project 1: Police Patrol Allocation for NCRB -->
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="https://raw.githubusercontent.com/On-Duty-Org/Beats-Allocation-SIH/master/Frontend/screenshots/1.png"
+                                        class="img-fluid rounded-start" alt="Police Patrol Allocation">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Police Patrol Allocation for NCRB</h5>
+                                        <p class="card-text">A smart patrol allocation and monitoring system providing
+                                            real-time visual overview of hot zones and patrolling cars. Includes live
+                                            alerts on the map, and SMS notifications to police officers indicating where
+                                            they need to go.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-          <div class="col-md text-center">
-            <a href="./assets/Ishank_CSULB.pdf"><i class="fab fa-grav fastronaut"></i></a>
-            <h6>Resume</h6>
-          </div>
+                        <!-- Project 2: Developers Planet -->
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="https://github.com/ishank-dev/TheDevelopersPlanet/blob/master/docs/2.png?raw=true"
+                                        class="img-fluid rounded-start" alt="Developers Planet">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Developers Planet</h5>
+                                        <p class="card-text">A social networking platform designed for developers to
+                                            share their daily experiences. Features include personal news feed,
+                                            following accounts, creating posts, liking and commenting on posts, and an
+                                            Explore section with trending topics.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Project 3: Book Reader -->
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="https://github.com/ishank-dev/Dyslexic-Reader/blob/master/docs/1.png?raw=true"
+                                        class="img-fluid rounded-start" alt="Dyslexic Reader">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Dyslexic Reader</h5>
+                                        <p class="card-text">A Web browser based epub reader built for people with
+                                            different vision abilities.
+                                            Project built during Open Library Lazy Hackathon.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-          <div class="col-md text-center">
-            <a href="https://twitter.com/ishank47"><i class="fab fa-twitter-square twitter"></i></a><br>
-            <h6>Twitter</h6>
-          </div>
+                    </div>
+                    <!-- TIL Tab -->
+                    <div class="tab-pane fade" id="education" role="tabpanel" aria-labelledby="education-tab">
+
+                        <!-- Education 1: California State University, Long Beach -->
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Master of Science in Computer Science</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">California State University, Long
+                                            Beach, California, United States</h6>
+                                        <p class="card-text"><small class="text-muted">Aug 2024 - May 2026
+                                                (Expected)</small></p>
+                                        <p class="card-text">
+                                            <strong>Key Courses:</strong> Advanced Algorithms, Advanced Artificial
+                                            Intelligence, Distributed Systems, Cloud Computing Fundamentals
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Education 2: Ramaiah Institute of Technology -->
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">B.E. in Information Science and Engineering</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Ramaiah Institute of Technology,
+                                            Bengaluru, India</h6>
+                                        <p class="card-text"><small class="text-muted">Aug 2022 - May 2024</small></p>
+                                        <p class="card-text">
+                                            <strong>GPA:</strong> 8.52/10<br>
+                                            <strong>Key Courses:</strong> Algorithms, OS, Computer Networks, Machine
+                                            Learning and AI, Databases, Computational Optimization
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blogs Tab -->
+                    <div class="tab-pane fade" id="blogs" role="tabpanel" aria-labelledby="blogs-tab">
+                        <!-- Blog posts will be dynamically inserted here by JavaScript -->
+                    </div>
+                    <div class="tab-pane fade" id="awards" role="tabpanel" aria-labelledby="awards-tab">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Smart India Hackathon 2020</h5>
+                                <p class="card-text">Winner of the prestigious Smart India Hackathon 2020 for the
+                                    project 'Police Patrol Allocation for NCRB'.</p>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Microsoft IncubateIND Innovation Series Hackathon</h5>
+                                <p class="card-text">Runner-up in the Microsoft IncubateIND Innovation Series Hackathon
+                                    for innovative solutions in AI.</p>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">GE Healthcare Precision Hackathon</h5>
+                                <p class="card-text">Honorable mention for outstanding contributions in the GE
+                                    Healthcare Precision Hackathon.</p>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Reverie Language Hackathon</h5>
+                                <p class="card-text">Runner-up in the Reverie Language Hackathon for developing a
+                                    language-focused tech solution.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-          <a onclick="toggle()">
-            <i class="fas fa-user-astronaut astronaut"></i></a><br>
-          <h6>Light Mode</h6>
-          </audio>
-        </div>
-        <div class="col-md-4"></div>
-      </div>
-      <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-          <audio id="music" controls  style="height: 40px;" loop">
-            <source src="./assets/music/music4.mp3" type="audio/mp3">
-          </audio>
-        </div>
-        <audio id="musicMario"  loop>
-          <source src="./assets/easterEgg/mario.mp4" type="audio/mp3">
-        </audio>
-        <div class="col-md-4"></div>
-      </div>
-      <section id="section07" class="demo">
-        <a href="#section08"><span></span><span></span><span></span></a>
-      </section>
-    
     </div>
-    <div class="col-md-4">
     </div>
-  </div>
 
-    <canvas id="canvas">
+    <!-- Bootstrap JS -->
+    <script>// Function to fetch and display Medium blog posts
+        async function fetchMediumPosts() {
+            try {
+                const feedUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@ishankdev';
+                const response = await fetch(feedUrl);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                const items = data.items;
 
-    </canvas>
+                let output = '';
 
+                items.forEach((item) => {
+                    const title = item.title;
+                    const link = item.link;
+                    const pubDate = new Date(item.pubDate).toLocaleDateString();
+                    const description = item.description.replace(/(<([^>]+)>)/gi, "").substring(0, 150) + '...';
 
+                    // Extract the first image from the content
+                    let image = 'default-image-url.jpg'; // Fallback to a default image if none is found
+                    const match = item.content.match(/<img.*?src="(.*?)"/); // Regex to find the first image src
+                    if (match && match[1]) {
+                        image = match[1];
+                    }
+
+                    output += `
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="${link}" target="_blank">${title}</a></h5>
+                                <p class="card-text"><small class="text-muted">Published on ${pubDate}</small></p>
+                                <p class="card-text">${description}</p>
+                                <a href="${link}" target="_blank" class="btn btn-outline-dark">Read more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+                });
+
+                document.getElementById('blogs').innerHTML = output;
+            } catch (error) {
+                console.error('Failed to fetch Medium posts:', error);
+                document.getElementById('blogs').innerHTML = '<p class="text-danger">Failed to load blog posts. Please try again later.</p>';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchMediumPosts);
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-<script src = js/easterEgg.js></script>
-<script type="text/javascript" src="js/jquery.particleground.js"></script>
-<script type="text/javascript" src="js/demo.js"></script>
 
-<!-- HOTJAR Analytics -->
-<script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:1980238,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script> 
-<!-- Three JS -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/101/three.min.js'></script>
-<!-- Moving Cursor Animation -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.5/dat.gui.min.js'></script><script type="module" src="./script.js"></script>
-<script src="js/starCursor.js"></script>
 </html>
