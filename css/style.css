@@ -145,10 +145,12 @@ p, ul, h1, h5 {
 }
 
 /* Buttons */
-.btn-outline-dark {
+.btn-p {
     border-radius: 20px;
     padding: 10px 20px;
     margin-bottom: 10px;
+    color:#e0e0e0
+    background:#e0e0e0
 }
 
 /* Cards */
@@ -210,4 +212,66 @@ p, ul, h1, h5 {
 
 .btn-rounded:hover {
     background-color: #005bb5; /* Slightly darker blue on hover */
+}
+
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+    height: auto;
+    max-height: 200px; /* Adjust this to give more vertical space */
+    width: 100%;
+    object-fit: cover; /* Ensures the image covers the container area */
+    object-position: center; /* Centers the image within the container */
+    padding: 10px 0; /* Adds some padding to give breathing space around the image */
+    border-radius: 12px 0 0 12px; /* Keeps the rounded corners */
+}
+
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.card-text {
+    font-size: 0.95rem;
+    color: #555;
+    flex-grow: 1;
+}
+
+.card .btn {
+    align-self: flex-start;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+}
+
+.card .btn:hover {
+    background-color: #0056b3;
+}
+
+.card .row {
+    align-items: center;
 }
