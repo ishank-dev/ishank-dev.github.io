@@ -2,362 +2,560 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ishank Sharma | Portfolio</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ishank Sharma | Portfolio</title>
+
+  <!--
+      - favicon (optional)
+    -->
+  <link rel="shortcut icon" href="./assets/images/logo.svg" type="image/x-icon" />
+
+  <!--
+      - custom css link
+    -->
+  <link rel="stylesheet" href="./assets/css/style.css" />
+
+  <!--
+      - google font link (optional)
+    -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Left Side - About Me -->
-            <div class="col-md-3 p-4 bg-light text-center">
-                <img src="https://avatars.githubusercontent.com/u/45262592?v=4" alt="Ishank Sharma"
-                    class="img-fluid rounded-circle mb-3" style="width: 120px; height: 120px;">
-                <h1>Ishank Sharma</h1>
-                <p>Software Engineer | CS Grad Student @CSULB</p>
-                <div class="button-container">
-                    <a href="./assets/transcript.pdf" target="_blank"
-                        class="btn btn-outline-dark btn-rounded">Transcripts</a>
-                    <a href="./assets/Ishank_CSULB.pdf" target="_blank"
-                        class="btn btn-outline-dark btn-rounded">Resume</a>
-                </div>
+  <!--
+      - #MAIN
+    -->
+  <main>
+    <!--
+        - #SIDEBAR
+      -->
+    <aside class="sidebar" data-sidebar>
+      <div class="sidebar-info">
+        <figure class="avatar-box">
+          <!-- Replace with your own avatar URL -->
+          <img src="/assets/images/my-avatar.png" alt="Ishank Sharma" width="80" />
+        </figure>
 
+        <div class="info-content">
+          <h1 class="name" title="Ishank Sharma">Ishank Sharma</h1>
 
-                <hr>
-                <p><strong>Backend:</strong> Node.js, Flask, SpringBoot</p>
-                <p><strong>Programming Languages:</strong> Python</p>
-                <p><strong>Database Technologies:</strong> MySQL, Snowflake, Databricks, Firebolt, MongoDB</p>
-                <p><strong>Cloud Technologies:</strong> AWS</p>
-            </div>
-
-            <!-- Right Side - Tabs and Content -->
-            <div class="col-md-9 p-4">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="experience-tab" data-bs-toggle="tab"
-                            data-bs-target="#experience" type="button" role="tab" aria-controls="experience"
-                            aria-selected="true">Experience</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="projects-tab" data-bs-toggle="tab" data-bs-target="#projects"
-                            type="button" role="tab" aria-controls="projects" aria-selected="false">Projects </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="education-tab" data-bs-toggle="tab" data-bs-target="#education"
-                            type="button" role="tab" aria-controls="education" aria-selected="false">Education</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="blogs-tab" data-bs-toggle="tab" data-bs-target="#blogs"
-                            type="button" role="tab" aria-controls="blogs" aria-selected="false">Blogs</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="awards-tab" data-bs-toggle="tab" data-bs-target="#awards"
-                            type="button" role="tab" aria-controls="awards" aria-selected="false">Awards 🏅</button>
-                    </li>
-                </ul>
-                <div class="tab-content mt-4" id="myTabContent">
-                    <div class="tab-pane fade show active" id="experience" role="tabpanel"
-                        aria-labelledby="experience-tab">
-                        <!-- Experience 1: Software Development Engineer II at CommerceIQ -->
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title">Software Development Engineer II</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">CommerceIQ, Bengaluru, India</h6>
-                                <p class="card-text"><small class="text-muted">Aug 2023 - July 2024</small></p>
-                            </div>
-                        </div>
-
-                        <!-- Experience 2: Software Development Engineer I at CommerceIQ -->
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title">Software Development Engineer I</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">CommerceIQ, Bengaluru, India</h6>
-                                <p class="card-text"><small class="text-muted">May 2021 - July 2023</small></p>
-                            </div>
-                        </div>
-
-                        <!-- Experience 3: Software Development Engineer Intern at CommerceIQ -->
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title">Software Development Engineer Intern</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">CommerceIQ, Bengaluru, India</h6>
-                                <p class="card-text"><small class="text-muted">Feb 2021 - May 2021</small></p>
-                            </div>
-                        </div>
-                        <!-- Experience 3.5: Open Source Contributor at Internet Archive -->
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title">Research Experience</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">CommerceIQ, Bengaluru, India</h6>
-                                <p class="card-text"><small class="text-muted">Feb 2021 - Apr 2021</small></p>
-                            </div>
-                        </div>
-
-                        <!-- Experience 4: Open Source Contributor at Internet Archive -->
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title">Open Source Contributor</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Internet Archive, San Francisco, California
-                                    (Remote)</h6>
-                                <p class="card-text"><small class="text-muted">Mar 2020 - Dec 2020</small></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Projects Tab -->
-                    <div class="tab-pane fade" id="projects" role="tabpanel" aria-labelledby="projects-tab">
-                        <!-- Project 4: Mock Server -->
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <a href="https://github.com/ishank-dev/NodeJS-MockServer" target="_blank">
-                                        <img src="assets/mock_server.png" class="img-fluid rounded-start"
-                                            alt="Mock Server">
-                                    </a>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Mock Server</h5>
-                                        <p class="card-text">
-                                            A mock server built with Node.js and Express that supports CRUD operations
-                                            and
-                                            dynamic filters, search, and sorting.
-                                            Useful for rapid API prototyping and testing.
-                                        </p>
-                                        <a href="https://github.com/ishank-dev/NodeJS-MockServer" target="_blank"
-                                            class="btn btn-outline-dark btn-p">View Project</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Project 1: Police Patrol Allocation for NCRB -->
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <a href="https://github.com/On-Duty-Org/Beats-Allocation-SIH" target="_blank">
-                                        <img src="https://raw.githubusercontent.com/On-Duty-Org/Beats-Allocation-SIH/master/Frontend/screenshots/1.png"
-                                            class="img-fluid rounded-start" alt="Police Patrol Allocation">
-                                    </a>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Police Patrol Allocation for NCRB</h5>
-                                        <p class="card-text">A smart patrol allocation and monitoring system providing
-                                            real-time visual overview of hot zones and patrolling cars. Includes live
-                                            alerts on the map, and SMS notifications to police officers indicating where
-                                            they need to go.</p>
-                                        <a href="https://github.com/On-Duty-Org/Beats-Allocation-SIH" target="_blank"
-                                            class="btn btn-outline-dark btn-p">View Project</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project 2: Developers Planet -->
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <a href="https://github.com/ishank-dev/TheDevelopersPlanet" target="_blank">
-                                        <img src="https://github.com/ishank-dev/TheDevelopersPlanet/blob/master/docs/2.png?raw=true"
-                                            class="img-fluid rounded-start" alt="Developers Planet">
-                                    </a>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Developers Planet</h5>
-                                        <p class="card-text">A social networking platform designed for developers to
-                                            share their daily experiences. Features include personal news feed,
-                                            following accounts, creating posts, liking and commenting on posts, and an
-                                            Explore section with trending topics.</p>
-                                        <a href="https://github.com/ishank-dev/TheDevelopersPlanet" target="_blank"
-                                            class="btn btn-outline-dark btn-p">View Project</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project 3: Dyslexic Reader -->
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <a href="https://github.com/ishank-dev/Dyslexic-Reader" target="_blank">
-                                        <img src="https://github.com/ishank-dev/Dyslexic-Reader/blob/master/docs/1.png?raw=true"
-                                            class="img-fluid rounded-start" alt="Dyslexic Reader">
-                                    </a>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Dyslexic Reader</h5>
-                                        <p class="card-text">A Web browser-based EPUB reader built for people with
-                                            different vision abilities. Project built during Open Library Lazy
-                                            Hackathon.</p>
-                                        <a href="https://github.com/ishank-dev/Dyslexic-Reader" target="_blank"
-                                            class="btn btn-outline-dark btn-p">View Project</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- TIL Tab -->
-                    <div class="tab-pane fade" id="education" role="tabpanel" aria-labelledby="education-tab">
-
-                        <!-- Education 1: California State University, Long Beach -->
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Master of Science in Computer Science</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">California State University, Long
-                                            Beach, California, United States</h6>
-                                        <p class="card-text"><small class="text-muted">Aug 2024 - May 2026
-                                                (Expected)</small></p>
-                                        <p class="card-text">
-                                            <strong>GPA:</strong> 4.0/4.0<br>
-                                            <strong>Key Courses:</strong> Advanced Algorithms, Advanced Artificial
-                                            Intelligence, Distributed Systems, Cloud Computing Fundamentals
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <!-- Education 2: Ramaiah Institute of Technology -->
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">B.E. in Information Science and Engineering</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">Ramaiah Institute of Technology,
-                                            Bengaluru, India</h6>
-                                        <p class="card-text"><small class="text-muted">Aug 2017 - May 2021</small></p>
-                                        <p class="card-text">
-                                            <strong>GPA:</strong> 3.75/4<br>
-                                            <strong>Key Courses:</strong> Algorithms, OS, Computer Networks, Machine
-                                            Learning and AI, Databases, Computational Optimization
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Blogs Tab -->
-                    <div class="tab-pane fade" id="blogs" role="tabpanel" aria-labelledby="blogs-tab">
-                        <!-- Blog posts will be dynamically inserted here by JavaScript -->
-                    </div>
-                    <div class="tab-pane fade" id="awards" role="tabpanel" aria-labelledby="awards-tab">
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title">CommerceIQ AI Hackathon</h5>
-                                <p class="card-text">Honorable Mention: Leveraged Large Language Models to classify
-                                    product reviews by sentiment, enabling direct comparisons with competitor brands and
-                                    providing actionable insights into customer sentiment for strategic brand
-                                    positioning.</p>
-                            </div>
-                        </div>
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title">Smart India Hackathon</h5>
-                                <p class="card-text">Winner Smart India Hackathon, Team Avocado. We made a solution to
-                                    the problem by the National Crime
-                                    Records Bureau. "Digitalize, automate, and optimize daily life operations of
-                                    Indian police".</p>
-                            </div>
-                        </div>
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title">Microsoft IncubateIND Innovation Series Hackathon</h5>
-                                <p class="card-text">Runner Up: Extension of Women Suraksha project that used MapmyIndia
-                                    APIs and
-                                    SDKs to alert family and emergency services in case of distress.</p>
-                            </div>
-                        </div>
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title">GE Healthcare Precision Hackathon</h5>
-                                <p class="card-text">Honorable mention: Hospital Internal workflow Automation by
-                                    reducing patient wait times.</p>
-                            </div>
-                        </div>
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title">Reverie Language Hackathon</h5>
-                                <p class="card-text">Runner Up: Used reverie translation APIs to let a shopkeeper and
-                                    buyer, speaking
-                                    diﬀerent languages, interact</p>
-                            </div>
-                        </div>
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title">IEEE Ideathon</h5>
-                                <p class="card-text">Runner Up: Worked on the theme of Societal Needs.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          <p class="title">CS Grad Student @CSULB</p>
         </div>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+      </div>
+
+      <div class="sidebar-info_more">
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+              <!-- Replace with your real email -->
+              <a href="mailto:ishankdev@gmail.com" class="contact-link">ishankdev@gmail.com</a>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+              <!-- If you'd like a specific city or state -->
+              <address>Long Beach, CA, USA</address>
+            </div>
+          </li>
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+          <!-- Replace # with your real links or remove any platform not in use -->
+          <li class="social-item">
+            <a href="https://www.linkedin.com/in/ishank-sharma-438a32144/" class="social-link">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+          <li class="social-item">
+            <a href="https://github.com/ishank-dev" class="social-link">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
+          <li class="social-item">
+            <a href="https://medium.com/@ishankdev" class="social-link">
+              <ion-icon name="logo-medium"></ion-icon>
+            </a>
+          </li>
+          <li class="social-item">
+            <a href="./assets/Ishank_CSULB.pdf" class="social-link">
+              <ion-icon name="document-text-outline"></ion-icon>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <!--
+        - #main-content
+      -->
+    <div class="main-content">
+      <!--
+          - #NAVBAR
+        -->
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li class="navbar-item">
+            <button class="navbar-link active" data-nav-link>About</button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Resume</button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Portfolio</button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Awards</button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Contact</button>
+          </li>
+        </ul>
+      </nav>
+
+      <!--
+          - #ABOUT
+        -->
+      <article class="about active" data-page="about">
+        <header>
+          <h2 class="h2 article-title">About Me</h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+            I'm a software engineer with backend development experience and a passion for distributed systems and data
+            engineering. Currently pursuing my Master’s in Computer Science at CSULB where I am learning core topics
+            like advanced AI, algorithms, and software engineering.
+          </p>
+
+          <p>
+            At CommerceIQ, I developed scalable microservices, optimized data pipelines, and led cost-saving migrations
+            from Snowflake to Databricks. I’ve built real-time platforms, tackled cold start challenges, and contributed
+            to open-source projects like Archive.org, driven by a goal to solve real-world problems with impactful
+            tools.
+          </p>
+        </section>
+
+        <!--
+            - service
+          -->
+        <section class="service">
+          
+
+          <ul class="service-list">
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-photo.svg" alt="Artificial Intelligence services icon" width="40" />
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Artificial Intelligence</h4>
+                <p class="service-item-text">
+                  Proficient in designing and fine-tuning neural networks from the ground up to achieve optimized
+                  performance.
+                </p>
+              </div>
+            </li>
+            <li class="service-item">
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-dev.svg" alt="Full-stack icon" width="40" />
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Backend Services</h4>
+                <p class="service-item-text">
+                  Node.js, Flask, and Spring Boot microservices to deliver
+                  high-performance applications at scale.
+                </p>
+              </div>
+            </li>
+            <li class="service-item">
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-design.svg" alt="Cloud services icon" width="40" />
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Cloud Technologies</h4>
+                <p class="service-item-text">
+                  Proficient with AWS for deployment, serverless architecture,
+                  and data pipeline setups.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-app.svg" alt="Databases icon" width="40" />
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Database & Analytics</h4>
+                <p class="service-item-text">
+                  Working with MySQL, Snowflake, Databricks, Firebolt, and
+                  MongoDB to build robust data solutions.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </article>
+
+      <!--
+          - #RESUME
+        -->
+      <article class="resume" data-page="resume">
+        <header>
+          <h2 class="h2 article-title">Resume</h2>
+        </header>
+
+        <!-- Education Timeline -->
+        <section class="timeline">
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+            <h3 class="h3">Education</h3>
+          </div>
+
+          <ol class="timeline-list">
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">
+                California State University, Long Beach
+              </h4>
+              <span>Aug 2024 — May 2026 (Expected)</span>
+              <p class="timeline-text">
+                Master of Science in Computer Science
+              </p>
+              <p class="timeline-text">GPA: 4.0/4.0</p>
+            </li>
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">
+                Ramaiah Institute of Technology
+              </h4>
+              <span>Aug 2017 — May 2021</span>
+              <p class="timeline-text">
+                B.E. in Information Science & Engineering
+              </p>
+              <p class="timeline-text">GPA: 3.75/4.0</p>
+            </li>
+          </ol>
+        </section>
+
+        <!-- Experience Timeline -->
+        <section class="timeline">
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+            <h3 class="h3">Experience</h3>
+          </div>
+
+          <ol class="timeline-list">
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">
+                Software Development Engineer II — CommerceIQ
+              </h4>
+              <span>Aug 2023 — July 2024</span>
+              <p class="timeline-text">
+                Built and maintained large-scale microservices to process
+                real-time analytics for e-commerce businesses.
+              </p>
+            </li>
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">
+                Software Development Engineer I — CommerceIQ
+              </h4>
+              <span>May 2021 — July 2023</span>
+              <p class="timeline-text">
+                Developed core services, optimized data pipelines, and
+                contributed to cross-functional product development.
+              </p>
+            </li>
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">
+                Software Development Engineer Intern — CommerceIQ
+              </h4>
+              <span>Feb 2021 — May 2021</span>
+              <p class="timeline-text">
+                Gained hands-on experience in building APIs and learned best
+                practices in distributed systems.
+              </p>
+            </li>
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">
+                Open Source Contributor — Internet Archive
+              </h4>
+              <span>Mar 2020 — Dec 2020</span>
+              <p class="timeline-text">
+                Contributed to open-source tools and enhancements, focusing on
+                accessibility features and user-facing improvements.
+              </p>
+            </li>
+          </ol>
+        </section>
+      </article>
+
+      <!--
+          - #PORTFOLIO
+        -->
+      <article class="portfolio" data-page="portfolio">
+        <header>
+          <h2 class="h2 article-title">Portfolio</h2>
+        </header>
+
+        <section class="projects">
+          <ul class="filter-list">
+            <li class="filter-item">
+              <button class="active" data-filter-btn>All</button>
+            </li>
+            <li class="filter-item">
+              <button data-filter-btn>Applications</button>
+            </li>
+            <li class="filter-item">
+              <button data-filter-btn>Backend</button>
+            </li>
+            <li class="filter-item">
+              <button data-filter-btn>Artificial Intelligence</button>
+            </li>
+          </ul>
+
+          <div class="filter-select-box">
+            <button class="filter-select" data-select>
+              <div class="select-value" data-selecct-value>
+                Select category
+              </div>
+              <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+              </div>
+            </button>
+
+            <ul class="select-list">
+              <li class="select-item">
+                <button data-select-item>All</button>
+              </li>
+              <li class="select-item">
+                <button data-select-item>Applications</button>
+              </li>
+              <li class="select-item">
+                <button data-select-item>Backend</button>
+              </li>
+              <li class="select-item">
+                <button data-select-item>AI</button>
+              </li>
+            </ul>
+          </div>
+
+          <ul class="project-list">
+            <!-- Project 4 -->
+            <li class="project-item active" data-filter-item data-category="applications">
+              <a href="https://github.com/On-Duty-Org/Beats-Allocation-SIH">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img
+                    src="./assets/images/beats_alloc.png"
+                    alt="Dyslexic Reader" loading="lazy" />
+                </figure>
+                <h3 class="project-title">Police Patrol Allocation for NCRB</h3>
+                <p class="project-category">Applications</p>
+              </a>
+            </li>
+            <!-- Project 1 -->
+            <li class="project-item active" data-filter-item data-category="applications">
+              <a href="https://github.com/ishank-dev/TheDevelopersPlanet">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/dev_planet.png"
+                    alt="Developers Planet" loading="lazy" />
+                </figure>
+                <h3 class="project-title">Developers Planet</h3>
+                <p class="project-category">Applications</p>
+              </a>
+            </li>
+            <!-- Project 3 -->
+            <li class="project-item active" data-filter-item data-category="applications">
+              <a href="https://github.com/ishank-dev/Dyslexic-Reader">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/book_read.png"
+                    alt="Dyslexic Reader" loading="lazy" />
+                </figure>
+                <h3 class="project-title">Dyslexic Reader</h3>
+                <p class="project-category">Applications</p>
+              </a>
+            </li>
+            <!-- Project 2 -->
+            <li class="project-item active" data-filter-item data-category="backend">
+              <a href="https://github.com/ishank-dev/NodeJS-MockServer">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="assets/images/mock_server.png" alt="Mock Server" loading="lazy" />
+                </figure>
+                <h3 class="project-title">Node.js Mock Server</h3>
+                <p class="project-category">Backend</p>
+              </a>
+            </li>
+          </ul>
+        </section>
+      </article>
+
+      <!-- AWARDS SECTION -->
+      <article class="awards" data-page="awards">
+        <header>
+          <h2 class="h2 article-title">Awards</h2>
+        </header>
+
+        <!-- You can have multiple sections if you want to group things differently. 
+       Here, we follow the “timeline” approach similar to the Resume. -->
+        <section class="timeline">
+          <div class="title-wrapper">
+            <!-- You can use a trophy icon, star, or anything that fits "awards." -->
+            <div class="icon-box">
+              <ion-icon name="trophy-outline"></ion-icon>
+            </div>
+            <h3 class="h3">Hackathons & Achievements</h3>
+          </div>
+
+          <ol class="timeline-list">
+            <!-- 1. CommerceIQ AI Hackathon -->
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">CommerceIQ AI Hackathon</h4>
+              <span>Honorable Mention</span>
+              <p class="timeline-text">
+                Leveraged LLMs to classify product reviews by sentiment, enabling
+                direct competitor comparisons and actionable insights for
+                strategic brand positioning.
+              </p>
+            </li>
+
+            <!-- 2. Smart India Hackathon -->
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Smart India Hackathon</h4>
+              <span>Winner (Team Avocado)</span>
+              <p class="timeline-text">
+                Created solutions for the National Crime Records Bureau to
+                "digitalize, automate, and optimize daily operations of Indian police."
+              </p>
+            </li>
+
+            <!-- 3. Microsoft IncubateIND -->
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">
+                Microsoft IncubateIND Innovation Series Hackathon
+              </h4>
+              <span>Runner Up</span>
+              <p class="timeline-text">
+                Extended Women Suraksha project using MapmyIndia APIs to
+                alert family/emergency services in case of distress.
+              </p>
+            </li>
+
+            <!-- 4. GE Healthcare Precision Hackathon -->
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">GE Healthcare Precision Hackathon</h4>
+              <span>Honorable Mention</span>
+              <p class="timeline-text">
+                Focused on hospital internal workflow automation, successfully
+                reducing patient wait times.
+              </p>
+            </li>
+
+            <!-- 5. Reverie Language Hackathon -->
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Reverie Language Hackathon</h4>
+              <span>Runner Up</span>
+              <p class="timeline-text">
+                Used Reverie translation APIs to facilitate real-time communication
+                between speakers of different languages.
+              </p>
+            </li>
+
+            <!-- 6. IEEE Ideathon -->
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">IEEE Ideathon</h4>
+              <span>Runner Up</span>
+              <p class="timeline-text">
+                Project focused on solving key societal needs.
+              </p>
+            </li>
+          </ol>
+        </section>
+      </article>
+
+      <!--
+          - #CONTACT
+        -->
+      <article class="contact" data-page="contact">
+        <header>
+          <h2 class="h2 article-title">Contact</h2>
+        </header>
+
+        <section class="mapbox" data-mapbox>
+          <figure>
+            <!-- Example map embed -->
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3303.59764853765!2d-118.1162035!3d33.7837675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dd2c7ecfb8f13b%3A0x5c724ea9f6ec8138!2sCalifornia%20State%20University%2C%20Long%20Beach!5e0!3m2!1sen!2sus!4v1720259107273!5m2!1sen!2sus"
+              width="400" height="300" loading="lazy"></iframe>
+          </figure>
+        </section>
+
+        <section class="contact-form">
+          <h3 class="h3 form-title">Contact Form</h3>
+          <form action="#" class="form" data-form>
+            <div class="input-wrapper">
+              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input />
+              <input type="email" name="email" class="form-input" placeholder="Email address" required
+                data-form-input />
+            </div>
+
+            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+
+            <button class="form-btn" type="submit" disabled data-form-btn>
+              <ion-icon name="paper-plane"></ion-icon>
+              <span>Send Message</span>
+            </button>
+          </form>
+        </section>
+      </article>
     </div>
-    </div>
+  </main>
 
-    <!-- Bootstrap JS -->
-    <script>// Function to fetch and display Medium blog posts
-        async function fetchMediumPosts() {
-            try {
-                const feedUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@ishankdev';
-                const response = await fetch(feedUrl);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await response.json();
-                const items = data.items;
+  <!-- custom js link -->
+  <script src="./assets/js/script.js"></script>
 
-                let output = '';
-
-                items.forEach((item) => {
-                    const title = item.title;
-                    const link = item.link;
-                    const pubDate = new Date(item.pubDate).toLocaleDateString();
-                    const description = item.description.replace(/(<([^>]+)>)/gi, "").substring(0, 150) + '...';
-
-                    // Extract the first image from the content
-                    let image = 'default-image-url.jpg'; // Fallback to a default image if none is found
-                    const match = item.content.match(/<img.*?src="(.*?)"/); // Regex to find the first image src
-                    if (match && match[1]) {
-                        image = match[1];
-                    }
-
-                    output += `
-                <div class="card mb-3">
-                    <div class="row g-0">
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title"><a href="${link}" target="_blank">${title}</a></h5>
-                                <p class="card-text"><small class="text-muted">Published on ${pubDate}</small></p>
-                                <p class="card-text">${description}</p>
-                                <a href="${link}" target="_blank" class="btn btn-outline-dark">Read more</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-                });
-
-                document.getElementById('blogs').innerHTML = output;
-            } catch (error) {
-                console.error('Failed to fetch Medium posts:', error);
-                document.getElementById('blogs').innerHTML = '<p class="text-danger">Failed to load blog posts. Please try again later.</p>';
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', fetchMediumPosts);
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- ionicon link -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
