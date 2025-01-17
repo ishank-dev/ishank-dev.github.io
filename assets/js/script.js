@@ -2,8 +2,38 @@
 
 
 
-// element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
+
+const themeToggleBtn = document.querySelector('[data-theme-toggle]');
+
+const savedTheme = localStorage.getItem('theme');
+console.log('Saved theme from localStorage:', savedTheme);
+
+if (savedTheme === 'dark') {
+  document.body.classList.add('dark-theme');
+  document.body.classList.remove('light-theme');
+} else if (savedTheme === 'light') {
+  document.body.classList.add('light-theme');
+  document.body.classList.remove('dark-theme');
+} else {
+  console.log('No saved theme, defaulting to light-theme');
+  document.body.classList.add('light-theme');
+}
+
+themeToggleBtn.addEventListener('click', function () {
+  if (document.body.classList.contains('dark-theme')) {
+    console.log('Switching to light theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.add('light-theme');
+    localStorage.setItem('theme', 'light');
+  } else {
+    console.log('Switching to dark theme');
+    document.body.classList.remove('light-theme');
+    document.body.classList.add('dark-theme');
+    localStorage.setItem('theme', 'dark');
+  }
+});
+
 
 
 

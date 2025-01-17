@@ -8,4 +8,4 @@ Feel free to reach out via [email](mailto:ishankdev@gmail.com) or connect with m
 
 ## Acknowledgements
 
-This portfolio is based on the existing [Portfolio](https://github.com/yashwanth1208/Yash_Portfolio) template. Special thanks to the original creator for providing such a versatile and user-friendly design.
+This portfolio is based on the existing [Portfolio](https://github.com/codewithsadee/vcard-personal-portfolio) template. Special thanks to the original creator for providing such a versatile and user-friendly design.
