@@ -162,6 +162,27 @@ for (let i = 0; i < formInputs.length; i++) {
   });
 }
 
+// Add form submit handler
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  
+  // Get form data
+  const formData = new FormData(form);
+  const name = formData.get('fullname') || 'Not provided';
+  const email = formData.get('email') || 'Not provided';
+  const message = formData.get('message') || 'Not provided';
+  
+  // Create mailto link
+  const mailtoLink = `mailto:ishankdev@gmail.com?subject=Portfolio Contact from ${name}&body=From: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+  
+  // Open email client
+  window.location.href = mailtoLink;
+  
+  // Optional: Reset form after submission
+  form.reset();
+  formBtn.setAttribute("disabled", "");
+});
+
 
 
 // page navigation variables
