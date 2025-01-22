@@ -104,44 +104,45 @@ for (let i = 0; i < selectItems.length; i++) {
 }
 
 // filter variables
-const filterItems = document.querySelectorAll("[data-filter-item]");
+const filterItems = document.querySelectorAll('[data-filter-item]');
+const filterButtons = document.querySelectorAll('[data-filter-btn]');
+const selectButtons = document.querySelectorAll('[data-select-item]');
 
-const filterFunc = function (selectedValue) {
-
+// Filter items based on category
+const filterFunc = function(selectedValue) {
   for (let i = 0; i < filterItems.length; i++) {
-
-    if (selectedValue === "all") {
-      filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
-      filterItems[i].classList.add("active");
+    if (selectedValue === 'All') {
+      filterItems[i].classList.add('active');
+    } else if (filterItems[i].dataset.category === selectedValue.toLowerCase()) {
+      filterItems[i].classList.add('active');
     } else {
-      filterItems[i].classList.remove("active");
+      filterItems[i].classList.remove('active');
     }
-
   }
-
 }
 
-// add event in all filter button items for large screen
-let lastClickedBtn = filterBtn[0];
-
-for (let i = 0; i < filterBtn.length; i++) {
-
-  filterBtn[i].addEventListener("click", function () {
-
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
+// Add click events to filter buttons
+filterButtons.forEach((button) => {
+  button.addEventListener('click', function() {
+    const selectedValue = this.textContent;
     filterFunc(selectedValue);
-
-    lastClickedBtn.classList.remove("active");
-    this.classList.add("active");
-    lastClickedBtn = this;
-
+    
+    // Update active state of filter buttons
+    filterButtons.forEach((btn) => btn.classList.remove('active'));
+    this.classList.add('active');
   });
+});
 
-}
-
-
+// Add click events to select items (for mobile dropdown)
+selectButtons.forEach((button) => {
+  button.addEventListener('click', function() {
+    const selectedValue = this.textContent;
+    filterFunc(selectedValue);
+    
+    // Update select box value
+    document.querySelector('[data-selecct-value]').textContent = selectedValue;
+  });
+});
 
 // contact form variables
 const form = document.querySelector("[data-form]");
