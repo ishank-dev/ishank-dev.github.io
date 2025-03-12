@@ -1,143 +1,262 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>WebGazer Demo with Heatmap Evaluation</title>
-    <!-- Include custom styles and Bootstrap -->
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <!-- You may need to adjust paths as per your folder structure -->
-    <script src="./webgazer.js"></script>
-    <!-- For heatmap, you can use either local copy or CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/heatmap.js/2.0.2/heatmap.min.js"></script>
-    <script src="./node_modules/sweetalert/dist/sweetalert.min.js"></script>
-    <style>
-      /* Additional styles to ensure full screen and proper layering */
-      html, body {
-        margin: 0;
-        padding: 0;
-        width: 100vw;
-        height: 100vh;
-      }
-      /* The heatmap container overlays the entire screen */
-      #heatmapContainer {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: 10;
-        pointer-events: none;
-      }
-      /* You can adjust additional styles as needed */
-    </style>
-  </head>
-  <body LANG="en-US" DIR="LTR">
-    <!-- Canvas for optional plotting -->
-    <canvas id="plotting_canvas" width="500" height="500" style="cursor:crosshair;"></canvas>
-    
-    <!-- Navbar (from the calibration demo) -->
-    <nav id="webgazerNavbar" class="navbar navbar-expand-lg navbar-default navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <!-- Hamburger menu button -->
-          <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar">
-            <span class="navbar-toggler-icon">Menu</span>
-          </button>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav">
-            <li id="Accuracy"><a>Not yet Calibrated</a></li>
-            <li><a onclick="Restart()" href="#">Recalibrate</a></li>
-            <li>
-              <a onclick="webgazer.applyKalmanFilter(!webgazer.params.applyKalmanFilter)" href="#">
-                Toggle Kalman Filter
-              </a>
-            </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a class="helpBtn" onclick="helpModalShow()" href="#">
-                <span class="glyphicon glyphicon-cog"></span> Help
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    
-    <!-- Calibration points UI -->
-    <div class="calibrationDiv">
-      <input type="button" class="Calibration" id="Pt1"></input>
-      <input type="button" class="Calibration" id="Pt2"></input>
-      <input type="button" class="Calibration" id="Pt3"></input>
-      <input type="button" class="Calibration" id="Pt4"></input>
-      <input type="button" class="Calibration" id="Pt5"></input>
-      <input type="button" class="Calibration" id="Pt6"></input>
-      <input type="button" class="Calibration" id="Pt7"></input>
-      <input type="button" class="Calibration" id="Pt8"></input>
-      <input type="button" class="Calibration" id="Pt9"></input>
+<head>
+  <meta charset="utf-8">
+  <title>Eye Tracker with Live Heatmap & Automated Calibration</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #f5f5f5;
+    }
+    /* Start Overlay: Shows webcam feed with instructions until user clicks Start */
+    #startOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 1200;
+    }
+    #startOverlay button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    /* Calibration Overlay (for instructions during calibration) */
+    #calibrationSection {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: rgba(255,255,255,0.8);
+    }
+    #instruction {
+      margin-bottom: 20px;
+      font-size: 20px;
+      color: black;
+    }
+    /* Calibration Dot (red ball with timer) */
+    .calibration-dot {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: #ff0000;
+      border: 2px solid #880000;
+      border-radius: 50%;
+      opacity: 0.9;
+      /* Increase transition duration for smoother movement */
+      transition: left 1s ease-in-out, top 1s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    /* Real-time gaze dot */
+    #gazeDot {
+      position: fixed;
+      width: 15px;
+      height: 15px;
+      background: limegreen;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1000;
+    }
+    /* Custom cursor pointer (SVG arrow) */
+    #cursorPointer {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20'><polygon points='0,0 20,10 0,20' fill='black'/></svg>");
+      background-size: contain;
+      background-repeat: no-repeat;
+      pointer-events: none;
+      z-index: 1001;
+    }
+    /* Live heatmap overlay container */
+    #liveHeatmapContainer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 900;
+    }
+  </style>
+</head>
+<body>
+  <!-- Real-time gaze dot and custom cursor -->
+  <div id="gazeDot"></div>
+  <div id="cursorPointer"></div>
+
+  <!-- Start Overlay: Displayed until the user is ready -->
+  <div id="startOverlay">
+    <div style="font-size:22px; text-align:center; max-width:500px;">
+      Ensure you're in the correct zone. Your webcam feed is visible below.<br>
+      Click "Start Calibration" when you're ready.
     </div>
+    <button id="startButton">Start Calibration</button>
+  </div>
+
+  <!-- Calibration Overlay (used during calibration) -->
+  <div id="calibrationSection" style="display:none;">
+    <div id="instruction">Calibration: Follow the moving red ball.</div>
+  </div>
+
+  <!-- Live Heatmap Overlay -->
+  <div id="liveHeatmapContainer"></div>
+
+  <!-- Include WebGazer.js locally. Make sure webgazer.js is downloaded to your project folder. -->
+  <script src="webgazer.js"></script>
+  <!-- Include heatmap.js from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/heatmap.js/2.0.2/heatmap.min.js"></script>
+  <script>
+    // ---------------- Global Variables ----------------
+    let liveMode = false;
+    let calibrationDot = null;
+    const holdDuration = 3000; // Duration for each calibration stop (ms)
+
+    // Create a 4x4 grid (16 points) covering the screen.
+    const gridPoints = [
+      { x: "10%", y: "10%" }, { x: "35%", y: "10%" }, { x: "65%", y: "10%" }, { x: "90%", y: "10%" },
+      { x: "10%", y: "35%" }, { x: "35%", y: "35%" }, { x: "65%", y: "35%" }, { x: "90%", y: "35%" },
+      { x: "10%", y: "65%" }, { x: "35%", y: "65%" }, { x: "65%", y: "65%" }, { x: "90%", y: "65%" },
+      { x: "10%", y: "90%" }, { x: "35%", y: "90%" }, { x: "65%", y: "90%" }, { x: "90%", y: "90%" }
+    ];
     
-    <!-- Help Modal -->
-    <div id="helpModal" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-body">
-            <img src="media/example/calibration.png" width="100%" height="100%" alt="Calibration instructions">
-          </div>
-          <div class="modal-footer">
-            <button id="closeBtn" type="button" class="btn btn-default" data-bs-dismiss="modal">
-              Close & load saved model
-            </button>
-            <button type="button" id="start_calibration" class="btn btn-primary" data-bs-dismiss="modal" onclick="Restart()">
-              Calibrate
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+    // Center calibration: up/down/left/right sequence.
+    function getCenterSequence() {
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      return [
+        { x: centerX, y: centerY },                           // Center
+        { x: centerX, y: window.innerHeight * 0.05 },           // Move up (nearly to top)
+        { x: centerX, y: centerY },                           // Back to center
+        { x: window.innerWidth * 0.1, y: centerY },             // Move left
+        { x: centerX, y: centerY },                           // Back to center
+        { x: window.innerWidth * 0.9, y: centerY },             // Move right
+        { x: centerX, y: centerY },                           // Back to center
+        { x: centerX, y: window.innerHeight * 0.95 },           // Move down
+        { x: centerX, y: centerY }                            // Return to center
+      ];
+    }
     
-    <!-- Heatmap container -->
-    <div id="heatmapContainer"></div>
+    // Create or reuse the calibration dot element.
+    function createCalibrationDot() {
+      if (!calibrationDot) {
+        calibrationDot = document.createElement("div");
+        calibrationDot.className = "calibration-dot";
+        document.body.appendChild(calibrationDot);
+      }
+    }
     
-    <!-- Include additional calibration scripts -->
-    <script src="./js/main.js"></script>
-    <script src="./js/calibration.js"></script>
-    <script src="./js/precision_calculation.js"></script>
-    <script src="./js/precision_store_points.js"></script>
-    <script src="./js/resize_canvas.js"></script>
-    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    // Move the calibration dot to a specified point.
+    function moveCalibrationDot(point) {
+      calibrationDot.style.left = typeof point.x === "string" ? point.x : point.x + "px";
+      calibrationDot.style.top = typeof point.y === "string" ? point.y : point.y + "px";
+    }
     
-    <!-- Combined Script: Gaze listener & Heatmap update -->
-    <script>
-      let lastGaze = null;
-      const smoothingFactor = 0.2;
-      
-      // Create heatmap instance on the heatmap container.
-      let heatmapInstance = h337.create({
-        container: document.getElementById('heatmapContainer'),
-        radius: 40,
-        maxOpacity: 0.9,
-        minOpacity: 0,
-        blur: 0.7,
-        gradient: {
-          '0.3': 'blue',
-          '0.5': 'lime',
-          '0.7': 'yellow',
-          '1.0': 'red'
+    // Run a sequence of calibration points with a countdown timer.
+    function runCalibrationSequence(sequence, callback) {
+      let index = 0;
+      function nextPoint() {
+        if (index < sequence.length) {
+          moveCalibrationDot(sequence[index]);
+          let timeLeft = holdDuration / 1000;
+          calibrationDot.innerHTML = '<span class="timer-text">' + timeLeft + '</span>';
+          const timerInterval = setInterval(() => {
+            timeLeft--;
+            if (timeLeft <= 0) {
+              clearInterval(timerInterval);
+            } else {
+              calibrationDot.querySelector('.timer-text').innerText = timeLeft;
+            }
+          }, 1000);
+          index++;
+          setTimeout(() => {
+            clearInterval(timerInterval);
+            nextPoint();
+          }, holdDuration);
+        } else {
+          callback();
         }
+      }
+      nextPoint();
+    }
+    
+    // Start the full calibration routine.
+    function startCalibration() {
+      // Hide the start overlay and webcam UI.
+      document.getElementById("startOverlay").style.display = "none";
+      webgazer.showVideo(false);
+      webgazer.showFaceOverlay(false);
+      webgazer.showFaceFeedbackBox(false);
+      
+      // Show the calibration overlay.
+      document.getElementById("calibrationSection").style.display = "flex";
+      
+      createCalibrationDot();
+      
+      // First: 4x4 grid calibration.
+      document.getElementById("instruction").innerText = "Grid Calibration: Follow the red ball.";
+      runCalibrationSequence(gridPoints, function() {
+        // Then: Center calibration with directional moves.
+        document.body.style.background = "black"; // Change background to black.
+        document.getElementById("instruction").innerText = "Center Calibration: Follow the ball's movements.";
+        runCalibrationSequence(getCenterSequence(), function() {
+          // Calibration complete.
+          calibrationDot.style.display = "none";
+          document.getElementById("calibrationSection").style.display = "none";
+          liveMode = true;
+          console.log("Calibration complete. Live mode activated.");
+        });
       });
-      
-      // Smoothly update heatmap using requestAnimationFrame.
-      function updateHeatmap() {
-        if (lastGaze) {
-          heatmapInstance.addData({ x: lastGaze.x, y: lastGaze.y, value: 1 });
-        }
-        requestAnimationFrame(updateHeatmap);
+    }
+    
+    // ---------------- WebGazer and Heatmap Setup ----------------
+    let lastGaze = null;
+    const smoothingFactor = 0.2;
+    
+    // Create the heatmap instance.
+    let heatmapInstance = h337.create({
+      container: document.getElementById('liveHeatmapContainer'),
+      radius: 40,
+      maxOpacity: 0.9,
+      minOpacity: 0,
+      blur: 0.7,
+      gradient: {
+        '0.3': 'blue',
+        '0.5': 'lime',
+        '0.7': 'yellow',
+        '1.0': 'red'
       }
-      
-      // Set up the gaze listener.
+    });
+    
+    // Use requestAnimationFrame for smooth heatmap updates.
+    function updateHeatmap() {
+      if (liveMode && lastGaze) {
+        heatmapInstance.addData({ x: lastGaze.x, y: lastGaze.y, value: 1 });
+      }
+      requestAnimationFrame(updateHeatmap);
+    }
+    
+    window.onload = async function() {
       webgazer.setGazeListener(function(data, timestamp) {
         if (data) {
           let x = data.x, y = data.y;
@@ -146,23 +265,28 @@
             y = lastGaze.y + smoothingFactor * (data.y - lastGaze.y);
           }
           lastGaze = { x, y };
-          
-          // Optionally update UI elements (e.g., a gaze dot) if needed.
-          // For example:
-          // document.getElementById("plotting_canvas").style.left = x + "px";
-          // document.getElementById("plotting_canvas").style.top = y + "px";
+    
+          // Constrain the gaze dot within screen bounds.
+          x = Math.max(0, Math.min(x, window.innerWidth - 15));
+          y = Math.max(0, Math.min(y, window.innerHeight - 15));
+    
+          document.getElementById("gazeDot").style.left = x + "px";
+          document.getElementById("gazeDot").style.top = y + "px";
+          document.getElementById("cursorPointer").style.left = x + "px";
+          document.getElementById("cursorPointer").style.top = y + "px";
         }
       }).begin().catch(e => { console.error("WebGazer failed to start:", e); });
+    
+      // Initially show the webcam feed.
+      webgazer.showVideo(true);
+      webgazer.showFaceOverlay(true);
+      webgazer.showFaceFeedbackBox(true);
+    
+      document.getElementById("startButton").addEventListener("click", startCalibration);
       
-      // Once calibration is complete, start the heatmap update loop.
-      // In calibration.js, you can call calibrationComplete() when done.
-      function calibrationComplete() {
-        console.log("Calibration complete. Starting heatmap evaluation.");
-        requestAnimationFrame(updateHeatmap);
-      }
-      
-      // Optionally, if calibration.js doesn't automatically call calibrationComplete(),
-      // you can add a listener or modify calibration.js accordingly.
-    </script>
-  </body>
+      // Start smooth heatmap updates.
+      requestAnimationFrame(updateHeatmap);
+    };
+  </script>
+</body>
 </html>
