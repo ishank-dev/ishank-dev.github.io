@@ -2,72 +2,46 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Eye Tracker with Live Heatmap & Automated Calibration</title>
+  <title>Eye Tracker with Live Heatmap</title>
   <style>
     body {
       margin: 0;
       font-family: sans-serif;
       background: #f5f5f5;
     }
-    /* Start Overlay: Shows webcam feed with instructions until user clicks Start */
-    #startOverlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0,0,0,0.7);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      z-index: 1200;
-    }
-    #startOverlay button {
-      padding: 10px 20px;
-      font-size: 18px;
-      margin-top: 20px;
-      cursor: pointer;
-    }
-    /* Calibration Overlay (for instructions during calibration) */
+    /* Calibration Section */
     #calibrationSection {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
+      padding: 20px;
+      text-align: center;
+      position: relative;
       height: 100vh;
       z-index: 1100;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      background: rgba(255,255,255,0.8);
     }
-    #instruction {
-      margin-bottom: 20px;
-      font-size: 20px;
-      color: black;
-    }
-    /* Calibration Dot (red ball with timer) */
+    /* Outer calibration dot styling */
     .calibration-dot {
       position: absolute;
-      width: 50px;
-      height: 50px;
-      background-color: #ff0000;
-      border: 2px solid #880000;
+      width: 30px;
+      height: 30px;
+      background-color: red;
       border-radius: 50%;
-      opacity: 0.9;
-      /* Increase transition duration for smoother movement */
-      transition: left 1s ease-in-out, top 1s ease-in-out;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: bold;
-      font-size: 16px;
+      opacity: 0.3;
+      transition: opacity 0.3s ease;
+      transform: translate(-50%, -50%);
     }
-    /* Real-time gaze dot */
+    /* Inner calibration dot styling */
+    .inner-calibration-dot {
+      width: 10px;
+      height: 10px;
+      background-color: darkred;
+      border: none;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+    }
+    /* Real-time gaze dot (green) */
     #gazeDot {
       position: fixed;
       width: 15px;
@@ -76,17 +50,6 @@
       border-radius: 50%;
       pointer-events: none;
       z-index: 1000;
-    }
-    /* Custom cursor pointer (SVG arrow) */
-    #cursorPointer {
-      position: fixed;
-      width: 20px;
-      height: 20px;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20'><polygon points='0,0 20,10 0,20' fill='black'/></svg>");
-      background-size: contain;
-      background-repeat: no-repeat;
-      pointer-events: none;
-      z-index: 1001;
     }
     /* Live heatmap overlay container */
     #liveHeatmapContainer {
@@ -101,139 +64,50 @@
   </style>
 </head>
 <body>
-  <!-- Real-time gaze dot and custom cursor -->
+  <!-- Real-time gaze dot (green) -->
   <div id="gazeDot"></div>
-  <div id="cursorPointer"></div>
-
-  <!-- Start Overlay: Displayed until the user is ready -->
-  <div id="startOverlay">
-    <div style="font-size:22px; text-align:center; max-width:500px;">
-      Ensure you're in the correct zone. Your webcam feed is visible below.<br>
-      Click "Start Calibration" when you're ready.
-    </div>
-    <button id="startButton">Start Calibration</button>
+  
+  <!-- Calibration Section -->
+  <div id="calibrationSection">
+      <div id="instruction">Calibration Round 1: Click the inner dot 5 times at each location.</div>
+      <!-- Calibration dots will be created dynamically -->
   </div>
-
-  <!-- Calibration Overlay (used during calibration) -->
-  <div id="calibrationSection" style="display:none;">
-    <div id="instruction">Calibration: Follow the moving red ball.</div>
-  </div>
-
+  
   <!-- Live Heatmap Overlay -->
   <div id="liveHeatmapContainer"></div>
-
-  <!-- Include WebGazer.js locally. Make sure webgazer.js is downloaded to your project folder. -->
-  <script src="webgazer.js"></script>
+  
+  <!-- Include WebGazer.js from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/webgazer/dist/webgazer.js"></script>
   <!-- Include heatmap.js from CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/heatmap.js/2.0.2/heatmap.min.js"></script>
   <script>
     // ---------------- Global Variables ----------------
-    let liveMode = false;
+    let calibrationClicks = {};
+    const requiredClicks = 5;
+    let currentPointIndex = 0;
     let calibrationDot = null;
-    const holdDuration = 3000; // Duration for each calibration stop (ms)
+    const totalCalibrationRounds = 1;
+    let currentCalibrationRound = 1;
+    let liveMode = false;  // becomes true after calibration
 
-    // Create a 4x4 grid (16 points) covering the screen.
-    const gridPoints = [
-      { x: "10%", y: "10%" }, { x: "35%", y: "10%" }, { x: "65%", y: "10%" }, { x: "90%", y: "10%" },
-      { x: "10%", y: "35%" }, { x: "35%", y: "35%" }, { x: "65%", y: "35%" }, { x: "90%", y: "35%" },
-      { x: "10%", y: "65%" }, { x: "35%", y: "65%" }, { x: "65%", y: "65%" }, { x: "90%", y: "65%" },
-      { x: "10%", y: "90%" }, { x: "35%", y: "90%" }, { x: "65%", y: "90%" }, { x: "90%", y: "90%" }
-    ];
-    
-    // Center calibration: up/down/left/right sequence.
-    function getCenterSequence() {
-      const centerX = window.innerWidth / 2;
-      const centerY = window.innerHeight / 2;
-      return [
-        { x: centerX, y: centerY },                           // Center
-        { x: centerX, y: window.innerHeight * 0.05 },           // Move up (nearly to top)
-        { x: centerX, y: centerY },                           // Back to center
-        { x: window.innerWidth * 0.1, y: centerY },             // Move left
-        { x: centerX, y: centerY },                           // Back to center
-        { x: window.innerWidth * 0.9, y: centerY },             // Move right
-        { x: centerX, y: centerY },                           // Back to center
-        { x: centerX, y: window.innerHeight * 0.95 },           // Move down
-        { x: centerX, y: centerY }                            // Return to center
-      ];
-    }
-    
-    // Create or reuse the calibration dot element.
-    function createCalibrationDot() {
-      if (!calibrationDot) {
-        calibrationDot = document.createElement("div");
-        calibrationDot.className = "calibration-dot";
-        document.body.appendChild(calibrationDot);
-      }
-    }
-    
-    // Move the calibration dot to a specified point.
-    function moveCalibrationDot(point) {
-      calibrationDot.style.left = typeof point.x === "string" ? point.x : point.x + "px";
-      calibrationDot.style.top = typeof point.y === "string" ? point.y : point.y + "px";
-    }
-    
-    // Run a sequence of calibration points with a countdown timer.
-    function runCalibrationSequence(sequence, callback) {
-      let index = 0;
-      function nextPoint() {
-        if (index < sequence.length) {
-          moveCalibrationDot(sequence[index]);
-          let timeLeft = holdDuration / 1000;
-          calibrationDot.innerHTML = '<span class="timer-text">' + timeLeft + '</span>';
-          const timerInterval = setInterval(() => {
-            timeLeft--;
-            if (timeLeft <= 0) {
-              clearInterval(timerInterval);
-            } else {
-              calibrationDot.querySelector('.timer-text').innerText = timeLeft;
-            }
-          }, 1000);
-          index++;
-          setTimeout(() => {
-            clearInterval(timerInterval);
-            nextPoint();
-          }, holdDuration);
-        } else {
-          callback();
-        }
-      }
-      nextPoint();
-    }
-    
-    // Start the full calibration routine.
-    function startCalibration() {
-      // Hide the start overlay and webcam UI.
-      document.getElementById("startOverlay").style.display = "none";
-      webgazer.showVideo(false);
-      webgazer.showFaceOverlay(false);
-      webgazer.showFaceFeedbackBox(false);
-      
-      // Show the calibration overlay.
-      document.getElementById("calibrationSection").style.display = "flex";
-      
-      createCalibrationDot();
-      
-      // First: 4x4 grid calibration.
-      document.getElementById("instruction").innerText = "Grid Calibration: Follow the red ball.";
-      runCalibrationSequence(gridPoints, function() {
-        // Then: Center calibration with directional moves.
-        document.body.style.background = "black"; // Change background to black.
-        document.getElementById("instruction").innerText = "Center Calibration: Follow the ball's movements.";
-        runCalibrationSequence(getCenterSequence(), function() {
-          // Calibration complete.
-          calibrationDot.style.display = "none";
-          document.getElementById("calibrationSection").style.display = "none";
-          liveMode = true;
-          console.log("Calibration complete. Live mode activated.");
-        });
-      });
-    }
-    
-    // ---------------- WebGazer and Heatmap Setup ----------------
+    // Variables for smoothing using exponential moving average
     let lastGaze = null;
-    const smoothingFactor = 0.2;
-    
-    // Create the heatmap instance.
+    const smoothingFactor = 0.2; // Adjust between 0 and 1; lower = smoother
+
+    // 9 calibration points (percentages of screen width/height)
+    const staticCalibrationPoints = [
+      {x: "10%", y: "10%"},
+      {x: "50%", y: "10%"},
+      {x: "90%", y: "10%"},
+      {x: "10%", y: "50%"},
+      {x: "50%", y: "50%"},
+      {x: "90%", y: "50%"},
+      {x: "10%", y: "90%"},
+      {x: "50%", y: "90%"},
+      {x: "90%", y: "90%"}
+    ];
+
+    // Create the heatmap instance for live mode
     let heatmapInstance = h337.create({
       container: document.getElementById('liveHeatmapContainer'),
       radius: 40,
@@ -247,46 +121,108 @@
         '1.0': 'red'
       }
     });
-    
-    // Use requestAnimationFrame for smooth heatmap updates.
-    function updateHeatmap() {
-      if (liveMode && lastGaze) {
-        heatmapInstance.addData({ x: lastGaze.x, y: lastGaze.y, value: 1 });
-      }
-      requestAnimationFrame(updateHeatmap);
-    }
-    
+
+    // ---------------- WebGazer Initialization ----------------
     window.onload = async function() {
       webgazer.setGazeListener(function(data, timestamp) {
         if (data) {
+          // Smoothing: using exponential moving average
           let x = data.x, y = data.y;
           if (lastGaze) {
             x = lastGaze.x + smoothingFactor * (data.x - lastGaze.x);
             y = lastGaze.y + smoothingFactor * (data.y - lastGaze.y);
           }
           lastGaze = { x, y };
-    
-          // Constrain the gaze dot within screen bounds.
+
+          // Keep within bounds
           x = Math.max(0, Math.min(x, window.innerWidth - 15));
           y = Math.max(0, Math.min(y, window.innerHeight - 15));
-    
-          document.getElementById("gazeDot").style.left = x + "px";
-          document.getElementById("gazeDot").style.top = y + "px";
-          document.getElementById("cursorPointer").style.left = x + "px";
-          document.getElementById("cursorPointer").style.top = y + "px";
+
+          // Update real-time gaze dot (green)
+          const gazeDot = document.getElementById('gazeDot');
+          gazeDot.style.left = x + 'px';
+          gazeDot.style.top = y + 'px';
+
+          // If in live mode, add this point to the heatmap
+          if (liveMode) {
+            heatmapInstance.addData({ x: x, y: y, value: 1 });
+          }
         }
       }).begin().catch(e => { console.error("WebGazer failed to start:", e); });
-    
-      // Initially show the webcam feed.
-      webgazer.showVideo(true);
-      webgazer.showFaceOverlay(true);
-      webgazer.showFaceFeedbackBox(true);
-    
-      document.getElementById("startButton").addEventListener("click", startCalibration);
-      
-      // Start smooth heatmap updates.
-      requestAnimationFrame(updateHeatmap);
+
+      // Hide default WebGazer video/overlays
+      webgazer.showVideo(false);
+      webgazer.showFaceOverlay(false);
+      webgazer.showFaceFeedbackBox(false);
+
+      // Start calibration routine
+      startCalibration();
     };
+
+    // ---------------- Calibration Functions ----------------
+    function startCalibration() {
+      currentPointIndex = 0;
+      currentCalibrationRound = 1;
+      calibrationClicks = {};
+      document.getElementById('instruction').innerText =
+        "Calibration Round " + currentCalibrationRound + ": Click the inner dot 5 times at each location.";
+      showNextCalibrationDot();
+    }
+
+    function showNextCalibrationDot() {
+      if (calibrationDot) {
+        calibrationDot.remove();
+        calibrationDot = null;
+      }
+      // When finished with current round's 9 points...
+      if (currentPointIndex >= staticCalibrationPoints.length) {
+        if (currentCalibrationRound < totalCalibrationRounds) {
+          // Start next round
+          currentCalibrationRound++;
+          currentPointIndex = 0;
+          document.getElementById('instruction').innerText =
+            "Calibration Round " + currentCalibrationRound + ": Click the inner dot 5 times at each location.";
+        } else {
+          // Calibration complete: switch to live mode
+          document.getElementById('calibrationSection').style.display = "none";
+          liveMode = true;
+          console.log("Calibration complete. Live mode activated.");
+          return;
+        }
+      }
+      calibrationClicks[currentPointIndex] = 0;
+      // Create the outer calibration dot container
+      calibrationDot = document.createElement("div");
+      calibrationDot.className = "calibration-dot";
+      calibrationDot.style.left = staticCalibrationPoints[currentPointIndex].x;
+      calibrationDot.style.top = staticCalibrationPoints[currentPointIndex].y;
+      calibrationDot.style.opacity = "0.3";
+      
+      // Create the inner clickable dot
+      const innerDot = document.createElement("button");
+      innerDot.className = "inner-calibration-dot";
+      innerDot.onclick = function(e) {
+        e.stopPropagation();
+        calibrationClicks[currentPointIndex]++;
+        // Increase opacity as feedback
+        let newOpacity = 0.3 + 0.14 * calibrationClicks[currentPointIndex];
+        calibrationDot.style.opacity = newOpacity;
+        console.log("Calibration point " + currentPointIndex +
+                    " (Round " + currentCalibrationRound + ") click count: " +
+                    calibrationClicks[currentPointIndex]);
+        if (calibrationClicks[currentPointIndex] >= requiredClicks) {
+          calibrationDot.style.backgroundColor = "yellow";
+          innerDot.disabled = true;
+          setTimeout(() => {
+            currentPointIndex++;
+            showNextCalibrationDot();
+          }, 500);
+        }
+      };
+
+      calibrationDot.appendChild(innerDot);
+      document.getElementById('calibrationSection').appendChild(calibrationDot);
+    }
   </script>
 </body>
 </html>
