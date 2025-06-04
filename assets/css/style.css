@@ -1705,4 +1705,25 @@ textarea.form-input::-webkit-resizer { display: none; }
   
   }
 
-  
+  /* 1️⃣  Thumbnail wrapper — keeps everything 16 : 9 */
+.project-list .project-img {
+  /* size */
+  width: 100%;
+  aspect-ratio: 16 / 9;        /* modern browsers */
+  /* old-school fall-back for Safari <14 etc. */
+  /* height: 0;
+     padding-top: 56.25%;      /* 16/9 = 0.5625 */
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;          /* optional: nice rounded corners */
+}
+
+/* 2️⃣  Actual <img> — stretches to the wrapper and crops nicely */
+.project-list .project-img img {
+  position: absolute;
+  inset: 0;                    /* shorthand for top/right/bottom/left: 0 */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;           /* centre-crop, never distorts */
+}
+
