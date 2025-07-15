@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport"<section class="cta-badges">
   <title>Ishank Sharma | Portfolio</title>
 
   <!--
@@ -143,7 +143,7 @@
         -->
         <article class="about active" data-page="about">
           <header>
-            <h2 class="h2 article-title">The Backstory</h2>
+            <h2 class="h2 article-title">About Me</h2>
           </header>
         
           <section class="about-text">
@@ -252,9 +252,6 @@
               <p class="timeline-text">
                 Master of Science in Computer Science
               </p>
-              <p class="timeline-text">
-                GPA: 4.0/4.0 | Key Courses: Advanced AI, Algorithms, Software Engineering
-              </p>
             </li>
 
             <li class="timeline-item">
@@ -265,7 +262,6 @@
               <p class="timeline-text">
                 B.E. in Information Science and Engineering
               </p>
-              <p class="timeline-text">GPA: 3.75/4.0</p>
             </li>
           </ol>
         </section>
@@ -345,7 +341,7 @@
       <article class="portfolio" data-page="portfolio">
         <header>
           <h2 class="h2 article-title">Portfolio</h2>
-          <p class="subtitle">A quick tour of the things I tinker with ⚡</p>
+          <p class="subtitle">Enterprise-grade solutions showcasing scalable architecture and data-driven innovation</p>
           <br>
         </header>
 
@@ -353,9 +349,9 @@
           <!-- filter buttons -->
           <ul class="filter-list">
             <li class="filter-item"><button class="active" data-filter-btn>All</button></li>
-            <li class="filter-item"><button data-filter-btn>Applications</button></li>
-            <li class="filter-item"><button data-filter-btn>Backend</button></li>
-            <li class="filter-item"><button data-filter-btn>AI</button></li>
+            <li class="filter-item"><button data-filter-btn>Data Engineering</button></li>
+            <li class="filter-item"><button data-filter-btn>Backend Systems</button></li>
+            <li class="filter-item"><button data-filter-btn>AI/ML</button></li>
           </ul>
 
           <!-- dropdown for mobile -->
@@ -367,84 +363,135 @@
 
             <ul class="select-list">
               <li class="select-item"><button data-select-item>All</button></li>
-              <li class="select-item"><button data-select-item>Applications</button></li>
-              <li class="select-item"><button data-select-item>Backend</button></li>
-              <li class="select-item"><button data-select-item>AI</button></li>
+              <li class="select-item"><button data-select-item>Data Engineering</button></li>
+              <li class="select-item"><button data-select-item>Backend Systems</button></li>
+              <li class="select-item"><button data-select-item>AI/ML</button></li>
             </ul>
           </div>
 
           <!-- projects grid -->
           <ul class="project-list">
-            <!-- Firebolt Map Analytics Demo -->
-            <li class="project-item active" data-filter-item data-category="backend">
-              <a href="https://github.com/ishank-dev/firebolt-demo/tree/main/geospatial-application-demo">
+            <!-- Ella AI Assistant -->
+            <li class="project-item active" data-filter-item data-category="ai/ml">
+              <a href="https://github.com/ishank-dev/google-adk-hackathon">
                 <figure class="project-img">
                   <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
-                  <img src="./assets/images/firebolt_demo.png" alt="Firebolt Map Analytics Demo" loading="lazy">
+                  <img src="./assets/images/ai_agent.gif" alt="Ella AI Assistant" loading="lazy">
                 </figure>
-                <h3 class="project-title">Firebolt Map Analytics Demo</h3>
-                <p class="project-category">Applications</p>
+                <h3 class="project-title">Ella AI Assistant</h3>
+                <p class="project-category">AI/ML</p>
+                <div class="project-description">
+                  <p>Self-learning Slack bot using Vertex AI and RAG to answer questions, escalate unknowns to FAQ channels, and build knowledge base.</p>
+                  <div class="tech-stack">
+                    <span class="tech-tag">Vertex AI</span>
+                    <span class="tech-tag">RAG</span>
+                    <span class="tech-tag">Slack API</span>
+                    <span class="tech-tag">FastAPI</span>
+                  </div>
+                </div>
               </a>
             </li>
 
-            <!-- NodeJS Mock Server (new) -->
-            <li class="project-item active" data-filter-item data-category="backend">
-              <a href="https://github.com/ishank-dev/NodeJS-MockServer">
-                <figure class="project-img">
-                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
-                  <!-- Replace with your own thumbnail if available -->
-                  <img src="./assets/images/mock_server.png" alt="NodeJS Mock Server" loading="lazy">
-                </figure>
-                <h3 class="project-title">NodeJS Mock Server</h3>
-                <p class="project-category">Backend</p>
-              </a>
-            </li>
-
-            <!-- Developers Planet -->
-            <li class="project-item active" data-filter-item data-category="applications">
-              <a href="https://github.com/ishank-dev/TheDevelopersPlanet">
-                <figure class="project-img">
-                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
-                  <img src="./assets/images/dev_planet.png" alt="Developers Planet" loading="lazy">
-                </figure>
-                <h3 class="project-title">Developers Planet</h3>
-                <p class="project-category">Applications</p>
-              </a>
-            </li>
-
-            <!-- Dyslexic Reader -->
-            <li class="project-item active" data-filter-item data-category="applications">
-              <a href="https://github.com/ishank-dev/Dyslexic-Reader">
-                <figure class="project-img">
-                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
-                  <img src="./assets/images/book_read.png" alt="Dyslexic Reader" loading="lazy">
-                </figure>
-                <h3 class="project-title">Dyslexic Reader</h3>
-                <p class="project-category">Applications</p>
-              </a>
-            </li>
-
-            <!-- RAG and Langchain Implementation -->
-            <li class="project-item active" data-filter-item data-category="ai">
+            <!-- Semantic Data Navigator -->
+            <li class="project-item active" data-filter-item data-category="ai/ml">
               <a href="https://github.com/ishank-dev/semantic-data-navigator/tree/main">
                 <figure class="project-img">
                   <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
                   <img src="./assets/images/vector_visualisation.png" alt="RAG Vector Visualisation" loading="lazy">
                 </figure>
                 <h3 class="project-title">Semantic Data Navigator</h3>
-                <p class="project-category">AI</p>
+                <p class="project-category">AI/ML</p>
+                <div class="project-description">
+                  <p>RAG system for semantic document search with ChromaDB vector storage, t-SNE visualizations, and interactive Gradio UI.</p>
+                  <div class="tech-stack">
+                    <span class="tech-tag">LangChain</span>
+                    <span class="tech-tag">ChromaDB</span>
+                    <span class="tech-tag">Gradio</span>
+                    <span class="tech-tag">t-SNE</span>
+                  </div>
+                </div>
               </a>
             </li>
 
-            <!-- Police Patrol Allocation for NCRB -->
-            <li class="project-item active" data-filter-item data-category="applications">
+                        <!-- CECS 551 AI Projects -->
+            <li class="project-item active" data-filter-item data-category="ai/ml">
+              <a href="https://github.com/ishank-dev/CECS_CSULB_2026/tree/main/CECS_551_AI">
+                <figure class="project-img">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                  <img src="./assets/images/CNN.png" alt="CECS 551 AI Projects" loading="lazy">
+                </figure>
+                <h3 class="project-title">CECS 551 AI Projects</h3>
+                <p class="project-category">AI/ML</p>
+                <div class="project-description">
+                  <p>Academic AI coursework including custom MLP implementation, hyperparameter tuning across optimizers, and CNN classification on CIFAR-100 dataset.</p>
+                  <div class="tech-stack">
+                    <span class="tech-tag">PyTorch</span>
+                    <span class="tech-tag">NumPy</span>
+                    <span class="tech-tag">CNN</span>
+                    <span class="tech-tag">MLP</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+
+            <!-- Firebolt Geospatial Analytics Platform -->
+            <li class="project-item active" data-filter-item data-category="data engineering">
+              <a href="https://github.com/ishank-dev/firebolt-demo/tree/main/geospatial-application-demo">
+                <figure class="project-img">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                  <img src="./assets/images/firebolt_demo.png" alt="Firebolt Map Analytics Demo" loading="lazy">
+                </figure>
+                <h3 class="project-title">Firebolt Geospatial Analytics</h3>
+                <p class="project-category">Data Engineering</p>
+                <div class="project-description">
+                  <p>Interactive platform for real-time accident data visualization with clustered/heatmap views, dynamic filtering, and connection pooling.</p>
+                  <div class="tech-stack">
+                    <span class="tech-tag">Firebolt</span>
+                    <span class="tech-tag">Flask</span>
+                    <span class="tech-tag">Mapbox</span>
+                    <span class="tech-tag">Python</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+
+            <!-- NodeJS Mock Server Framework -->
+            <li class="project-item active" data-filter-item data-category="backend systems">
+              <a href="https://github.com/ishank-dev/NodeJS-MockServer">
+                <figure class="project-img">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                  <img src="./assets/images/mock_server.png" alt="NodeJS Mock Server" loading="lazy">
+                </figure>
+                <h3 class="project-title">Mock Server Framework</h3>
+                <p class="project-category">Backend Systems</p>
+                <div class="project-description">
+                  <p>REST mock server with full CRUD operations, filtering, search, and JSON persistence for rapid API prototyping.</p>
+                  <div class="tech-stack">
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">Express</span>
+                    <span class="tech-tag">REST API</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+
+            <!-- Police Beats Allocation System -->
+            <li class="project-item active" data-filter-item data-category="backend systems">
               <a href="https://github.com/On-Duty-Org/Beats-Allocation-SIH">
                 <figure class="project-img">
                   <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
                   <img src="./assets/images/beats_alloc.png" alt="Police Patrol Allocation for NCRB" loading="lazy">
                 </figure>
-                <h3 class="project-title">Police Patrol Allocation for NCRB</h3>
-                <p class="project-category">Applications</p>
+                <h3 class="project-title">Police Beats Allocation</h3>
+                <p class="project-category">Backend Systems</p>
+                <div class="project-description">
+                  <p>Admin dashboard for NCRB with real-time officer tracking, live alerts, SMS notifications, and customizable zones. SIH 2020 Winner.</p>
+                  <div class="tech-stack">
+                    <span class="tech-tag">Django REST</span>
+                    <span class="tech-tag">Mapbox</span>
+                    <span class="tech-tag">Firebase</span>
+                  </div>
+                </div>
               </a>
             </li>
           </ul>
@@ -538,33 +585,111 @@
         -->
       <article class="contact" data-page="contact">
         <header>
-          <h2 class="h2 article-title">Contact</h2>
+          <h2 class="h2 article-title">Let's Connect</h2>
+          <p class="contact-subtitle">Ready to collaborate, discuss opportunities, or just chat about tech? I'd love to hear from you!</p>
         </header>
 
+        <!-- Contact Information Cards -->
+        <section class="contact-info-section">
+          <div class="contact-info-grid">
+            <div class="contact-info-card">
+              <div class="contact-card-icon">
+                <ion-icon name="mail-outline"></ion-icon>
+              </div>
+              <div class="contact-card-content">
+                <h4>Email</h4>
+                <a href="mailto:ishankdev@gmail.com" class="contact-card-link">ishankdev@gmail.com</a>
+                <p>Drop me a line anytime!</p>
+              </div>
+            </div>
+
+            <div class="contact-info-card">
+              <div class="contact-card-icon">
+                <ion-icon name="logo-linkedin"></ion-icon>
+              </div>
+              <div class="contact-card-content">
+                <h4>LinkedIn</h4>
+                <a href="https://www.linkedin.com/in/ishank-sharma-438a32144/" class="contact-card-link" target="_blank">Connect with me</a>
+                <p>Professional networking</p>
+              </div>
+            </div>
+
+            <div class="contact-info-card">
+              <div class="contact-card-icon">
+                <ion-icon name="logo-github"></ion-icon>
+              </div>
+              <div class="contact-card-content">
+                <h4>GitHub</h4>
+                <a href="https://github.com/ishank-dev" class="contact-card-link" target="_blank">@ishank-dev</a>
+                <p>Check out my code</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Interactive Map Section -->
         <section class="mapbox" data-mapbox>
-          <figure>
-            <!-- Example map embed -->
+          <div class="map-header">
+            <h3 class="map-title">
+              <ion-icon name="location-outline"></ion-icon>
+              Find Me at CSULB
+            </h3>
+            <p class="map-description">Currently pursuing my Master's in Computer Science</p>
+          </div>
+          <figure class="map-container">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3303.59764853765!2d-118.1162035!3d33.7837675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dd2c7ecfb8f13b%3A0x5c724ea9f6ec8138!2sCalifornia%20State%20University%2C%20Long%20Beach!5e0!3m2!1sen!2sus!4v1720259107273!5m2!1sen!2sus"
-              width="400" height="300" loading="lazy"></iframe>
+              width="400" height="300" loading="lazy" title="CSULB Location Map"></iframe>
           </figure>
         </section>
 
+        <!-- Enhanced Contact Form -->
         <section class="contact-form">
-          <h3 class="h3 form-title">Contact Form</h3>
+          <div class="form-header">
+            <h3 class="h3 form-title">
+              <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+              Send a Message
+            </h3>
+            <p class="form-description">Have a project in mind or want to discuss opportunities? Let's start a conversation!</p>
+          </div>
+          
           <form action="#" class="form" data-form>
             <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input />
-              <input type="email" name="email" class="form-input" placeholder="Email address" required
-                data-form-input />
+              <div class="input-group">
+                <label for="fullname" class="input-label">Full Name *</label>
+                <input type="text" name="fullname" id="fullname" class="form-input" placeholder="Your full name" required data-form-input />
+                <div class="input-highlight"></div>
+              </div>
+              
+              <div class="input-group">
+                <label for="email" class="input-label">Email Address *</label>
+                <input type="email" name="email" id="email" class="form-input" placeholder="your.email@example.com" required data-form-input />
+                <div class="input-highlight"></div>
+              </div>
             </div>
 
-            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+            <div class="input-group">
+              <label for="subject" class="input-label">Subject</label>
+              <input type="text" name="subject" id="subject" class="form-input" placeholder="What's this about?" data-form-input />
+              <div class="input-highlight"></div>
+            </div>
+
+            <div class="input-group">
+              <label for="message" class="input-label">Message *</label>
+              <textarea name="message" id="message" class="form-input" placeholder="Tell me about your project, opportunity, or just say hello..." required data-form-input rows="6"></textarea>
+              <div class="input-highlight"></div>
+            </div>
 
             <button class="form-btn" type="submit" disabled data-form-btn>
               <ion-icon name="paper-plane"></ion-icon>
               <span>Send Message</span>
+              <div class="btn-ripple"></div>
             </button>
+            
+            <p class="form-note">
+              <ion-icon name="shield-checkmark-outline"></ion-icon>
+              Your information is safe and will only be used to respond to your message.
+            </p>
           </form>
         </section>
       </article>
