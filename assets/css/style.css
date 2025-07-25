@@ -1877,3 +1877,51 @@ main {
   margin-top: 10px;
 }
 
+/*-----------------------------------*\
+  #MOBILE-FIRST RESPONSIVE REFINEMENTS
+\*-----------------------------------*/
+
+/* Base adjustments for a more fluid layout */
+main {
+  padding: 0 10px; /* Use padding instead of margin for better control */
+}
+
+/* More granular media query for small phones */
+@media (max-width: 480px) {
+  :root {
+    --fs-1: 22px;
+    --fs-2: 17px;
+    --fs-3: 16px;
+    --fs-4: 15px;
+  }
+
+  .sidebar, article {
+    padding: 15px;
+  }
+
+  .navbar-list {
+    justify-content: space-around;
+  }
+
+  .navbar-link {
+    padding: 15px 5px;
+    font-size: 10px; /* Smaller font for nav items */
+  }
+
+  .project-list,
+  .service-list {
+    grid-template-columns: 1fr; /* Ensure single column layout */
+  }
+
+  .contact-info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Refinements for tablets and larger phones */
+@media (max-width: 768px) {
+  .sidebar.active {
+    max-height: 450px; /* Adjust height for landscape mode */
+  }
+}
+
