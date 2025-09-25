@@ -1,0 +1,426 @@
+/* Space Theme Additions */
+
+/* Animated Stars Background */
+@keyframes twinkle {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 5px rgba(99, 102, 241, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.8), 0 0 30px rgba(99, 102, 241, 0.6); }
+  100% { box-shadow: 0 0 5px rgba(99, 102, 241, 0.5); }
+}
+
+/* Stars Container */
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.25;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 3s infinite;
+}
+
+.star:nth-child(odd) {
+  animation-delay: 1s;
+  width: 1px;
+  height: 1px;
+}
+
+.star:nth-child(3n) {
+  animation-delay: 2s;
+  width: 3px;
+  height: 3px;
+}
+
+/* Shooting Stars */
+@keyframes shoot {
+  0% {
+    transform: translateX(0) translateY(0) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-300px) translateY(300px) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+.shooting-star {
+  position: absolute;
+  width: 2px;
+  height: 50px;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.8), transparent);
+  animation: shoot 3s linear;
+  transform-origin: top right;
+}
+
+/* Remove space-theme dark overrides to keep solid dark palette */
+/* Intentionally left without overrides */
+
+/* No glass morphism; solid cards handled in base/layout CSS */
+
+/* Tech Stack CTA Styles */
+.tech-stack-section {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.tech-stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.tech-item {
+  position: relative;
+  background: var(--eerie-black-2);
+  border: 1px solid var(--jet);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* Remove hover radial gradient */
+.tech-item::before { content: none; }
+
+.dark-theme .tech-item:hover {
+  transform: translateY(-5px);
+  border-color: var(--orange-yellow-crayola);
+  animation: glow 2s ease-in-out infinite;
+}
+
+.tech-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.tech-item:hover .tech-icon {
+  transform: scale(1.1);
+}
+
+.tech-name {
+  font-size: 0.9rem;
+  color: var(--light-gray);
+  font-weight: 500;
+}
+
+/* Minimal About Section */
+.about-hero {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  color: var(--white-2);
+  margin-bottom: 1rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: var(--vegas-gold);
+  margin-bottom: 2rem;
+}
+
+.cta-badges {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.badge-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--eerie-black-2);
+  border: 1px solid var(--jet);
+  border-radius: 100px;
+  color: var(--white-2);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.badge-link:hover {
+  transform: translateY(-3px);
+  border-color: var(--orange-yellow-crayola);
+  color: var(--orange-yellow-crayola);
+}
+
+.dark-theme .badge-link:hover {
+  box-shadow: 0 5px 20px rgba(99, 102, 241, 0.3);
+}
+
+/* Floating animation for service items */
+.service-item {
+  animation: float 4s ease-in-out infinite;
+}
+
+.service-item:nth-child(2) {
+  animation-delay: 1s;
+}
+
+.service-item:nth-child(3) {
+  animation-delay: 2s;
+}
+
+.service-item:nth-child(4) {
+  animation-delay: 3s;
+}
+
+/* Theme toggle enhancement */
+.theme-toggle-btn {
+  position: relative;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+  transform: rotate(20deg);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+/* Navbar enhancement */
+.navbar {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 0.5rem;
+}
+
+.dark-theme .navbar {
+  background: rgba(26, 27, 58, 0.6);
+}
+
+.navbar-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.navbar-link:hover::after,
+.navbar-link.active::after {
+  width: 100%;
+}
+
+/* Contact section enhancements */
+.contact-info-card {
+  transition: all 0.3s ease;
+}
+
+.contact-info-card:hover {
+  transform: translateY(-5px);
+}
+
+.dark-theme .contact-info-card:hover {
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+}
+
+/* Form enhancements */
+.form-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  border-color: var(--orange-yellow-crayola);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.form-btn {
+  position: relative;
+  overflow: hidden;
+  background: var(--orange-yellow-crayola);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.form-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+}
+
+.btn-ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.form-btn:active .btn-ripple {
+  width: 300px;
+  height: 300px;
+}
+
+/* Sidebar enhancements */
+.sidebar {
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar::before { content: none; }
+
+/* Hide stars in light theme for matte feel */
+body.light-theme .stars { display: none; }
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.avatar-box img {
+  border: none;
+  box-shadow: none;
+}
+
+.dark-theme .name {
+  color: var(--white-2);
+}
+
+/* Service items grid adjustment */
+.service-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.service-icon-box {
+  width: auto;
+  height: auto;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+/* Project cards enhancement */
+.project-item {
+  transition: all 0.3s ease;
+}
+
+.dark-theme .project-item:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+}
+
+/* Timeline enhancement */
+.timeline-item {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover {
+  transform: translateX(10px);
+}
+
+.dark-theme .timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -40px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  background: var(--orange-yellow-crayola);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 10px var(--orange-yellow-crayola);
+}
+
+/* Contact cards 3D effect */
+.contact-info-card {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: transform 0.6s;
+}
+
+.contact-info-card:hover {
+  transform: rotateY(5deg) translateZ(20px);
+}
+
+/* Pulse animation for badges */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+}
+
+.badge-link {
+  animation: pulse 2s infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .tech-stack-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .cta-badges {
+    justify-content: center;
+  }
+  
+  .service-list {
+    grid-template-columns: 1fr;
+  }
+}

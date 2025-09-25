@@ -356,7 +356,9 @@ main {
 }
 .avatar-box {
   background: var(--bg-gradient-onyx);
-  border-radius: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--jet);
 }
 .info-content .name {
   color: var(--white-2);
@@ -538,6 +540,74 @@ main {
   font-size: var(--fs-6);
   font-weight: var(--fw-3);
   line-height: 1.6;
+}
+
+/* CTA buttons under About */
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 1px solid var(--jet);
+  border-radius: 10px;
+  background: var(--border-gradient-onyx);
+  color: var(--white-2);
+  box-shadow: var(--shadow-1);
+}
+.cta-btn.primary {
+  background: var(--orange-yellow-crayola);
+  color: var(--eerie-black-1);
+  border-color: transparent;
+}
+.cta-btn:hover { filter: brightness(1.05); }
+.cta-btn ion-icon { font-size: 18px; }
+
+/* Tech Stack */
+.tech-stack { margin: 35px 0; }
+.tech-grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.tech-card {
+  position: relative;
+  background: var(--border-gradient-onyx);
+  padding: 14px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-2);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: transform var(--transition-1);
+  z-index: 1;
+}
+.tech-card::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background: var(--bg-gradient-jet);
+  border-radius: inherit;
+  z-index: -1;
+}
+.tech-card:hover { transform: translateY(-2px); }
+.tech-icon img { width: 28px; height: 28px; }
+.tech-icon iconify-icon { font-size: 28px; line-height: 1; }
+.tech-name { color: var(--white-2); font-size: var(--fs-6); }
+
+/* Wider layouts */
+@media (min-width: 580px) {
+  .tech-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1024px) {
+  .tech-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
 /*************************************************************
@@ -740,6 +810,9 @@ main {
   font-size: var(--fs-6);
   line-height: 1.3;
   margin-bottom: 7px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 .timeline-list span {
   color: var(--vegas-gold);
@@ -770,6 +843,15 @@ main {
   color: var(--light-gray);
   font-weight: var(--fw-300);
   line-height: 1.6;
+}
+
+/* Company/School logos in resume timeline */
+.timeline-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  object-fit: cover;
+  border: 1px solid var(--jet);
 }
 
 /* Skills */
@@ -1125,7 +1207,7 @@ main {
   
     .sidebar-info { gap: 25px; }
   
-    .avatar-box { border-radius: 30px; }
+    .avatar-box { border-radius: 50%; }
   
     .avatar-box img { width: 120px; }
   

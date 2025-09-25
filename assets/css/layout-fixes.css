@@ -1,0 +1,467 @@
+/* Layout Fixes and Professional Theme Updates */
+
+/* ===== COLOR SCHEME UPDATES (Live site palette: iOS-like blue) ===== */
+:root {
+  /* Light Mode */
+  --primary-color: #007aff; /* iOS blue */
+  --primary-dark: #0059b3;
+  --primary-light: #4da3ff;
+  --accent-color: #0a84ff;
+  --gradient-1: linear-gradient(90deg, #0a84ff 0%, #007aff 100%);
+  --gradient-2: linear-gradient(135deg, #4da3ff 0%, #0a84ff 50%, #007aff 100%);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f1f5f9; /* slate-100 */
+  --border-color: #e2e8f0;  /* slate-200 */
+  --card-bg: #ffffff;
+  --shadow-color: rgba(2, 6, 23, 0.08);
+}
+
+.dark-theme {
+  /* Dark Mode */
+  --primary-color: #0a84ff;
+  --primary-dark: #0060df;
+  --primary-light: #63b3ff;
+  --accent-color: #4da3ff;
+  --gradient-1: #0a84ff; /* solid replacement */
+  --gradient-2: #0a84ff; /* solid replacement */
+  --text-primary: #e5e7eb;
+  --text-secondary: #cbd5e1;
+  --bg-primary: #0a0f1a;   /* revert */
+  --bg-secondary: #111827;
+  --border-color: #1f2a37;
+  --card-bg: rgba(17, 24, 39, 0.8);
+  --shadow-color: rgba(0, 0, 0, 0.35);
+
+  /* Override space base */
+  --orange-yellow-crayola: var(--primary-color);
+  --bg-gradient-onyx: linear-gradient(180deg, #0b1220 0%, #111827 100%);
+  --onyx: rgba(17, 24, 39, 0.85);
+  --smoky-black: #0a0f1a;
+}
+
+/* ===== LAYOUT FIXES ===== */
+
+/* Fix grid and flexbox layouts */
+.tech-stack-section {
+  margin-top: 1.25rem;
+  text-align: center;
+}
+
+.tech-stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tech-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.2rem;
+  min-height: 100px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.tech-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.tech-icon {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.tech-name {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Fix service items layout */
+.service-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.service-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.service-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.service-icon-box {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-secondary);
+  border-radius: 10px;
+  flex-shrink: 0;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.service-content-box {
+  flex: 1;
+}
+
+.service-item-title {
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.service-item-text {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Fix About section spacing */
+.about-hero {
+  text-align: center;
+  padding: 0.75rem 0;
+}
+
+.hero-title {
+  font-size: 2.2rem;
+  background: var(--gradient-2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.hero-subtitle i {
+  color: var(--primary-color);
+}
+
+/* Fix CTA badges */
+.cta-badges {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.badge-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 50px;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.badge-link i {
+  font-size: 1rem;
+  color: var(--primary-color);
+}
+
+.badge-link:hover {
+  transform: translateY(-2px);
+  border-color: transparent;
+  background: var(--gradient-1);
+  color: white;
+}
+
+.badge-link:hover i {
+  color: white;
+}
+
+/* Fix timeline hover issues */
+.timeline-item {
+  position: relative;
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  margin-bottom: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover {
+  transform: translateX(5px);
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.timeline-item::before {
+  display: none; /* Remove the problematic pseudo element */
+}
+
+/* Add timeline connector */
+.timeline-list {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.timeline-list::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border-color);
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  left: -2.4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  border: 2px solid var(--bg-primary);
+}
+
+/* Fix bullet points alignment */
+.timeline-text ul,
+.project-description ul {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.timeline-text ul li,
+.project-description ul li {
+  margin-bottom: 0.3rem;
+  list-style-type: disc;
+  color: var(--text-secondary);
+}
+
+/* Fix navbar */
+.navbar {
+  background: var(--bg-secondary);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.navbar-link {
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.navbar-link:hover,
+.navbar-link.active {
+  color: var(--primary-color);
+}
+
+.navbar-link::after {
+  background: var(--primary-color);
+}
+
+/* Theme toggle button */
+.theme-toggle-btn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.theme-toggle-btn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+/* Remove animation issues */
+.service-item {
+  animation: none;
+}
+
+.badge-link {
+  animation: none;
+}
+
+/* Fix sidebar */
+.sidebar {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.dark-theme .sidebar {
+  background: var(--card-bg);
+}
+
+.avatar-box img {
+  border: none;
+  box-shadow: none;
+}
+
+.name {
+  color: var(--text-primary);
+}
+
+.dark-theme .name {
+  background: none;
+  -webkit-text-fill-color: var(--text-primary);
+}
+
+/* Contact cards */
+.contact-info-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  transform: none;
+  transition: all 0.3s ease;
+}
+
+.contact-info-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+/* ===== Brand colors for tech icons ===== */
+.tech-item .fa-python { color: #3776AB; }
+.tech-item .fa-java { color: #007396; }
+.tech-item .fa-js { color: #F7DF1E; }
+.tech-item .fa-react { color: #61DAFB; }
+.tech-item .fa-aws { color: #FF9900; }
+.tech-item .fa-docker { color: #2496ED; }
+.tech-item .fa-dharmachakra { color: #326CE5; } /* Kubernetes */
+.tech-item .fa-git-alt { color: #F05032; }
+.tech-item .fa-snowflake { color: #29B5E8; }
+.tech-item .fa-fire { color: #FF3621; } /* Databricks */
+.tech-item .fa-robot { color: #10B981; } /* LangChain */
+.tech-item .fa-brain { color: #FF6F00; } /* TensorFlow */
+
+/* Form styling */
+.form-input {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.form-input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.form-btn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.form-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+/* Project cards */
+.project-item {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.project-item:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-color);
+  box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+.dark-theme .project-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+/* Remove glass morphism effects for cleaner look */
+.dark-theme .sidebar,
+.dark-theme article,
+.dark-theme .service-item,
+.dark-theme .timeline-item,
+.dark-theme .project-item,
+.dark-theme .contact-info-card {
+  backdrop-filter: none;
+  background: var(--card-bg) !important;
+  border: 1px solid var(--border-color);
+}
+
+/* Stars background opacity adjustment */
+.stars {
+  opacity: 0.3;
+}
+
+/* Ensure proper icon sizing */
+.fas, .fab {
+  line-height: 1;
+}
+
+/* Responsive fixes */
+@media (max-width: 768px) {
+  .tech-stack-grid {
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 0.75rem;
+  }
+  
+  .service-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  
+  .badge-link {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+}
