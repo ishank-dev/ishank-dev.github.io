@@ -359,6 +359,15 @@ main {
   border-radius: 50%;
   overflow: hidden;
   border: 2px solid var(--jet);
+  width: 90px;
+  height: 90px;
+  aspect-ratio: 1 / 1;
+}
+.avatar-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .info-content .name {
   color: var(--white-2);
@@ -548,6 +557,8 @@ main {
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 15px;
+  justify-content: center;
+  align-items: center;
 }
 .cta-btn {
   display: inline-flex;
@@ -1207,9 +1218,7 @@ main {
   
     .sidebar-info { gap: 25px; }
   
-    .avatar-box { border-radius: 50%; }
-  
-    .avatar-box img { width: 120px; }
+    .avatar-box { border-radius: 50%; width: 120px; height: 120px; }
   
     .info-content .name { margin-bottom: 15px; }
   
@@ -1703,7 +1712,7 @@ main {
   
     .sidebar-info { flex-direction: column; }
   
-    .avatar-box img { width: 150px; }
+    .avatar-box { width: 150px; height: 150px; }
   
     .info-content .name {
       white-space: nowrap;
