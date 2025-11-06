@@ -37,7 +37,7 @@
       <div class="sidebar-info">
         <figure class="avatar-box">
           <!-- Replace with your own avatar URL -->
-          <img src="/assets/images/my-avatar-5.png" alt="Ishank Sharma" width="80" />
+          <img src="/assets/images/my-avatar.jpeg" alt="Ishank Sharma" width="80" />
         </figure>
 
         <div class="info-content">
@@ -100,6 +100,9 @@
           </li>
           <li class="navbar-item">
             <button class="navbar-link" data-nav-link>Portfolio</button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Blog</button>
           </li>
           <li class="navbar-item">
             <button class="navbar-link" data-nav-link>Awards</button>
@@ -431,6 +434,32 @@
         </section>
       </article>
 
+      <!--
+        #BLOG
+      -->
+      <article class="blog" data-page="blog">
+        <header>
+          <h2 class="h2 article-title">Blog</h2>
+          <p class="subtitle">Latest articles from my Medium publications</p>
+          <br>
+        </header>
+
+        <section class="blog-posts">
+          <div class="blog-loading" id="blog-loading">
+            <div class="loading-spinner"></div>
+            <p>Loading articles...</p>
+          </div>
+          
+          <div class="blog-error" id="blog-error" style="display: none;">
+            <p>Unable to load articles. Please try again later.</p>
+            <button class="retry-btn" onclick="loadMediumArticles()">Retry</button>
+          </div>
+
+          <ul class="blog-posts-list" id="blog-posts-list">
+            <!-- Blog posts will be dynamically loaded here -->
+          </ul>
+        </section>
+      </article>
 
       <!-- AWARDS SECTION -->
       <article class="awards" data-page="awards">

@@ -199,6 +199,11 @@ for (let i = 0; i < navigationLinks.length; i++) {
         pages[i].classList.add("active");
         navigationLinks[i].classList.add("active");
         window.scrollTo(0, 0);
+        
+        // Load blog posts when blog page is activated
+        if (pages[i].dataset.page === 'blog') {
+          loadMediumArticles();
+        }
       } else {
         pages[i].classList.remove("active");
         navigationLinks[i].classList.remove("active");
@@ -206,4 +211,130 @@ for (let i = 0; i < navigationLinks.length; i++) {
     }
 
   });
+}
+
+// Blog functionality
+let articlesLoaded = false;
+
+async function loadMediumArticles() {
+  // Prevent multiple loads
+  if (articlesLoaded) return;
+  
+  const loadingElement = document.getElementById('blog-loading');
+  const errorElement = document.getElementById('blog-error');
+  const postsListElement = document.getElementById('blog-posts-list');
+  
+  // Show loading state
+  loadingElement.style.display = 'flex';
+  errorElement.style.display = 'none';
+  postsListElement.innerHTML = '';
+  
+  try {
+    // Replace with your Medium username
+    const mediumUsername = '@ishankdev'; // Change this to your Medium username
+    const rssUrl = `https://medium.com/feed/${mediumUsername}`;
+    
+    // Use RSS2JSON service to convert RSS to JSON (CORS-friendly)
+    const proxyUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+    
+    const response = await fetch(proxyUrl);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    
+    if (data.status !== 'ok') {
+      throw new Error('Failed to fetch RSS feed');
+    }
+    
+    // Hide loading state
+    loadingElement.style.display = 'none';
+    
+    if (data.items && data.items.length > 0) {
+      displayBlogPosts(data.items.slice(0, 6)); // Show latest 6 articles
+      articlesLoaded = true;
+    } else {
+      showNoPosts();
+    }
+    
+  } catch (error) {
+    console.error('Error fetching Medium articles:', error);
+    loadingElement.style.display = 'none';
+    errorElement.style.display = 'block';
+  }
+}
+
+function displayBlogPosts(articles) {
+  const postsListElement = document.getElementById('blog-posts-list');
+  
+  articles.forEach(article => {
+    const postElement = createBlogPostElement(article);
+    postsListElement.appendChild(postElement);
+  });
+}
+
+function createBlogPostElement(article) {
+  const li = document.createElement('li');
+  li.className = 'blog-post-item';
+  
+  // Extract image from content or use a default
+  const imageMatch = article.content.match(/<img[^>]+src="([^">]+)"/);
+  const imageUrl = imageMatch ? imageMatch[1] : null;
+  
+  // Clean up description (remove HTML tags)
+  const description = article.description
+    .replace(/<[^>]*>/g, '')
+    .substring(0, 150) + '...';
+  
+  // Format date
+  const publishDate = new Date(article.pubDate).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric'
+  });
+  
+  li.innerHTML = `
+    <a href="${article.link}" target="_blank" rel="noopener">
+      <figure class="blog-post-banner">
+        ${imageUrl ? `
+          <img src="${imageUrl}" alt="${article.title}" loading="lazy">
+        ` : `
+          <div class="placeholder">
+            <ion-icon name="document-text-outline" style="font-size: 40px;"></ion-icon>
+          </div>
+        `}
+      </figure>
+      
+      <div class="blog-post-content">
+        <div class="blog-post-meta">
+          <div class="blog-post-date">
+            <ion-icon name="calendar-outline"></ion-icon>
+            <time datetime="${article.pubDate}">${publishDate}</time>
+          </div>
+        </div>
+        
+        <h3 class="blog-post-title">${article.title}</h3>
+        
+        <p class="blog-post-text">${description}</p>
+        
+        <div class="blog-post-link">
+          Read more
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </div>
+      </div>
+    </a>
+  `;
+  
+  return li;
+}
+
+function showNoPosts() {
+  const postsListElement = document.getElementById('blog-posts-list');
+  postsListElement.innerHTML = `
+    <li style="text-align: center; padding: 40px; color: var(--light-gray);">
+      <p>No articles found. Check back later for new content!</p>
+    </li>
+  `;
 }
