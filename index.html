@@ -1,23 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Ishank Sharma | Software Engineer</title>
+  <title>Ishank Sharma — Software Engineer</title>
   <meta name="description"
-    content="Ishank Sharma — software engineer building data platforms, real-time backends and applied AI systems. MS CS @ CSULB, previously CommerceIQ." />
+    content="Software engineer building data platforms, real-time backends and applied AI systems. MS CS at CSULB, previously SDE II at CommerceIQ." />
   <meta name="author" content="Ishank Sharma" />
-  <meta name="theme-color" content="#0a0a0d" media="(prefers-color-scheme: dark)" />
-  <meta name="theme-color" content="#e3ded5" media="(prefers-color-scheme: light)" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#07070b" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f3f1ec" media="(prefers-color-scheme: light)" />
 
-  <!-- social preview -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Ishank Sharma | Software Engineer" />
+  <meta property="og:title" content="Ishank Sharma — Software Engineer" />
   <meta property="og:description"
-    content="Data platforms, real-time backends and applied AI systems. MS CS @ CSULB, previously CommerceIQ." />
+    content="Data platforms, real-time backends and applied AI systems. MS CS at CSULB, previously CommerceIQ." />
   <meta property="og:url" content="https://ishank-dev.github.io/" />
   <meta property="og:image" content="https://ishank-dev.github.io/assets/images/my-avatar.jpeg" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -25,774 +24,605 @@
   <link rel="canonical" href="https://ishank-dev.github.io/" />
   <link rel="shortcut icon" href="./assets/images/logo.svg" type="image/svg+xml" />
 
-  <!-- custom css -->
+  <!-- fonts are self-hosted in ./assets/fonts — no third-party requests -->
+  <link rel="preload" as="font" type="font/woff2" href="./assets/fonts/sora-latin-600-normal.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="./assets/fonts/inter-latin-400-normal.woff2" crossorigin />
+
   <link rel="stylesheet" href="./assets/css/style.css" />
 
-  <!-- fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
-    rel="stylesheet" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ishank Sharma",
+    "url": "https://ishank-dev.github.io/",
+    "email": "mailto:ishankdev@gmail.com",
+    "jobTitle": "Software Engineer",
+    "address": { "@type": "PostalAddress", "addressLocality": "Long Beach", "addressRegion": "CA" },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "California State University, Long Beach" },
+      { "@type": "CollegeOrUniversity", "name": "Ramaiah Institute of Technology" }
+    ],
+    "sameAs": [
+      "https://github.com/ishank-dev",
+      "https://www.linkedin.com/in/ishank-sharma-438a32144/",
+      "https://medium.com/@ishankdev"
+    ]
+  }
+  </script>
 </head>
 
-<body class="dark-theme">
-  <!--
-      - #MAIN
-    -->
-  <main>
-    <!--
-        - #SIDEBAR
-      -->
-    <aside class="sidebar" data-sidebar>
-      <div class="sidebar-info">
-        <figure class="avatar-box">
-          <img src="./assets/images/my-avatar.jpeg" alt="Ishank Sharma" width="132" height="132" />
-        </figure>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-        <div class="info-content">
-          <h1 class="name" title="Ishank Sharma">Ishank Sharma</h1>
-          <p class="title">Software Engineer</p>
+  <!-- reading progress -->
+  <div class="progress" aria-hidden="true"><span data-progress></span></div>
+
+  <!-- WebGL point cloud -->
+  <div class="scene-wrap" aria-hidden="true">
+    <canvas id="scene"></canvas>
+    <div class="scene-veil"></div>
+  </div>
+
+  <!-- ============================ HEADER ============================ -->
+  <header class="topbar" data-topbar>
+    <a class="brand" href="#hero" aria-label="Ishank Sharma — home">
+      <span class="brand-mark" aria-hidden="true">
+        <span>I</span><span>S</span>
+      </span>
+      <span class="brand-text">
+        <strong>Ishank Sharma</strong>
+        <small>Software Engineer</small>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Sections">
+      <ul class="nav-list" data-navlist>
+        <li><a href="#about" data-navlink>About</a></li>
+        <li><a href="#work" data-navlink>Work</a></li>
+        <li><a href="#projects" data-navlink>Projects</a></li>
+        <li><a href="#writing" data-navlink>Writing</a></li>
+        <li><a href="#awards" data-navlink>Awards</a></li>
+        <li><a href="#contact" data-navlink>Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="topbar-actions">
+      <button class="cmdk-trigger" data-open-palette aria-label="Open command palette">
+        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" stroke-miterlimit="10" class="ionicon-fill-none ionicon-stroke-width"/><path stroke-linecap="round" stroke-miterlimit="10" d="M338.29 338.29L448 448" class="ionicon-fill-none ionicon-stroke-width"/></svg>
+        <span>Jump to</span>
+        <kbd>⌘K</kbd>
+      </button>
+      <button class="icon-btn" data-theme-toggle aria-label="Switch to light theme">
+        <span class="theme-icon theme-icon--moon"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M160 136c0-30.62 4.51-61.61 16-88C99.57 81.27 48 159.32 48 248c0 119.29 96.71 216 216 216 88.68 0 166.73-51.57 200-128-26.39 11.49-57.38 16-88 16-119.29 0-216-96.71-216-216z" stroke-linecap="round" stroke-linejoin="round" class="ionicon-fill-none ionicon-stroke-width"/></svg></span>
+        <span class="theme-icon theme-icon--sun"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path stroke-linecap="round" stroke-miterlimit="10" d="M256 48v48M256 416v48M403.08 108.92l-33.94 33.94M142.86 369.14l-33.94 33.94M464 256h-48M96 256H48M403.08 403.08l-33.94-33.94M142.86 142.86l-33.94-33.94" class="ionicon-fill-none ionicon-stroke-width"/><circle cx="256" cy="256" r="80" stroke-linecap="round" stroke-miterlimit="10" class="ionicon-fill-none ionicon-stroke-width"/></svg></span>
+      </button>
+      <button class="icon-btn menu-btn" data-menu-toggle aria-label="Open menu" aria-expanded="false">
+        <span class="menu-bars" aria-hidden="true"><i></i><i></i></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- mobile menu -->
+  <div class="sheet" data-sheet hidden>
+    <nav aria-label="Mobile">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#projects">Projects</a>
+      <a href="#writing">Writing</a>
+      <a href="#awards">Awards</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="sheet-foot">
+      <a class="btn btn-ghost" href="https://github.com/ishank-dev" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M256 32C132.3 32 32 134.9 32 261.7c0 101.5 64.2 187.5 153.2 217.9a17.56 17.56 0 003.8.4c8.3 0 11.5-6.1 11.5-11.4 0-5.5-.2-19.9-.3-39.1a102.4 102.4 0 01-22.6 2.7c-43.1 0-52.9-33.5-52.9-33.5-10.2-26.5-24.9-33.6-24.9-33.6-19.5-13.7-.1-14.1 1.4-14.1h.1c22.5 2 34.3 23.8 34.3 23.8 11.2 19.6 26.2 25.1 39.6 25.1a63 63 0 0025.6-6c2-14.8 7.8-24.9 14.2-30.7-49.7-5.8-102-25.5-102-113.5 0-25.1 8.7-45.6 23-61.6-2.3-5.8-10-29.2 2.2-60.8a18.64 18.64 0 015-.5c8.1 0 26.4 3.1 56.6 24.1a208.21 208.21 0 01112.2 0c30.2-21 48.5-24.1 56.6-24.1a18.64 18.64 0 015 .5c12.2 31.6 4.5 55 2.2 60.8 14.3 16.1 23 36.6 23 61.6 0 88.2-52.4 107.6-102.3 113.3 8 7.1 15.2 21.1 15.2 42.5 0 30.7-.3 55.5-.3 63 0 5.4 3.1 11.5 11.4 11.5a19.35 19.35 0 004-.4C415.9 449.2 480 363.1 480 261.7 480 134.9 379.7 32 256 32z"/></svg><span>GitHub</span></a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/ishank-sharma-438a32144/" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M444.17 32H70.28C49.85 32 32 46.7 32 66.89v374.72C32 461.91 49.85 480 70.28 480h373.78c20.54 0 35.94-18.21 35.94-38.39V66.89C480.12 46.7 464.6 32 444.17 32zm-273.3 373.43h-64.18V205.88h64.18zM141 175.54h-.46c-20.54 0-33.84-15.29-33.84-34.43 0-19.49 13.65-34.42 34.65-34.42s33.85 14.82 34.31 34.42c-.01 19.14-13.31 34.43-34.66 34.43zm264.43 229.89h-64.18V296.32c0-26.14-9.34-44-32.56-44-17.74 0-28.24 12-32.91 23.69-1.75 4.2-2.22 9.92-2.22 15.76v113.66h-64.18V205.88h64.18v27.77c9.34-13.3 23.93-32.44 57.88-32.44 42.13 0 74 27.77 74 87.64z"/></svg><span>LinkedIn</span></a>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- ============================ HERO ============================ -->
+    <section class="hero" id="hero" data-shape="0">
+      <div class="hero-inner">
+        <p class="eyebrow reveal">
+          <span class="dot" aria-hidden="true"></span>
+          Long Beach, CA — data platforms &amp; applied AI
+        </p>
+
+        <h1 class="hero-title">
+          <span class="line reveal">I build backends</span>
+          <span class="line reveal" style="--d:70ms">that <em>don't page you</em></span>
+          <span class="line reveal" style="--d:140ms">at 3 a.m.</span>
+        </h1>
+
+        <p class="hero-sub reveal" style="--d:210ms">
+          Software engineer working across streaming pipelines, distributed services and
+          applied AI. I like problems with a number attached — latency, cost, and the
+          size of the 3 a.m. page.
+        </p>
+
+        <div class="hero-cta reveal" style="--d:280ms">
+          <a class="btn btn-primary" href="#projects">
+            <span>See the work</span><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M268 112l144 144-144 144M392 256H100" class="ionicon-fill-none"/></svg>
+          </a>
+          <a class="btn btn-ghost"
+            href="https://drive.google.com/file/d/1404iiQMMYz3IyRc-CMJpiAF6XFwhwEYf/view?usp=sharing" target="_blank"
+            rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M336 176h40a40 40 0 0140 40v208a40 40 0 01-40 40H136a40 40 0 01-40-40V216a40 40 0 0140-40h40" stroke-linecap="round" stroke-linejoin="round" class="ionicon-fill-none ionicon-stroke-width"/><path stroke-linecap="round" stroke-linejoin="round" d="M176 272l80 80 80-80M256 48v288" class="ionicon-fill-none ionicon-stroke-width"/></svg><span>Résumé</span>
+          </a>
+          <button class="btn btn-ghost" data-copy="ishankdev@gmail.com">
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><rect x="128" y="128" width="336" height="336" rx="57" ry="57" stroke-linejoin="round" class="ionicon-fill-none ionicon-stroke-width"/><path d="M383.5 128l.5-24a56.16 56.16 0 00-56-56H112a64.19 64.19 0 00-64 64v216a56.16 56.16 0 0056 56h24" stroke-linecap="round" stroke-linejoin="round" class="ionicon-fill-none ionicon-stroke-width"/></svg><span>Copy email</span>
+          </button>
         </div>
 
-        <button class="info_more-btn" data-sidebar-btn aria-label="Show contacts">
-          <span>Show Contacts</span>
-          <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 184l144 144 144-144" class="ionicon-fill-none"/></svg>
-        </button>
-      </div>
-
-      <div class="sidebar-info_more">
-        <div class="separator"></div>
-
-        <ul class="contacts-list">
-          <li class="contact-item">
-            <div class="icon-box">
-              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><rect x="48" y="96" width="416" height="320" rx="40" ry="40" stroke-linecap="round" stroke-linejoin="round" class="ionicon-fill-none ionicon-stroke-width"/><path stroke-linecap="round" stroke-linejoin="round" d="M112 160l144 112 144-112" class="ionicon-fill-none ionicon-stroke-width"/></svg>
-            </div>
-            <div class="contact-info">
-              <p class="contact-title">Email</p>
-              <a href="mailto:ishankdev@gmail.com" class="contact-link">ishankdev@gmail.com</a>
-            </div>
-          </li>
-
-          <li class="contact-item">
-            <div class="icon-box">
-              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M256 48c-79.5 0-144 61.39-144 137 0 87 96 224.87 131.25 272.49a15.77 15.77 0 0025.5 0C304 409.89 400 272.07 400 185c0-75.61-64.5-137-144-137z" stroke-linecap="round" stroke-linejoin="round" class="ionicon-fill-none ionicon-stroke-width"/><circle cx="256" cy="192" r="48" stroke-linecap="round" stroke-linejoin="round" class="ionicon-fill-none ionicon-stroke-width"/></svg>
-            </div>
-            <div class="contact-info">
-              <p class="contact-title">Location</p>
-              <address>Long Beach, CA, USA</address>
-            </div>
-          </li>
-
-          <li class="contact-item">
-            <div class="icon-box">
-              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path stroke-linecap="round" stroke-linejoin="round" d="M32 192L256 64l224 128-224 128L32 192z" class="ionicon-fill-none ionicon-stroke-width"/><path stroke-linecap="round" stroke-linejoin="round" d="M112 240v128l144 80 144-80V240M480 368V192M256 320v128" class="ionicon-fill-none ionicon-stroke-width"/></svg>
-            </div>
-            <div class="contact-info">
-              <p class="contact-title">Studying</p>
-              <address>MS Computer Science, CSULB</address>
-            </div>
-          </li>
-        </ul>
-
-        <div class="separator"></div>
-
-        <ul class="social-list">
-          <li class="social-item">
-            <a href="https://github.com/ishank-dev" class="social-link" target="_blank" rel="noopener"
-              aria-label="GitHub">
-              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M256 32C132.3 32 32 134.9 32 261.7c0 101.5 64.2 187.5 153.2 217.9a17.56 17.56 0 003.8.4c8.3 0 11.5-6.1 11.5-11.4 0-5.5-.2-19.9-.3-39.1a102.4 102.4 0 01-22.6 2.7c-43.1 0-52.9-33.5-52.9-33.5-10.2-26.5-24.9-33.6-24.9-33.6-19.5-13.7-.1-14.1 1.4-14.1h.1c22.5 2 34.3 23.8 34.3 23.8 11.2 19.6 26.2 25.1 39.6 25.1a63 63 0 0025.6-6c2-14.8 7.8-24.9 14.2-30.7-49.7-5.8-102-25.5-102-113.5 0-25.1 8.7-45.6 23-61.6-2.3-5.8-10-29.2 2.2-60.8a18.64 18.64 0 015-.5c8.1 0 26.4 3.1 56.6 24.1a208.21 208.21 0 01112.2 0c30.2-21 48.5-24.1 56.6-24.1a18.64 18.64 0 015 .5c12.2 31.6 4.5 55 2.2 60.8 14.3 16.1 23 36.6 23 61.6 0 88.2-52.4 107.6-102.3 113.3 8 7.1 15.2 21.1 15.2 42.5 0 30.7-.3 55.5-.3 63 0 5.4 3.1 11.5 11.4 11.5a19.35 19.35 0 004-.4C415.9 449.2 480 363.1 480 261.7 480 134.9 379.7 32 256 32z"/></svg>
-            </a>
-          </li>
-          <li class="social-item">
-            <a href="https://www.linkedin.com/in/ishank-sharma-438a32144/" class="social-link" target="_blank"
-              rel="noopener" aria-label="LinkedIn">
-              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M444.17 32H70.28C49.85 32 32 46.7 32 66.89v374.72C32 461.91 49.85 480 70.28 480h373.78c20.54 0 35.94-18.21 35.94-38.39V66.89C480.12 46.7 464.6 32 444.17 32zm-273.3 373.43h-64.18V205.88h64.18zM141 175.54h-.46c-20.54 0-33.84-15.29-33.84-34.43 0-19.49 13.65-34.42 34.65-34.42s33.85 14.82 34.31 34.42c-.01 19.14-13.31 34.43-34.66 34.43zm264.43 229.89h-64.18V296.32c0-26.14-9.34-44-32.56-44-17.74 0-28.24 12-32.91 23.69-1.75 4.2-2.22 9.92-2.22 15.76v113.66h-64.18V205.88h64.18v27.77c9.34-13.3 23.93-32.44 57.88-32.44 42.13 0 74 27.77 74 87.64z"/></svg>
-            </a>
-          </li>
-          <li class="social-item">
-            <a href="https://medium.com/@ishankdev" class="social-link" target="_blank" rel="noopener"
-              aria-label="Medium">
-              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M28 28v456h456V28H28zm378.83 108.04l-24.46 23.45a7.162 7.162 0 00-2.72 6.86v172.28c-.44 2.61.61 5.26 2.72 6.86l23.88 23.45v5.15H286.13v-5.15l24.74-24.02c2.43-2.43 2.43-3.15 2.43-6.86V198.81l-68.79 174.71h-9.3l-80.09-174.71v117.1c-.67 4.92.97 9.88 4.43 13.44l32.18 39.03v5.15h-91.24v-5.15l32.18-39.03c3.44-3.57 4.98-8.56 4.15-13.44V180.5c.38-3.76-1.05-7.48-3.86-10.01l-28.6-34.46v-5.15h88.81l68.65 150.55 60.35-150.55h84.66v5.16z"/></svg>
-            </a>
-          </li>
-          <li class="social-item">
-            <a href="mailto:ishankdev@gmail.com" class="social-link" aria-label="Email">
-              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><rect x="48" y="96" width="416" height="320" rx="40" ry="40" stroke-linecap="round" stroke-linejoin="round" class="ionicon-fill-none ionicon-stroke-width"/><path stroke-linecap="round" stroke-linejoin="round" d="M112 160l144 112 144-112" class="ionicon-fill-none ionicon-stroke-width"/></svg>
-            </a>
-          </li>
+        <ul class="hero-meta reveal" style="--d:350ms">
+          <li><strong>4+ yrs</strong><span>in production</span></li>
+          <li><strong>$200K</strong><span>saved / year</span></li>
+          <li><strong>80%</strong><span>latency cut</span></li>
+          <li><strong>50k+</strong><span>events / run</span></li>
         </ul>
       </div>
-    </aside>
 
-    <!--
-        - #main-content
-      -->
-    <div class="main-content">
-      <!--
-          - #NAVBAR
-        -->
-      <nav class="navbar">
-        <ul class="navbar-list">
-          <li class="navbar-item">
-            <button class="navbar-link active" data-nav-link>About</button>
-          </li>
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Resume</button>
-          </li>
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Portfolio</button>
-          </li>
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Blog</button>
-          </li>
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Awards</button>
-          </li>
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Contact</button>
-          </li>
-          <button class="theme-toggle-btn" data-theme-toggle aria-label="Toggle color theme">🌗</button>
-        </ul>
-      </nav>
+      <a class="scroll-cue" href="#about" aria-label="Scroll to About">
+        <span class="scroll-cue-rail" aria-hidden="true"><i></i></span>
+        <span>Scroll</span>
+      </a>
+    </section>
 
-      <!--
-          - #ABOUT
-        -->
-      <article class="about active" data-page="about">
-        <header>
-          <h2 class="h2 article-title">About Me</h2>
-        </header>
+    <!-- ============================ ABOUT ============================ -->
+    <section class="section" id="about" data-shape="1">
+      <div class="section-head">
+        <p class="kicker">01 — About</p>
+        <h2 class="section-title">Shaping data into something people can decide with</h2>
+      </div>
 
-        <section class="about-text">
-          <p>I like building the kind of backend that doesn't page you at 3 a.m. What started as curiosity about how
-            data moves turned into a habit of shaping ideas into clear APIs, real-time streams, and analytics that
-            actually help people decide.</p>
+      <div class="about-grid">
+        <div class="about-card reveal" data-tilt>
+          <div class="about-card-inner">
+            <img src="./assets/images/my-avatar.jpeg" alt="Ishank Sharma" width="600" height="600" loading="lazy" />
+            <div class="about-card-glare" aria-hidden="true"></div>
+            <div class="about-card-tag">
+              <span class="status-dot" aria-hidden="true"></span>
+              Open to SDE roles
+            </div>
+          </div>
+        </div>
 
-          <p>Along the way, I've redesigned data paths that cut latency by <span class="hl">80%</span> and
-            infrastructure cost by <span class="hl">52%</span>, shipped budget recommendation system data pipelines that
-            save about <span class="hl">$200K a year</span>, and built real-time backends that handle
-            <span class="hl">50k+ events</span> without chaos. I enjoy problems with measurable outcomes and clean
-            interfaces.
+        <div class="about-body">
+          <p class="lead reveal">
+            What started as curiosity about how data moves turned into a habit of shaping
+            ideas into clear APIs, real-time streams and analytics that actually help
+            people decide.
+          </p>
+          <p class="reveal" style="--d:80ms">
+            Along the way I've redesigned data paths that cut latency by
+            <mark>80%</mark> and infrastructure cost by <mark>52%</mark>, shipped budget
+            recommendation pipelines that save around <mark>$200K a year</mark>, and
+            built real-time backends that handle <mark>50k+ events</mark> without chaos.
+          </p>
+          <p class="reveal" style="--d:160ms">
+            I'm finishing an MS in Computer Science at CSULB — systems, algorithms and
+            applied AI — and I teach the Explainable &amp; Ethical AI lab there. If you're
+            building something ambitious, or just want to argue about schema design,
+            <a href="#contact">say hello</a>.
           </p>
 
-          <p>I'm currently pursuing an MS in Computer Science at CSULB, mixing systems, algorithms, and applied AI. If
-            you're building something ambitious — or just want to discuss ideas — please reach out.</p>
-
-          <ul class="stat-grid">
-            <li class="stat-card reveal">
-              <p class="stat-value">80%</p>
-              <p class="stat-label">Lower pipeline latency</p>
-            </li>
-            <li class="stat-card reveal" style="--reveal-delay: 80ms">
-              <p class="stat-value">$200K</p>
-              <p class="stat-label">Annual cost saved</p>
-            </li>
-            <li class="stat-card reveal" style="--reveal-delay: 160ms">
-              <p class="stat-value">50k+</p>
-              <p class="stat-label">Events handled in real time</p>
-            </li>
-            <li class="stat-card reveal" style="--reveal-delay: 240ms">
-              <p class="stat-value">4+ yrs</p>
-              <p class="stat-label">Building production systems</p>
-            </li>
+          <ul class="chips reveal" style="--d:220ms">
+            <li>Distributed systems</li>
+            <li>Streaming &amp; ETL</li>
+            <li>LLM / RAG systems</li>
+            <li>Cloud infrastructure</li>
+            <li>API design</li>
           </ul>
+        </div>
+      </div>
 
-          <div class="cta-row">
-            <a class="cta-btn primary"
-              href="https://drive.google.com/file/d/1404iiQMMYz3IyRc-CMJpiAF6XFwhwEYf/view?usp=sharing" target="_blank"
-              rel="noopener">
-              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M336 176h40a40 40 0 0140 40v208a40 40 0 01-40 40H136a40 40 0 01-40-40V216a40 40 0 0140-40h40" stroke-linecap="round" stroke-linejoin="round" class="ionicon-fill-none ionicon-stroke-width"/><path stroke-linecap="round" stroke-linejoin="round" d="M176 272l80 80 80-80M256 48v288" class="ionicon-fill-none ionicon-stroke-width"/></svg>
-              <span>Resume</span>
-            </a>
-            <a class="cta-btn" href="https://github.com/ishank-dev" target="_blank" rel="noopener">
-              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M256 32C132.3 32 32 134.9 32 261.7c0 101.5 64.2 187.5 153.2 217.9a17.56 17.56 0 003.8.4c8.3 0 11.5-6.1 11.5-11.4 0-5.5-.2-19.9-.3-39.1a102.4 102.4 0 01-22.6 2.7c-43.1 0-52.9-33.5-52.9-33.5-10.2-26.5-24.9-33.6-24.9-33.6-19.5-13.7-.1-14.1 1.4-14.1h.1c22.5 2 34.3 23.8 34.3 23.8 11.2 19.6 26.2 25.1 39.6 25.1a63 63 0 0025.6-6c2-14.8 7.8-24.9 14.2-30.7-49.7-5.8-102-25.5-102-113.5 0-25.1 8.7-45.6 23-61.6-2.3-5.8-10-29.2 2.2-60.8a18.64 18.64 0 015-.5c8.1 0 26.4 3.1 56.6 24.1a208.21 208.21 0 01112.2 0c30.2-21 48.5-24.1 56.6-24.1a18.64 18.64 0 015 .5c12.2 31.6 4.5 55 2.2 60.8 14.3 16.1 23 36.6 23 61.6 0 88.2-52.4 107.6-102.3 113.3 8 7.1 15.2 21.1 15.2 42.5 0 30.7-.3 55.5-.3 63 0 5.4 3.1 11.5 11.4 11.5a19.35 19.35 0 004-.4C415.9 449.2 480 363.1 480 261.7 480 134.9 379.7 32 256 32z"/></svg>
-              <span>GitHub</span>
-            </a>
-            <a class="cta-btn" href="https://www.linkedin.com/in/ishank-sharma-438a32144/" target="_blank"
-              rel="noopener">
-              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M444.17 32H70.28C49.85 32 32 46.7 32 66.89v374.72C32 461.91 49.85 480 70.28 480h373.78c20.54 0 35.94-18.21 35.94-38.39V66.89C480.12 46.7 464.6 32 444.17 32zm-273.3 373.43h-64.18V205.88h64.18zM141 175.54h-.46c-20.54 0-33.84-15.29-33.84-34.43 0-19.49 13.65-34.42 34.65-34.42s33.85 14.82 34.31 34.42c-.01 19.14-13.31 34.43-34.66 34.43zm264.43 229.89h-64.18V296.32c0-26.14-9.34-44-32.56-44-17.74 0-28.24 12-32.91 23.69-1.75 4.2-2.22 9.92-2.22 15.76v113.66h-64.18V205.88h64.18v27.77c9.34-13.3 23.93-32.44 57.88-32.44 42.13 0 74 27.77 74 87.64z"/></svg>
-              <span>LinkedIn</span>
-            </a>
+      <!-- tech stack -->
+      <div class="stack" id="stack">
+        <h3 class="stack-title">Tools I reach for</h3>
+        <ul class="stack-grid">
+          <li class="stack-item reveal" title="Python"><span><svg class="logo-icon" viewBox="0 0 256 255" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><defs><linearGradient id="SVGg39WleeP" x1="12.959%" x2="79.639%" y1="12.039%" y2="78.201%"><stop offset="0%" stop-color="#387eb8"/><stop offset="100%" stop-color="#366994"/></linearGradient><linearGradient id="SVGlXoRkc4T" x1="19.128%" x2="90.742%" y1="20.579%" y2="88.429%"><stop offset="0%" stop-color="#ffe052"/><stop offset="100%" stop-color="#ffc331"/></linearGradient></defs><path fill="url(#SVGg39WleeP)" d="M126.916.072c-64.832 0-60.784 28.115-60.784 28.115l.072 29.128h61.868v8.745H41.631S.145 61.355.145 126.77c0 65.417 36.21 63.097 36.21 63.097h21.61v-30.356s-1.165-36.21 35.632-36.21h61.362s34.475.557 34.475-33.319V33.97S194.67.072 126.916.072M92.802 19.66a11.12 11.12 0 0 1 11.13 11.13a11.12 11.12 0 0 1-11.13 11.13a11.12 11.12 0 0 1-11.13-11.13a11.12 11.12 0 0 1 11.13-11.13"/><path fill="url(#SVGlXoRkc4T)" d="M128.757 254.126c64.832 0 60.784-28.115 60.784-28.115l-.072-29.127H127.6v-8.745h86.441s41.486 4.705 41.486-60.712c0-65.416-36.21-63.096-36.21-63.096h-21.61v30.355s1.165 36.21-35.632 36.21h-61.362s-34.475-.557-34.475 33.32v56.013s-5.235 33.897 62.518 33.897m34.114-19.586a11.12 11.12 0 0 1-11.13-11.13a11.12 11.12 0 0 1 11.13-11.131a11.12 11.12 0 0 1 11.13 11.13a11.12 11.12 0 0 1-11.13 11.13"/></svg></span>Python</li>
+          <li class="stack-item reveal" style="--d:30ms" title="Java"><span><svg class="logo-icon" viewBox="0 0 256 346" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="#5382a1" d="M82.554 267.473s-13.198 7.675 9.393 10.272c27.369 3.122 41.356 2.675 71.517-3.034c0 0 7.93 4.972 19.003 9.279c-67.611 28.977-153.019-1.679-99.913-16.517m-8.262-37.814s-14.803 10.958 7.805 13.296c29.236 3.016 52.324 3.263 92.276-4.43c0 0 5.526 5.602 14.215 8.666c-81.747 23.904-172.798 1.885-114.296-17.532"/><path fill="#e76f00" d="M143.942 165.515c16.66 19.18-4.377 36.44-4.377 36.44s42.301-21.837 22.874-49.183c-18.144-25.5-32.059-38.172 43.268-81.858c0 0-118.238 29.53-61.765 94.6"/><path fill="#5382a1" d="M233.364 295.442s9.767 8.047-10.757 14.273c-39.026 11.823-162.432 15.393-196.714.471c-12.323-5.36 10.787-12.8 18.056-14.362c7.581-1.644 11.914-1.337 11.914-1.337c-13.705-9.655-88.583 18.957-38.034 27.15c137.853 22.356 251.292-10.066 215.535-26.195M88.9 190.48s-62.771 14.91-22.228 20.323c17.118 2.292 51.243 1.774 83.03-.89c25.978-2.19 52.063-6.85 52.063-6.85s-9.16 3.923-15.787 8.448c-63.744 16.765-186.886 8.966-151.435-8.183c29.981-14.492 54.358-12.848 54.358-12.848m112.605 62.942c64.8-33.672 34.839-66.03 13.927-61.67c-5.126 1.066-7.411 1.99-7.411 1.99s1.903-2.98 5.537-4.27c41.37-14.545 73.187 42.897-13.355 65.647c0 .001 1.003-.895 1.302-1.697"/><path fill="#e76f00" d="M162.439.371s35.887 35.9-34.037 91.101c-56.071 44.282-12.786 69.53-.023 98.377c-32.73-29.53-56.75-55.526-40.635-79.72C111.395 74.612 176.918 57.393 162.439.37"/><path fill="#5382a1" d="M95.268 344.665c62.199 3.982 157.712-2.209 159.974-31.64c0 0-4.348 11.158-51.404 20.018c-53.088 9.99-118.564 8.824-157.399 2.421c.001 0 7.95 6.58 48.83 9.201"/></svg></span>Java</li>
+          <li class="stack-item reveal" style="--d:60ms" title="JavaScript"><span><svg class="logo-icon" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="#f7df1e" d="M0 0h256v256H0z"/><path d="m67.312 213.932l19.59-11.856c3.78 6.701 7.218 12.371 15.465 12.371c7.905 0 12.89-3.092 12.89-15.12v-81.798h24.057v82.138c0 24.917-14.606 36.259-35.916 36.259c-19.245 0-30.416-9.967-36.087-21.996m85.07-2.576l19.588-11.341c5.157 8.421 11.859 14.607 23.715 14.607c9.969 0 16.325-4.984 16.325-11.858c0-8.248-6.53-11.17-17.528-15.98l-6.013-2.58c-17.357-7.387-28.87-16.667-28.87-36.257c0-18.044 13.747-31.792 35.228-31.792c15.294 0 26.292 5.328 34.196 19.247l-18.732 12.03c-4.125-7.389-8.591-10.31-15.465-10.31c-7.046 0-11.514 4.468-11.514 10.31c0 7.217 4.468 10.14 14.778 14.608l6.014 2.577c20.45 8.765 31.963 17.7 31.963 37.804c0 21.654-17.012 33.51-39.867 33.51c-22.339 0-36.774-10.654-43.819-24.574"/></svg></span>JavaScript</li>
+          <li class="stack-item reveal" style="--d:90ms" title="Node.js"><span><svg class="logo-icon" viewBox="0 0 256 289" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="#539e43" d="M128 288.464c-3.975 0-7.685-1.06-11.13-2.915l-35.247-20.936c-5.3-2.915-2.65-3.975-1.06-4.505c7.155-2.385 8.48-2.915 15.9-7.156c.796-.53 1.856-.265 2.65.265l27.032 16.166c1.06.53 2.385.53 3.18 0l105.74-61.217c1.06-.53 1.59-1.59 1.59-2.915V83.08c0-1.325-.53-2.385-1.59-2.915l-105.74-60.953c-1.06-.53-2.385-.53-3.18 0L20.405 80.166c-1.06.53-1.59 1.855-1.59 2.915v122.17c0 1.06.53 2.385 1.59 2.915l28.887 16.695c15.636 7.95 25.44-1.325 25.44-10.6V93.68c0-1.59 1.326-3.18 3.181-3.18h13.516c1.59 0 3.18 1.325 3.18 3.18v120.58c0 20.936-11.396 33.126-31.272 33.126c-6.095 0-10.865 0-24.38-6.625l-27.827-15.9C4.24 220.885 0 213.465 0 205.515V83.346C0 75.396 4.24 67.976 11.13 64L116.87 2.783c6.625-3.71 15.635-3.71 22.26 0L244.87 64C251.76 67.975 256 75.395 256 83.346v122.17c0 7.95-4.24 15.37-11.13 19.345L139.13 286.08c-3.445 1.59-7.42 2.385-11.13 2.385m32.596-84.009c-46.377 0-55.917-21.2-55.917-39.221c0-1.59 1.325-3.18 3.18-3.18h13.78c1.59 0 2.916 1.06 2.916 2.65c2.12 14.045 8.215 20.936 36.306 20.936c22.261 0 31.802-5.035 31.802-16.96c0-6.891-2.65-11.926-37.367-15.372c-28.886-2.915-46.907-9.275-46.907-32.33c0-21.467 18.02-34.187 48.232-34.187c33.921 0 50.617 11.66 52.737 37.101q0 1.193-.795 2.385c-.53.53-1.325 1.06-2.12 1.06h-13.78c-1.326 0-2.65-1.06-2.916-2.385c-3.18-14.575-11.395-19.345-33.126-19.345c-24.38 0-27.296 8.48-27.296 14.84c0 7.686 3.445 10.07 36.306 14.31c32.597 4.24 47.967 10.336 47.967 33.127c-.265 23.321-19.345 36.571-53.002 36.571"/></svg></span>Node.js</li>
+          <li class="stack-item reveal" style="--d:120ms" title="React"><span><svg class="logo-icon" viewBox="0 0 256 228" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="#00d8ff" d="M210.483 73.824a172 172 0 0 0-8.24-2.597c.465-1.9.893-3.777 1.273-5.621c6.238-30.281 2.16-54.676-11.769-62.708c-13.355-7.7-35.196.329-57.254 19.526a171 171 0 0 0-6.375 5.848a156 156 0 0 0-4.241-3.917C100.759 3.829 77.587-4.822 63.673 3.233C50.33 10.957 46.379 33.89 51.995 62.588a171 171 0 0 0 1.892 8.48c-3.28.932-6.445 1.924-9.474 2.98C17.309 83.498 0 98.307 0 113.668c0 15.865 18.582 31.778 46.812 41.427a146 146 0 0 0 6.921 2.165a168 168 0 0 0-2.01 9.138c-5.354 28.2-1.173 50.591 12.134 58.266c13.744 7.926 36.812-.22 59.273-19.855a146 146 0 0 0 5.342-4.923a168 168 0 0 0 6.92 6.314c21.758 18.722 43.246 26.282 56.54 18.586c13.731-7.949 18.194-32.003 12.4-61.268a145 145 0 0 0-1.535-6.842c1.62-.48 3.21-.974 4.76-1.488c29.348-9.723 48.443-25.443 48.443-41.52c0-15.417-17.868-30.326-45.517-39.844m-6.365 70.984q-2.102.694-4.3 1.345c-3.24-10.257-7.612-21.163-12.963-32.432c5.106-11 9.31-21.767 12.459-31.957c2.619.758 5.16 1.557 7.61 2.4c23.69 8.156 38.14 20.213 38.14 29.504c0 9.896-15.606 22.743-40.946 31.14m-10.514 20.834c2.562 12.94 2.927 24.64 1.23 33.787c-1.524 8.219-4.59 13.698-8.382 15.893c-8.067 4.67-25.32-1.4-43.927-17.412a157 157 0 0 1-6.437-5.87c7.214-7.889 14.423-17.06 21.459-27.246c12.376-1.098 24.068-2.894 34.671-5.345q.785 3.162 1.386 6.193M87.276 214.515c-7.882 2.783-14.16 2.863-17.955.675c-8.075-4.657-11.432-22.636-6.853-46.752a157 157 0 0 1 1.869-8.499c10.486 2.32 22.093 3.988 34.498 4.994c7.084 9.967 14.501 19.128 21.976 27.15a135 135 0 0 1-4.877 4.492c-9.933 8.682-19.886 14.842-28.658 17.94M50.35 144.747c-12.483-4.267-22.792-9.812-29.858-15.863c-6.35-5.437-9.555-10.836-9.555-15.216c0-9.322 13.897-21.212 37.076-29.293c2.813-.98 5.757-1.905 8.812-2.773c3.204 10.42 7.406 21.315 12.477 32.332c-5.137 11.18-9.399 22.249-12.634 32.792a135 135 0 0 1-6.318-1.979m12.378-84.26c-4.811-24.587-1.616-43.134 6.425-47.789c8.564-4.958 27.502 2.111 47.463 19.835a144 144 0 0 1 3.841 3.545c-7.438 7.987-14.787 17.08-21.808 26.988c-12.04 1.116-23.565 2.908-34.161 5.309a160 160 0 0 1-1.76-7.887m110.427 27.268a348 348 0 0 0-7.785-12.803c8.168 1.033 15.994 2.404 23.343 4.08c-2.206 7.072-4.956 14.465-8.193 22.045a381 381 0 0 0-7.365-13.322m-45.032-43.861c5.044 5.465 10.096 11.566 15.065 18.186a322 322 0 0 0-30.257-.006c4.974-6.559 10.069-12.652 15.192-18.18M82.802 87.83a323 323 0 0 0-7.227 13.238c-3.184-7.553-5.909-14.98-8.134-22.152c7.304-1.634 15.093-2.97 23.209-3.984a322 322 0 0 0-7.848 12.897m8.081 65.352c-8.385-.936-16.291-2.203-23.593-3.793c2.26-7.3 5.045-14.885 8.298-22.6a321 321 0 0 0 7.257 13.246c2.594 4.48 5.28 8.868 8.038 13.147m37.542 31.03c-5.184-5.592-10.354-11.779-15.403-18.433c4.902.192 9.899.29 14.978.29c5.218 0 10.376-.117 15.453-.343c-4.985 6.774-10.018 12.97-15.028 18.486m52.198-57.817c3.422 7.8 6.306 15.345 8.596 22.52c-7.422 1.694-15.436 3.058-23.88 4.071a382 382 0 0 0 7.859-13.026a347 347 0 0 0 7.425-13.565m-16.898 8.101a359 359 0 0 1-12.281 19.815a329 329 0 0 1-23.444.823c-7.967 0-15.716-.248-23.178-.732a310 310 0 0 1-12.513-19.846h.001a307 307 0 0 1-10.923-20.627a310 310 0 0 1 10.89-20.637l-.001.001a307 307 0 0 1 12.413-19.761c7.613-.576 15.42-.876 23.31-.876H128c7.926 0 15.743.303 23.354.883a329 329 0 0 1 12.335 19.695a359 359 0 0 1 11.036 20.54a330 330 0 0 1-11 20.722m22.56-122.124c8.572 4.944 11.906 24.881 6.52 51.026q-.518 2.504-1.15 5.09c-10.622-2.452-22.155-4.275-34.23-5.408c-7.034-10.017-14.323-19.124-21.64-27.008a161 161 0 0 1 5.888-5.4c18.9-16.447 36.564-22.941 44.612-18.3M128 90.808c12.625 0 22.86 10.235 22.86 22.86s-10.235 22.86-22.86 22.86s-22.86-10.235-22.86-22.86s10.235-22.86 22.86-22.86"/></svg></span>React</li>
+          <li class="stack-item reveal" style="--d:150ms" title="AWS"><span><svg class="logo-icon" viewBox="0 0 256 153" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="#252f3e" d="M72.392 55.438c0 3.137.34 5.68.933 7.545a45.4 45.4 0 0 0 2.712 6.103c.424.678.593 1.356.593 1.95c0 .847-.508 1.695-1.61 2.543l-5.34 3.56c-.763.509-1.526.763-2.205.763c-.847 0-1.695-.424-2.543-1.187a26 26 0 0 1-3.051-3.984c-.848-1.44-1.696-3.052-2.628-5.001q-9.919 11.697-24.922 11.698c-7.12 0-12.8-2.035-16.954-6.103c-4.153-4.07-6.272-9.495-6.272-16.276c0-7.205 2.543-13.054 7.714-17.462c5.17-4.408 12.037-6.612 20.768-6.612c2.882 0 5.849.254 8.985.678c3.137.424 6.358 1.102 9.749 1.865V29.33c0-6.443-1.357-10.935-3.985-13.563c-2.712-2.628-7.29-3.9-13.817-3.9c-2.967 0-6.018.34-9.155 1.103s-6.188 1.695-9.155 2.882c-1.356.593-2.373.932-2.967 1.102s-1.017.254-1.356.254c-1.187 0-1.78-.848-1.78-2.628v-4.154c0-1.356.17-2.373.593-2.966c.424-.594 1.187-1.187 2.374-1.78q4.45-2.29 10.68-3.815C33.908.763 38.316.255 42.978.255c10.088 0 17.463 2.288 22.21 6.866c4.662 4.577 7.036 11.528 7.036 20.853v27.464zM37.976 68.323c2.798 0 5.68-.508 8.731-1.526c3.052-1.017 5.765-2.882 8.053-5.425c1.357-1.61 2.374-3.39 2.882-5.425c.509-2.034.848-4.493.848-7.375v-3.56a71 71 0 0 0-7.799-1.441a64 64 0 0 0-7.968-.509c-5.68 0-9.833 1.102-12.63 3.391s-4.154 5.51-4.154 9.748c0 3.984 1.017 6.951 3.136 8.986c2.035 2.119 5.002 3.136 8.901 3.136m68.069 9.155c-1.526 0-2.543-.254-3.221-.848c-.678-.508-1.272-1.695-1.78-3.305L81.124 7.799c-.51-1.696-.764-2.798-.764-3.391c0-1.356.678-2.12 2.035-2.12h8.307c1.61 0 2.713.255 3.306.848c.678.509 1.187 1.696 1.695 3.306l14.241 56.117l13.224-56.117c.424-1.695.933-2.797 1.61-3.306c.679-.508 1.866-.847 3.392-.847h6.781c1.61 0 2.713.254 3.39.847c.679.509 1.272 1.696 1.611 3.306l13.394 56.795L168.01 6.442c.508-1.695 1.102-2.797 1.695-3.306c.678-.508 1.78-.847 3.306-.847h7.883c1.357 0 2.12.678 2.12 2.119c0 .424-.085.848-.17 1.356s-.254 1.187-.593 2.12l-20.43 65.525q-.762 2.544-1.78 3.306c-.678.509-1.78.848-3.22.848h-7.29c-1.611 0-2.713-.254-3.392-.848c-.678-.593-1.271-1.695-1.61-3.39l-13.14-54.676l-13.054 54.59c-.423 1.696-.932 2.798-1.61 3.391c-.678.594-1.865.848-3.39.848zm108.927 2.289c-4.408 0-8.816-.509-13.054-1.526c-4.239-1.017-7.544-2.12-9.748-3.39c-1.357-.764-2.29-1.611-2.628-2.374a6 6 0 0 1-.509-2.374V65.78c0-1.78.678-2.628 1.95-2.628a4.8 4.8 0 0 1 1.526.255c.508.17 1.271.508 2.119.847a46 46 0 0 0 9.324 2.967a51 51 0 0 0 10.088 1.017c5.34 0 9.494-.932 12.376-2.797s4.408-4.577 4.408-8.053c0-2.373-.763-4.323-2.289-5.934s-4.408-3.051-8.561-4.408l-12.292-3.814c-6.188-1.95-10.765-4.832-13.563-8.647c-2.797-3.73-4.238-7.883-4.238-12.291q0-5.34 2.289-9.41c1.525-2.712 3.56-5.085 6.103-6.95c2.543-1.95 5.425-3.391 8.816-4.408c3.39-1.017 6.95-1.441 10.68-1.441c1.865 0 3.815.085 5.68.339c1.95.254 3.73.593 5.51.932c1.695.424 3.306.848 4.832 1.357q2.288.762 3.56 1.525c1.187.679 2.034 1.357 2.543 2.12q.763 1.017.763 2.797v3.984c0 1.78-.678 2.713-1.95 2.713c-.678 0-1.78-.34-3.22-1.018q-7.25-3.306-16.276-3.306c-4.832 0-8.647.763-11.275 2.374c-2.627 1.61-3.984 4.069-3.984 7.544c0 2.374.848 4.408 2.543 6.019s4.832 3.221 9.325 4.662l12.037 3.815c6.103 1.95 10.511 4.662 13.139 8.137s3.9 7.46 3.9 11.868c0 3.645-.764 6.951-2.205 9.833c-1.525 2.882-3.56 5.425-6.188 7.46c-2.628 2.119-5.764 3.645-9.409 4.747c-3.815 1.187-7.799 1.78-12.122 1.78"/><path fill="#f90" d="M230.993 120.964c-27.888 20.599-68.408 31.534-103.247 31.534c-48.827 0-92.821-18.056-126.05-48.064c-2.628-2.373-.255-5.594 2.881-3.73c35.942 20.854 80.276 33.484 126.136 33.484c30.94 0 64.932-6.442 96.212-19.666c4.662-2.12 8.646 3.052 4.068 6.442m11.614-13.224c-3.56-4.577-23.566-2.204-32.636-1.102c-2.713.34-3.137-2.034-.678-3.814c15.936-11.19 42.13-7.968 45.181-4.239c3.052 3.815-.848 30.008-15.767 42.554c-2.288 1.95-4.492.933-3.475-1.61c3.39-8.393 10.935-27.296 7.375-31.789"/></svg></span>AWS</li>
+          <li class="stack-item reveal" style="--d:180ms" title="Docker"><span><svg class="logo-icon" viewBox="0 0 256 185" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="#2396ed" d="M250.716 70.497c-5.765-4-18.976-5.5-29.304-3.5c-1.2-10-6.725-18.749-16.333-26.499l-5.524-4l-3.844 5.75c-4.803 7.5-7.205 18-6.485 28c.24 3.499 1.441 9.749 5.044 15.249c-3.362 2-10.328 4.5-19.455 4.5H1.155l-.48 2c-1.682 9.999-1.682 41.248 18.014 65.247c14.892 18.249 36.99 27.499 66.053 27.499c62.93 0 109.528-30.25 131.386-84.997c8.647.25 27.142 0 36.51-18.75c.24-.5.72-1.5 2.401-5.249l.961-2zM139.986 0h-26.42v24.999h26.42zm0 29.999h-26.42v24.999h26.42zm-31.225 0h-26.42v24.999h26.42zm-31.225 0H51.115v24.999h26.421zM46.311 59.998H19.89v24.999h26.42zm31.225 0H51.115v24.999h26.421zm31.225 0h-26.42v24.999h26.42zm31.226 0h-26.422v24.999h26.422zm31.225 0H144.79v24.999h26.422z"/></svg></span>Docker</li>
+          <li class="stack-item reveal" style="--d:210ms" title="Snowflake"><span><svg class="logo-icon" viewBox="0 0 256 255" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="#29b5e8" d="M100.212 161.19c8.15.579 14.607 7.254 14.776 15.442l.003.328v62.095c0 8.751-7.166 15.842-15.965 15.842c-8.735 0-15.813-6.92-15.982-15.526l-.003-.316V204.32l-30.408 17.383c-7.625 4.397-17.376 1.795-21.803-5.763c-4.35-7.48-1.866-17.04 5.541-21.495l.295-.173l54.275-31.015a15.83 15.83 0 0 1 9.27-2.067m64.452 1.854l.382.213l54.264 31.015c7.647 4.376 10.241 14.09 5.846 21.668c-4.348 7.46-13.915 10.092-21.503 5.931l-.299-.168l-30.387-17.383v34.735c0 8.751-7.144 15.842-15.986 15.842c-8.735 0-15.794-6.92-15.963-15.526l-.003-.316V176.96c0-8.337 6.502-15.184 14.78-15.77c2.97-.252 6.056.33 8.87 1.854M23.671 82.509l.3.167l54.234 31.035c3.813 2.179 6.358 5.635 7.432 9.504c.357 1.246.52 2.49.583 3.737c.04 1.72-.185 3.464-.727 5.155a15.74 15.74 0 0 1-6.926 8.824l-.362.213L23.971 172.2c-7.656 4.367-17.417 1.783-21.81-5.773c-4.371-7.5-1.886-17.013 5.544-21.475l.292-.17l30.306-17.323l-30.306-17.37C.34 105.708-2.276 96.047 2.16 88.481c4.337-7.478 13.902-10.105 21.511-5.973m230.177 5.973c4.425 7.565 1.808 17.227-5.846 21.605l-30.308 17.37l30.308 17.323c7.654 4.386 10.27 14.05 5.846 21.646c-4.417 7.556-14.186 10.14-21.813 5.773l-54.275-31.055c-3.619-2.087-6.132-5.36-7.247-9.037a15.4 15.4 0 0 1-.716-5.155a15.3 15.3 0 0 1 .562-3.737a15.9 15.9 0 0 1 7.401-9.504l54.275-31.035c7.627-4.367 17.396-1.77 21.813 5.806M131.306 97.84c.919 0 2.186.516 2.831 1.174l22.558 22.326c.643.638 1.165 1.904 1.165 2.817v6.583c0 .892-.522 2.157-1.165 2.786l-22.558 22.327c-.645.656-1.892 1.193-2.831 1.193h-6.634c-.911 0-2.178-.537-2.833-1.193l-22.546-22.327c-.646-.629-1.167-1.894-1.167-2.786v-6.583c0-.913.521-2.18 1.167-2.817l22.546-22.326c.655-.658 1.922-1.174 2.833-1.174zm-3.192 19.054h-.253c-.91 0-2.177.528-2.811 1.164l-6.532 6.444c-.655.667-1.156 1.924-1.156 2.826v.252c0 .891.501 2.137 1.156 2.786l6.532 6.462c.643.638 1.9 1.164 2.81 1.164h.254c.912 0 2.18-.526 2.824-1.164l6.531-6.462c.644-.649 1.195-1.895 1.195-2.786v-.252c0-.902-.551-2.16-1.195-2.826l-6.531-6.444c-.644-.636-1.912-1.164-2.824-1.164M156.98 0c8.735 0 15.813 6.923 15.983 15.505l.003.315v34.746l30.387-17.404c7.636-4.374 17.397-1.78 21.802 5.784a15.783 15.783 0 0 1-5.55 21.477l-.296.173l-54.264 31.044a16 16 0 0 1-9.252 2.065c-8.168-.597-14.608-7.283-14.776-15.462l-.003-.328V15.82C141.015 7.092 148.14 0 156.98 0M99.026 0c8.693 0 15.792 6.923 15.962 15.505l.003.315v62.095c0 8.327-6.52 15.185-14.78 15.79a16.05 16.05 0 0 1-8.888-1.854l-.382-.211l-54.275-31.044c-7.636-4.378-10.243-14.051-5.836-21.65c4.37-7.465 13.926-10.09 21.505-5.95l.298.166l30.408 17.404V15.82C83.041 7.092 90.185 0 99.026 0"/></svg></span>Snowflake</li>
+          <li class="stack-item reveal" style="--d:240ms" title="Databricks"><span><svg class="logo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="color:#FF3621"><path fill="currentColor" d="M.95 14.184L12 20.403l9.919-5.55v2.21L12 22.662l-10.484-5.96l-.565.308v.77L12 24l11.05-6.218v-4.317l-.515-.309L12 19.118l-9.867-5.653v-2.21L12 16.805l11.05-6.218V6.32l-.515-.308L12 11.974L2.647 6.681L12 1.388l7.76 4.368l.668-.411v-.566L12 0L.95 6.27v.72L12 13.207l9.919-5.55v2.26L12 15.52L1.516 9.56l-.565.308Z"/></svg></span>Databricks</li>
+          <li class="stack-item reveal" style="--d:270ms" title="MongoDB"><span><svg class="logo-icon" viewBox="0 0 256 549" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="#01ec64" d="M175.622 61.108C152.612 33.807 132.797 6.078 128.749.32a1.03 1.03 0 0 0-1.492 0c-4.048 5.759-23.863 33.487-46.874 60.788c-197.507 251.896 31.108 421.89 31.108 421.89l1.917 1.28c1.704 26.234 5.966 63.988 5.966 63.988h17.045s4.26-37.54 5.965-63.987l1.918-1.494c.213.214 228.828-169.78 31.32-421.677m-47.726 418.05s-10.227-8.744-12.997-13.222v-.428l12.358-274.292c0-.853 1.279-.853 1.279 0l12.357 274.292v.428c-2.77 4.478-12.997 13.223-12.997 13.223"/></svg></span>MongoDB</li>
+          <li class="stack-item reveal" style="--d:300ms" title="Redis"><span><svg class="logo-icon" viewBox="0 0 256 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="#912626" d="M245.97 168.943c-13.662 7.121-84.434 36.22-99.501 44.075s-23.437 7.78-35.34 2.09c-11.902-5.69-87.216-36.112-100.783-42.597C3.566 169.271 0 166.535 0 163.951v-25.876s98.05-21.345 113.879-27.024c15.828-5.679 21.32-5.884 34.79-.95c13.472 4.936 94.018 19.468 107.331 24.344l-.006 25.51c.002 2.558-3.07 5.364-10.024 8.988"/><path fill="#c6302b" d="M245.965 143.22c-13.661 7.118-84.431 36.218-99.498 44.072c-15.066 7.857-23.436 7.78-35.338 2.09c-11.903-5.686-87.214-36.113-100.78-42.594c-13.566-6.485-13.85-10.948-.524-16.166c13.326-5.22 88.224-34.605 104.055-40.284c15.828-5.677 21.319-5.884 34.789-.948c13.471 4.934 83.819 32.935 97.13 37.81c13.316 4.881 13.827 8.9.166 16.02"/><path fill="#912626" d="M245.97 127.074c-13.662 7.122-84.434 36.22-99.501 44.078c-15.067 7.853-23.437 7.777-35.34 2.087c-11.903-5.687-87.216-36.112-100.783-42.597C3.566 127.402 0 124.67 0 122.085V96.206s98.05-21.344 113.879-27.023c15.828-5.679 21.32-5.885 34.79-.95C162.142 73.168 242.688 87.697 256 92.574l-.006 25.513c.002 2.557-3.07 5.363-10.024 8.987"/><path fill="#c6302b" d="M245.965 101.351c-13.661 7.12-84.431 36.218-99.498 44.075c-15.066 7.854-23.436 7.777-35.338 2.087c-11.903-5.686-87.214-36.112-100.78-42.594c-13.566-6.483-13.85-10.947-.524-16.167C23.151 83.535 98.05 54.148 113.88 48.47c15.828-5.678 21.319-5.884 34.789-.949c13.471 4.934 83.819 32.933 97.13 37.81c13.316 4.88 13.827 8.9.166 16.02"/><path fill="#912626" d="M245.97 83.653c-13.662 7.12-84.434 36.22-99.501 44.078c-15.067 7.854-23.437 7.777-35.34 2.087c-11.903-5.687-87.216-36.113-100.783-42.595C3.566 83.98 0 81.247 0 78.665v-25.88s98.05-21.343 113.879-27.021c15.828-5.68 21.32-5.884 34.79-.95C162.142 29.749 242.688 44.278 256 49.155l-.006 25.512c.002 2.555-3.07 5.361-10.024 8.986"/><path fill="#c6302b" d="M245.965 57.93c-13.661 7.12-84.431 36.22-99.498 44.074c-15.066 7.854-23.436 7.777-35.338 2.09C99.227 98.404 23.915 67.98 10.35 61.497S-3.5 50.55 9.825 45.331C23.151 40.113 98.05 10.73 113.88 5.05c15.828-5.679 21.319-5.883 34.789-.948s83.819 32.934 97.13 37.811c13.316 4.876 13.827 8.897.166 16.017"/><path fill="#fff" d="m159.283 32.757l-22.01 2.285l-4.927 11.856l-7.958-13.23l-25.415-2.284l18.964-6.839l-5.69-10.498l17.755 6.944l16.738-5.48l-4.524 10.855zm-28.251 57.518L89.955 73.238l58.86-9.035zm-56.95-50.928c17.375 0 31.46 5.46 31.46 12.194c0 6.736-14.085 12.195-31.46 12.195s-31.46-5.46-31.46-12.195c0-6.734 14.085-12.194 31.46-12.194"/><path fill="#621b1c" d="m185.295 35.998l34.836 13.766l-34.806 13.753z"/><path fill="#9a2928" d="m146.755 51.243l38.54-15.245l.03 27.519l-3.779 1.478z"/></svg></span>Redis</li>
+          <li class="stack-item reveal" style="--d:330ms" title="LangChain"><span><svg class="logo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="color:#00CCB4"><path fill="currentColor" d="M13.796 0a6.93 6.93 0 0 0-4.91 2.019L5.451 5.455l3.273 3.27l3.432-3.432a2.284 2.284 0 0 1 3.277 0a2.28 2.28 0 0 1 0 3.275L12 12.001l3.273 3.273l3.433-3.435c2.692-2.692 2.692-7.127 0-9.82A6.92 6.92 0 0 0 13.796 0m-5.07 8.728l-3.433 3.434c-2.692 2.693-2.692 7.126 0 9.819A6.92 6.92 0 0 0 10.203 24a6.93 6.93 0 0 0 4.911-2.02l3.432-3.432l-3.271-3.272l-3.433 3.433a2.284 2.284 0 0 1-3.277 0a2.28 2.28 0 0 1 0-3.276L12 12z"/></svg></span>LangChain</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================ WORK ============================ -->
+    <section class="section" id="work" data-shape="2">
+      <div class="section-head">
+        <p class="kicker">02 — Experience</p>
+        <h2 class="section-title">Where I've shipped</h2>
+      </div>
+
+      <ol class="timeline">
+        <li class="tl-item reveal">
+          <p class="tl-date">Sep 2025 — Present</p>
+            <div class="tl-rail" aria-hidden="true"><span></span></div>
+          <div class="tl-body">
+            <h3 class="tl-role">Instructional Student Assistant<span class="tl-at">CSULB — Explainable &amp; Ethical AI</span></h3>
+            <p class="tl-text">Run labs and grading for the Explainable &amp; Ethical AI course, and coach students through model interpretability work.</p>
+            <ul class="tl-tags"><li>Interpretability</li><li>Teaching</li></ul>
           </div>
-        </section>
+        </li>
 
-        <!-- ––– Tech Stack ––– -->
-        <section class="tech-stack">
-          <h2 class="h3">Tech Stack</h2>
-          <ul class="tech-grid">
-            <!-- Programming Languages -->
-            <li class="tech-card reveal" title="Python">
-              <div class="tech-icon"><svg class="logo-icon" viewBox="0 0 256 255" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><defs><linearGradient id="SVGg39WleeP" x1="12.959%" x2="79.639%" y1="12.039%" y2="78.201%"><stop offset="0%" stop-color="#387eb8"/><stop offset="100%" stop-color="#366994"/></linearGradient><linearGradient id="SVGlXoRkc4T" x1="19.128%" x2="90.742%" y1="20.579%" y2="88.429%"><stop offset="0%" stop-color="#ffe052"/><stop offset="100%" stop-color="#ffc331"/></linearGradient></defs><path fill="url(#SVGg39WleeP)" d="M126.916.072c-64.832 0-60.784 28.115-60.784 28.115l.072 29.128h61.868v8.745H41.631S.145 61.355.145 126.77c0 65.417 36.21 63.097 36.21 63.097h21.61v-30.356s-1.165-36.21 35.632-36.21h61.362s34.475.557 34.475-33.319V33.97S194.67.072 126.916.072M92.802 19.66a11.12 11.12 0 0 1 11.13 11.13a11.12 11.12 0 0 1-11.13 11.13a11.12 11.12 0 0 1-11.13-11.13a11.12 11.12 0 0 1 11.13-11.13"/><path fill="url(#SVGlXoRkc4T)" d="M128.757 254.126c64.832 0 60.784-28.115 60.784-28.115l-.072-29.127H127.6v-8.745h86.441s41.486 4.705 41.486-60.712c0-65.416-36.21-63.096-36.21-63.096h-21.61v30.355s1.165 36.21-35.632 36.21h-61.362s-34.475-.557-34.475 33.32v56.013s-5.235 33.897 62.518 33.897m34.114-19.586a11.12 11.12 0 0 1-11.13-11.13a11.12 11.12 0 0 1 11.13-11.131a11.12 11.12 0 0 1 11.13 11.13a11.12 11.12 0 0 1-11.13 11.13"/></svg></div><span
-                class="tech-name">Python</span>
-            </li>
-            <li class="tech-card reveal" style="--reveal-delay: 40ms" title="Java">
-              <div class="tech-icon"><svg class="logo-icon" viewBox="0 0 256 346" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="#5382a1" d="M82.554 267.473s-13.198 7.675 9.393 10.272c27.369 3.122 41.356 2.675 71.517-3.034c0 0 7.93 4.972 19.003 9.279c-67.611 28.977-153.019-1.679-99.913-16.517m-8.262-37.814s-14.803 10.958 7.805 13.296c29.236 3.016 52.324 3.263 92.276-4.43c0 0 5.526 5.602 14.215 8.666c-81.747 23.904-172.798 1.885-114.296-17.532"/><path fill="#e76f00" d="M143.942 165.515c16.66 19.18-4.377 36.44-4.377 36.44s42.301-21.837 22.874-49.183c-18.144-25.5-32.059-38.172 43.268-81.858c0 0-118.238 29.53-61.765 94.6"/><path fill="#5382a1" d="M233.364 295.442s9.767 8.047-10.757 14.273c-39.026 11.823-162.432 15.393-196.714.471c-12.323-5.36 10.787-12.8 18.056-14.362c7.581-1.644 11.914-1.337 11.914-1.337c-13.705-9.655-88.583 18.957-38.034 27.15c137.853 22.356 251.292-10.066 215.535-26.195M88.9 190.48s-62.771 14.91-22.228 20.323c17.118 2.292 51.243 1.774 83.03-.89c25.978-2.19 52.063-6.85 52.063-6.85s-9.16 3.923-15.787 8.448c-63.744 16.765-186.886 8.966-151.435-8.183c29.981-14.492 54.358-12.848 54.358-12.848m112.605 62.942c64.8-33.672 34.839-66.03 13.927-61.67c-5.126 1.066-7.411 1.99-7.411 1.99s1.903-2.98 5.537-4.27c41.37-14.545 73.187 42.897-13.355 65.647c0 .001 1.003-.895 1.302-1.697"/><path fill="#e76f00" d="M162.439.371s35.887 35.9-34.037 91.101c-56.071 44.282-12.786 69.53-.023 98.377c-32.73-29.53-56.75-55.526-40.635-79.72C111.395 74.612 176.918 57.393 162.439.37"/><path fill="#5382a1" d="M95.268 344.665c62.199 3.982 157.712-2.209 159.974-31.64c0 0-4.348 11.158-51.404 20.018c-53.088 9.99-118.564 8.824-157.399 2.421c.001 0 7.95 6.58 48.83 9.201"/></svg></div><span
-                class="tech-name">Java</span>
-            </li>
-            <li class="tech-card reveal" style="--reveal-delay: 80ms" title="JavaScript">
-              <div class="tech-icon"><svg class="logo-icon" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="#f7df1e" d="M0 0h256v256H0z"/><path d="m67.312 213.932l19.59-11.856c3.78 6.701 7.218 12.371 15.465 12.371c7.905 0 12.89-3.092 12.89-15.12v-81.798h24.057v82.138c0 24.917-14.606 36.259-35.916 36.259c-19.245 0-30.416-9.967-36.087-21.996m85.07-2.576l19.588-11.341c5.157 8.421 11.859 14.607 23.715 14.607c9.969 0 16.325-4.984 16.325-11.858c0-8.248-6.53-11.17-17.528-15.98l-6.013-2.58c-17.357-7.387-28.87-16.667-28.87-36.257c0-18.044 13.747-31.792 35.228-31.792c15.294 0 26.292 5.328 34.196 19.247l-18.732 12.03c-4.125-7.389-8.591-10.31-15.465-10.31c-7.046 0-11.514 4.468-11.514 10.31c0 7.217 4.468 10.14 14.778 14.608l6.014 2.577c20.45 8.765 31.963 17.7 31.963 37.804c0 21.654-17.012 33.51-39.867 33.51c-22.339 0-36.774-10.654-43.819-24.574"/></svg></div><span
-                class="tech-name">JavaScript</span>
-            </li>
-
-            <!-- Web Development & Frameworks -->
-            <li class="tech-card reveal" style="--reveal-delay: 120ms" title="Node.js">
-              <div class="tech-icon"><svg class="logo-icon" viewBox="0 0 256 289" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="#539e43" d="M128 288.464c-3.975 0-7.685-1.06-11.13-2.915l-35.247-20.936c-5.3-2.915-2.65-3.975-1.06-4.505c7.155-2.385 8.48-2.915 15.9-7.156c.796-.53 1.856-.265 2.65.265l27.032 16.166c1.06.53 2.385.53 3.18 0l105.74-61.217c1.06-.53 1.59-1.59 1.59-2.915V83.08c0-1.325-.53-2.385-1.59-2.915l-105.74-60.953c-1.06-.53-2.385-.53-3.18 0L20.405 80.166c-1.06.53-1.59 1.855-1.59 2.915v122.17c0 1.06.53 2.385 1.59 2.915l28.887 16.695c15.636 7.95 25.44-1.325 25.44-10.6V93.68c0-1.59 1.326-3.18 3.181-3.18h13.516c1.59 0 3.18 1.325 3.18 3.18v120.58c0 20.936-11.396 33.126-31.272 33.126c-6.095 0-10.865 0-24.38-6.625l-27.827-15.9C4.24 220.885 0 213.465 0 205.515V83.346C0 75.396 4.24 67.976 11.13 64L116.87 2.783c6.625-3.71 15.635-3.71 22.26 0L244.87 64C251.76 67.975 256 75.395 256 83.346v122.17c0 7.95-4.24 15.37-11.13 19.345L139.13 286.08c-3.445 1.59-7.42 2.385-11.13 2.385m32.596-84.009c-46.377 0-55.917-21.2-55.917-39.221c0-1.59 1.325-3.18 3.18-3.18h13.78c1.59 0 2.916 1.06 2.916 2.65c2.12 14.045 8.215 20.936 36.306 20.936c22.261 0 31.802-5.035 31.802-16.96c0-6.891-2.65-11.926-37.367-15.372c-28.886-2.915-46.907-9.275-46.907-32.33c0-21.467 18.02-34.187 48.232-34.187c33.921 0 50.617 11.66 52.737 37.101q0 1.193-.795 2.385c-.53.53-1.325 1.06-2.12 1.06h-13.78c-1.326 0-2.65-1.06-2.916-2.385c-3.18-14.575-11.395-19.345-33.126-19.345c-24.38 0-27.296 8.48-27.296 14.84c0 7.686 3.445 10.07 36.306 14.31c32.597 4.24 47.967 10.336 47.967 33.127c-.265 23.321-19.345 36.571-53.002 36.571"/></svg></div><span
-                class="tech-name">Node.js</span>
-            </li>
-
-            <!-- Backend & Databases -->
-            <li class="tech-card reveal" style="--reveal-delay: 160ms" title="MongoDB">
-              <div class="tech-icon"><svg class="logo-icon" viewBox="0 0 256 549" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="#01ec64" d="M175.622 61.108C152.612 33.807 132.797 6.078 128.749.32a1.03 1.03 0 0 0-1.492 0c-4.048 5.759-23.863 33.487-46.874 60.788c-197.507 251.896 31.108 421.89 31.108 421.89l1.917 1.28c1.704 26.234 5.966 63.988 5.966 63.988h17.045s4.26-37.54 5.965-63.987l1.918-1.494c.213.214 228.828-169.78 31.32-421.677m-47.726 418.05s-10.227-8.744-12.997-13.222v-.428l12.358-274.292c0-.853 1.279-.853 1.279 0l12.357 274.292v.428c-2.77 4.478-12.997 13.223-12.997 13.223"/></svg></div><span
-                class="tech-name">MongoDB</span>
-            </li>
-            <li class="tech-card reveal" style="--reveal-delay: 200ms" title="Redis">
-              <div class="tech-icon"><svg class="logo-icon" viewBox="0 0 256 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="#912626" d="M245.97 168.943c-13.662 7.121-84.434 36.22-99.501 44.075s-23.437 7.78-35.34 2.09c-11.902-5.69-87.216-36.112-100.783-42.597C3.566 169.271 0 166.535 0 163.951v-25.876s98.05-21.345 113.879-27.024c15.828-5.679 21.32-5.884 34.79-.95c13.472 4.936 94.018 19.468 107.331 24.344l-.006 25.51c.002 2.558-3.07 5.364-10.024 8.988"/><path fill="#c6302b" d="M245.965 143.22c-13.661 7.118-84.431 36.218-99.498 44.072c-15.066 7.857-23.436 7.78-35.338 2.09c-11.903-5.686-87.214-36.113-100.78-42.594c-13.566-6.485-13.85-10.948-.524-16.166c13.326-5.22 88.224-34.605 104.055-40.284c15.828-5.677 21.319-5.884 34.789-.948c13.471 4.934 83.819 32.935 97.13 37.81c13.316 4.881 13.827 8.9.166 16.02"/><path fill="#912626" d="M245.97 127.074c-13.662 7.122-84.434 36.22-99.501 44.078c-15.067 7.853-23.437 7.777-35.34 2.087c-11.903-5.687-87.216-36.112-100.783-42.597C3.566 127.402 0 124.67 0 122.085V96.206s98.05-21.344 113.879-27.023c15.828-5.679 21.32-5.885 34.79-.95C162.142 73.168 242.688 87.697 256 92.574l-.006 25.513c.002 2.557-3.07 5.363-10.024 8.987"/><path fill="#c6302b" d="M245.965 101.351c-13.661 7.12-84.431 36.218-99.498 44.075c-15.066 7.854-23.436 7.777-35.338 2.087c-11.903-5.686-87.214-36.112-100.78-42.594c-13.566-6.483-13.85-10.947-.524-16.167C23.151 83.535 98.05 54.148 113.88 48.47c15.828-5.678 21.319-5.884 34.789-.949c13.471 4.934 83.819 32.933 97.13 37.81c13.316 4.88 13.827 8.9.166 16.02"/><path fill="#912626" d="M245.97 83.653c-13.662 7.12-84.434 36.22-99.501 44.078c-15.067 7.854-23.437 7.777-35.34 2.087c-11.903-5.687-87.216-36.113-100.783-42.595C3.566 83.98 0 81.247 0 78.665v-25.88s98.05-21.343 113.879-27.021c15.828-5.68 21.32-5.884 34.79-.95C162.142 29.749 242.688 44.278 256 49.155l-.006 25.512c.002 2.555-3.07 5.361-10.024 8.986"/><path fill="#c6302b" d="M245.965 57.93c-13.661 7.12-84.431 36.22-99.498 44.074c-15.066 7.854-23.436 7.777-35.338 2.09C99.227 98.404 23.915 67.98 10.35 61.497S-3.5 50.55 9.825 45.331C23.151 40.113 98.05 10.73 113.88 5.05c15.828-5.679 21.319-5.883 34.789-.948s83.819 32.934 97.13 37.811c13.316 4.876 13.827 8.897.166 16.017"/><path fill="#fff" d="m159.283 32.757l-22.01 2.285l-4.927 11.856l-7.958-13.23l-25.415-2.284l18.964-6.839l-5.69-10.498l17.755 6.944l16.738-5.48l-4.524 10.855zm-28.251 57.518L89.955 73.238l58.86-9.035zm-56.95-50.928c17.375 0 31.46 5.46 31.46 12.194c0 6.736-14.085 12.195-31.46 12.195s-31.46-5.46-31.46-12.195c0-6.734 14.085-12.194 31.46-12.194"/><path fill="#621b1c" d="m185.295 35.998l34.836 13.766l-34.806 13.753z"/><path fill="#9a2928" d="m146.755 51.243l38.54-15.245l.03 27.519l-3.779 1.478z"/></svg></div><span
-                class="tech-name">Redis</span>
-            </li>
-            <li class="tech-card reveal" style="--reveal-delay: 240ms" title="Snowflake">
-              <div class="tech-icon"><svg class="logo-icon" viewBox="0 0 256 255" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="#29b5e8" d="M100.212 161.19c8.15.579 14.607 7.254 14.776 15.442l.003.328v62.095c0 8.751-7.166 15.842-15.965 15.842c-8.735 0-15.813-6.92-15.982-15.526l-.003-.316V204.32l-30.408 17.383c-7.625 4.397-17.376 1.795-21.803-5.763c-4.35-7.48-1.866-17.04 5.541-21.495l.295-.173l54.275-31.015a15.83 15.83 0 0 1 9.27-2.067m64.452 1.854l.382.213l54.264 31.015c7.647 4.376 10.241 14.09 5.846 21.668c-4.348 7.46-13.915 10.092-21.503 5.931l-.299-.168l-30.387-17.383v34.735c0 8.751-7.144 15.842-15.986 15.842c-8.735 0-15.794-6.92-15.963-15.526l-.003-.316V176.96c0-8.337 6.502-15.184 14.78-15.77c2.97-.252 6.056.33 8.87 1.854M23.671 82.509l.3.167l54.234 31.035c3.813 2.179 6.358 5.635 7.432 9.504c.357 1.246.52 2.49.583 3.737c.04 1.72-.185 3.464-.727 5.155a15.74 15.74 0 0 1-6.926 8.824l-.362.213L23.971 172.2c-7.656 4.367-17.417 1.783-21.81-5.773c-4.371-7.5-1.886-17.013 5.544-21.475l.292-.17l30.306-17.323l-30.306-17.37C.34 105.708-2.276 96.047 2.16 88.481c4.337-7.478 13.902-10.105 21.511-5.973m230.177 5.973c4.425 7.565 1.808 17.227-5.846 21.605l-30.308 17.37l30.308 17.323c7.654 4.386 10.27 14.05 5.846 21.646c-4.417 7.556-14.186 10.14-21.813 5.773l-54.275-31.055c-3.619-2.087-6.132-5.36-7.247-9.037a15.4 15.4 0 0 1-.716-5.155a15.3 15.3 0 0 1 .562-3.737a15.9 15.9 0 0 1 7.401-9.504l54.275-31.035c7.627-4.367 17.396-1.77 21.813 5.806M131.306 97.84c.919 0 2.186.516 2.831 1.174l22.558 22.326c.643.638 1.165 1.904 1.165 2.817v6.583c0 .892-.522 2.157-1.165 2.786l-22.558 22.327c-.645.656-1.892 1.193-2.831 1.193h-6.634c-.911 0-2.178-.537-2.833-1.193l-22.546-22.327c-.646-.629-1.167-1.894-1.167-2.786v-6.583c0-.913.521-2.18 1.167-2.817l22.546-22.326c.655-.658 1.922-1.174 2.833-1.174zm-3.192 19.054h-.253c-.91 0-2.177.528-2.811 1.164l-6.532 6.444c-.655.667-1.156 1.924-1.156 2.826v.252c0 .891.501 2.137 1.156 2.786l6.532 6.462c.643.638 1.9 1.164 2.81 1.164h.254c.912 0 2.18-.526 2.824-1.164l6.531-6.462c.644-.649 1.195-1.895 1.195-2.786v-.252c0-.902-.551-2.16-1.195-2.826l-6.531-6.444c-.644-.636-1.912-1.164-2.824-1.164M156.98 0c8.735 0 15.813 6.923 15.983 15.505l.003.315v34.746l30.387-17.404c7.636-4.374 17.397-1.78 21.802 5.784a15.783 15.783 0 0 1-5.55 21.477l-.296.173l-54.264 31.044a16 16 0 0 1-9.252 2.065c-8.168-.597-14.608-7.283-14.776-15.462l-.003-.328V15.82C141.015 7.092 148.14 0 156.98 0M99.026 0c8.693 0 15.792 6.923 15.962 15.505l.003.315v62.095c0 8.327-6.52 15.185-14.78 15.79a16.05 16.05 0 0 1-8.888-1.854l-.382-.211l-54.275-31.044c-7.636-4.378-10.243-14.051-5.836-21.65c4.37-7.465 13.926-10.09 21.505-5.95l.298.166l30.408 17.404V15.82C83.041 7.092 90.185 0 99.026 0"/></svg></div><span
-                class="tech-name">Snowflake</span>
-            </li>
-            <li class="tech-card reveal" style="--reveal-delay: 280ms" title="Databricks">
-              <div class="tech-icon"><svg class="logo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="color:#FF3621"><path fill="currentColor" d="M.95 14.184L12 20.403l9.919-5.55v2.21L12 22.662l-10.484-5.96l-.565.308v.77L12 24l11.05-6.218v-4.317l-.515-.309L12 19.118l-9.867-5.653v-2.21L12 16.805l11.05-6.218V6.32l-.515-.308L12 11.974L2.647 6.681L12 1.388l7.76 4.368l.668-.411v-.566L12 0L.95 6.27v.72L12 13.207l9.919-5.55v2.26L12 15.52L1.516 9.56l-.565.308Z"/></svg>
-              </div><span class="tech-name">Databricks</span>
-            </li>
-
-            <!-- Cloud & DevOps -->
-            <li class="tech-card reveal" style="--reveal-delay: 320ms" title="AWS">
-              <div class="tech-icon"><svg class="logo-icon" viewBox="0 0 256 153" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="#252f3e" d="M72.392 55.438c0 3.137.34 5.68.933 7.545a45.4 45.4 0 0 0 2.712 6.103c.424.678.593 1.356.593 1.95c0 .847-.508 1.695-1.61 2.543l-5.34 3.56c-.763.509-1.526.763-2.205.763c-.847 0-1.695-.424-2.543-1.187a26 26 0 0 1-3.051-3.984c-.848-1.44-1.696-3.052-2.628-5.001q-9.919 11.697-24.922 11.698c-7.12 0-12.8-2.035-16.954-6.103c-4.153-4.07-6.272-9.495-6.272-16.276c0-7.205 2.543-13.054 7.714-17.462c5.17-4.408 12.037-6.612 20.768-6.612c2.882 0 5.849.254 8.985.678c3.137.424 6.358 1.102 9.749 1.865V29.33c0-6.443-1.357-10.935-3.985-13.563c-2.712-2.628-7.29-3.9-13.817-3.9c-2.967 0-6.018.34-9.155 1.103s-6.188 1.695-9.155 2.882c-1.356.593-2.373.932-2.967 1.102s-1.017.254-1.356.254c-1.187 0-1.78-.848-1.78-2.628v-4.154c0-1.356.17-2.373.593-2.966c.424-.594 1.187-1.187 2.374-1.78q4.45-2.29 10.68-3.815C33.908.763 38.316.255 42.978.255c10.088 0 17.463 2.288 22.21 6.866c4.662 4.577 7.036 11.528 7.036 20.853v27.464zM37.976 68.323c2.798 0 5.68-.508 8.731-1.526c3.052-1.017 5.765-2.882 8.053-5.425c1.357-1.61 2.374-3.39 2.882-5.425c.509-2.034.848-4.493.848-7.375v-3.56a71 71 0 0 0-7.799-1.441a64 64 0 0 0-7.968-.509c-5.68 0-9.833 1.102-12.63 3.391s-4.154 5.51-4.154 9.748c0 3.984 1.017 6.951 3.136 8.986c2.035 2.119 5.002 3.136 8.901 3.136m68.069 9.155c-1.526 0-2.543-.254-3.221-.848c-.678-.508-1.272-1.695-1.78-3.305L81.124 7.799c-.51-1.696-.764-2.798-.764-3.391c0-1.356.678-2.12 2.035-2.12h8.307c1.61 0 2.713.255 3.306.848c.678.509 1.187 1.696 1.695 3.306l14.241 56.117l13.224-56.117c.424-1.695.933-2.797 1.61-3.306c.679-.508 1.866-.847 3.392-.847h6.781c1.61 0 2.713.254 3.39.847c.679.509 1.272 1.696 1.611 3.306l13.394 56.795L168.01 6.442c.508-1.695 1.102-2.797 1.695-3.306c.678-.508 1.78-.847 3.306-.847h7.883c1.357 0 2.12.678 2.12 2.119c0 .424-.085.848-.17 1.356s-.254 1.187-.593 2.12l-20.43 65.525q-.762 2.544-1.78 3.306c-.678.509-1.78.848-3.22.848h-7.29c-1.611 0-2.713-.254-3.392-.848c-.678-.593-1.271-1.695-1.61-3.39l-13.14-54.676l-13.054 54.59c-.423 1.696-.932 2.798-1.61 3.391c-.678.594-1.865.848-3.39.848zm108.927 2.289c-4.408 0-8.816-.509-13.054-1.526c-4.239-1.017-7.544-2.12-9.748-3.39c-1.357-.764-2.29-1.611-2.628-2.374a6 6 0 0 1-.509-2.374V65.78c0-1.78.678-2.628 1.95-2.628a4.8 4.8 0 0 1 1.526.255c.508.17 1.271.508 2.119.847a46 46 0 0 0 9.324 2.967a51 51 0 0 0 10.088 1.017c5.34 0 9.494-.932 12.376-2.797s4.408-4.577 4.408-8.053c0-2.373-.763-4.323-2.289-5.934s-4.408-3.051-8.561-4.408l-12.292-3.814c-6.188-1.95-10.765-4.832-13.563-8.647c-2.797-3.73-4.238-7.883-4.238-12.291q0-5.34 2.289-9.41c1.525-2.712 3.56-5.085 6.103-6.95c2.543-1.95 5.425-3.391 8.816-4.408c3.39-1.017 6.95-1.441 10.68-1.441c1.865 0 3.815.085 5.68.339c1.95.254 3.73.593 5.51.932c1.695.424 3.306.848 4.832 1.357q2.288.762 3.56 1.525c1.187.679 2.034 1.357 2.543 2.12q.763 1.017.763 2.797v3.984c0 1.78-.678 2.713-1.95 2.713c-.678 0-1.78-.34-3.22-1.018q-7.25-3.306-16.276-3.306c-4.832 0-8.647.763-11.275 2.374c-2.627 1.61-3.984 4.069-3.984 7.544c0 2.374.848 4.408 2.543 6.019s4.832 3.221 9.325 4.662l12.037 3.815c6.103 1.95 10.511 4.662 13.139 8.137s3.9 7.46 3.9 11.868c0 3.645-.764 6.951-2.205 9.833c-1.525 2.882-3.56 5.425-6.188 7.46c-2.628 2.119-5.764 3.645-9.409 4.747c-3.815 1.187-7.799 1.78-12.122 1.78"/><path fill="#f90" d="M230.993 120.964c-27.888 20.599-68.408 31.534-103.247 31.534c-48.827 0-92.821-18.056-126.05-48.064c-2.628-2.373-.255-5.594 2.881-3.73c35.942 20.854 80.276 33.484 126.136 33.484c30.94 0 64.932-6.442 96.212-19.666c4.662-2.12 8.646 3.052 4.068 6.442m11.614-13.224c-3.56-4.577-23.566-2.204-32.636-1.102c-2.713.34-3.137-2.034-.678-3.814c15.936-11.19 42.13-7.968 45.181-4.239c3.052 3.815-.848 30.008-15.767 42.554c-2.288 1.95-4.492.933-3.475-1.61c3.39-8.393 10.935-27.296 7.375-31.789"/></svg></div><span
-                class="tech-name">AWS</span>
-            </li>
-            <li class="tech-card reveal" style="--reveal-delay: 360ms" title="Docker">
-              <div class="tech-icon"><svg class="logo-icon" viewBox="0 0 256 185" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="#2396ed" d="M250.716 70.497c-5.765-4-18.976-5.5-29.304-3.5c-1.2-10-6.725-18.749-16.333-26.499l-5.524-4l-3.844 5.75c-4.803 7.5-7.205 18-6.485 28c.24 3.499 1.441 9.749 5.044 15.249c-3.362 2-10.328 4.5-19.455 4.5H1.155l-.48 2c-1.682 9.999-1.682 41.248 18.014 65.247c14.892 18.249 36.99 27.499 66.053 27.499c62.93 0 109.528-30.25 131.386-84.997c8.647.25 27.142 0 36.51-18.75c.24-.5.72-1.5 2.401-5.249l.961-2zM139.986 0h-26.42v24.999h26.42zm0 29.999h-26.42v24.999h26.42zm-31.225 0h-26.42v24.999h26.42zm-31.225 0H51.115v24.999h26.421zM46.311 59.998H19.89v24.999h26.42zm31.225 0H51.115v24.999h26.421zm31.225 0h-26.42v24.999h26.42zm31.226 0h-26.422v24.999h26.422zm31.225 0H144.79v24.999h26.422z"/></svg></div><span
-                class="tech-name">Docker</span>
-            </li>
-
-            <!-- Tools & Frameworks -->
-            <li class="tech-card reveal" style="--reveal-delay: 400ms" title="React">
-              <div class="tech-icon"><svg class="logo-icon" viewBox="0 0 256 228" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="#00d8ff" d="M210.483 73.824a172 172 0 0 0-8.24-2.597c.465-1.9.893-3.777 1.273-5.621c6.238-30.281 2.16-54.676-11.769-62.708c-13.355-7.7-35.196.329-57.254 19.526a171 171 0 0 0-6.375 5.848a156 156 0 0 0-4.241-3.917C100.759 3.829 77.587-4.822 63.673 3.233C50.33 10.957 46.379 33.89 51.995 62.588a171 171 0 0 0 1.892 8.48c-3.28.932-6.445 1.924-9.474 2.98C17.309 83.498 0 98.307 0 113.668c0 15.865 18.582 31.778 46.812 41.427a146 146 0 0 0 6.921 2.165a168 168 0 0 0-2.01 9.138c-5.354 28.2-1.173 50.591 12.134 58.266c13.744 7.926 36.812-.22 59.273-19.855a146 146 0 0 0 5.342-4.923a168 168 0 0 0 6.92 6.314c21.758 18.722 43.246 26.282 56.54 18.586c13.731-7.949 18.194-32.003 12.4-61.268a145 145 0 0 0-1.535-6.842c1.62-.48 3.21-.974 4.76-1.488c29.348-9.723 48.443-25.443 48.443-41.52c0-15.417-17.868-30.326-45.517-39.844m-6.365 70.984q-2.102.694-4.3 1.345c-3.24-10.257-7.612-21.163-12.963-32.432c5.106-11 9.31-21.767 12.459-31.957c2.619.758 5.16 1.557 7.61 2.4c23.69 8.156 38.14 20.213 38.14 29.504c0 9.896-15.606 22.743-40.946 31.14m-10.514 20.834c2.562 12.94 2.927 24.64 1.23 33.787c-1.524 8.219-4.59 13.698-8.382 15.893c-8.067 4.67-25.32-1.4-43.927-17.412a157 157 0 0 1-6.437-5.87c7.214-7.889 14.423-17.06 21.459-27.246c12.376-1.098 24.068-2.894 34.671-5.345q.785 3.162 1.386 6.193M87.276 214.515c-7.882 2.783-14.16 2.863-17.955.675c-8.075-4.657-11.432-22.636-6.853-46.752a157 157 0 0 1 1.869-8.499c10.486 2.32 22.093 3.988 34.498 4.994c7.084 9.967 14.501 19.128 21.976 27.15a135 135 0 0 1-4.877 4.492c-9.933 8.682-19.886 14.842-28.658 17.94M50.35 144.747c-12.483-4.267-22.792-9.812-29.858-15.863c-6.35-5.437-9.555-10.836-9.555-15.216c0-9.322 13.897-21.212 37.076-29.293c2.813-.98 5.757-1.905 8.812-2.773c3.204 10.42 7.406 21.315 12.477 32.332c-5.137 11.18-9.399 22.249-12.634 32.792a135 135 0 0 1-6.318-1.979m12.378-84.26c-4.811-24.587-1.616-43.134 6.425-47.789c8.564-4.958 27.502 2.111 47.463 19.835a144 144 0 0 1 3.841 3.545c-7.438 7.987-14.787 17.08-21.808 26.988c-12.04 1.116-23.565 2.908-34.161 5.309a160 160 0 0 1-1.76-7.887m110.427 27.268a348 348 0 0 0-7.785-12.803c8.168 1.033 15.994 2.404 23.343 4.08c-2.206 7.072-4.956 14.465-8.193 22.045a381 381 0 0 0-7.365-13.322m-45.032-43.861c5.044 5.465 10.096 11.566 15.065 18.186a322 322 0 0 0-30.257-.006c4.974-6.559 10.069-12.652 15.192-18.18M82.802 87.83a323 323 0 0 0-7.227 13.238c-3.184-7.553-5.909-14.98-8.134-22.152c7.304-1.634 15.093-2.97 23.209-3.984a322 322 0 0 0-7.848 12.897m8.081 65.352c-8.385-.936-16.291-2.203-23.593-3.793c2.26-7.3 5.045-14.885 8.298-22.6a321 321 0 0 0 7.257 13.246c2.594 4.48 5.28 8.868 8.038 13.147m37.542 31.03c-5.184-5.592-10.354-11.779-15.403-18.433c4.902.192 9.899.29 14.978.29c5.218 0 10.376-.117 15.453-.343c-4.985 6.774-10.018 12.97-15.028 18.486m52.198-57.817c3.422 7.8 6.306 15.345 8.596 22.52c-7.422 1.694-15.436 3.058-23.88 4.071a382 382 0 0 0 7.859-13.026a347 347 0 0 0 7.425-13.565m-16.898 8.101a359 359 0 0 1-12.281 19.815a329 329 0 0 1-23.444.823c-7.967 0-15.716-.248-23.178-.732a310 310 0 0 1-12.513-19.846h.001a307 307 0 0 1-10.923-20.627a310 310 0 0 1 10.89-20.637l-.001.001a307 307 0 0 1 12.413-19.761c7.613-.576 15.42-.876 23.31-.876H128c7.926 0 15.743.303 23.354.883a329 329 0 0 1 12.335 19.695a359 359 0 0 1 11.036 20.54a330 330 0 0 1-11 20.722m22.56-122.124c8.572 4.944 11.906 24.881 6.52 51.026q-.518 2.504-1.15 5.09c-10.622-2.452-22.155-4.275-34.23-5.408c-7.034-10.017-14.323-19.124-21.64-27.008a161 161 0 0 1 5.888-5.4c18.9-16.447 36.564-22.941 44.612-18.3M128 90.808c12.625 0 22.86 10.235 22.86 22.86s-10.235 22.86-22.86 22.86s-22.86-10.235-22.86-22.86s10.235-22.86 22.86-22.86"/></svg></div><span
-                class="tech-name">React</span>
-            </li>
-            <li class="tech-card reveal" style="--reveal-delay: 440ms" title="LangChain">
-              <div class="tech-icon"><svg class="logo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="color:#00CCB4"><path fill="currentColor" d="M13.796 0a6.93 6.93 0 0 0-4.91 2.019L5.451 5.455l3.273 3.27l3.432-3.432a2.284 2.284 0 0 1 3.277 0a2.28 2.28 0 0 1 0 3.275L12 12.001l3.273 3.273l3.433-3.435c2.692-2.692 2.692-7.127 0-9.82A6.92 6.92 0 0 0 13.796 0m-5.07 8.728l-3.433 3.434c-2.692 2.693-2.692 7.126 0 9.819A6.92 6.92 0 0 0 10.203 24a6.93 6.93 0 0 0 4.911-2.02l3.432-3.432l-3.271-3.272l-3.433 3.433a2.284 2.284 0 0 1-3.277 0a2.28 2.28 0 0 1 0-3.276L12 12z"/></svg>
-              </div><span class="tech-name">LangChain</span>
-            </li>
-          </ul>
-        </section>
-      </article>
-
-      <!--
-    - #RESUME
-  -->
-      <article class="resume" data-page="resume">
-        <header>
-          <h2 class="h2 article-title">Resume</h2>
-        </header>
-
-        <!-- Education Timeline -->
-        <section class="timeline">
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M256 160c16-63.16 76.43-95.41 208-96a15.94 15.94 0 0116 16v288a16 16 0 01-16 16c-128 0-177.45 25.81-208 64-30.37-38-80-64-208-64-9.88 0-16-8.05-16-17.93V80a15.94 15.94 0 0116-16c131.57.59 192 32.84 208 96zM256 160v288" stroke-linecap="round" stroke-linejoin="round" class="ionicon-fill-none ionicon-stroke-width"/></svg>
-            </div>
-            <h3 class="h3">Education</h3>
+        <li class="tl-item reveal">
+          <p class="tl-date">May 2025 — Jul 2025</p>
+            <div class="tl-rail" aria-hidden="true"><span></span></div>
+          <div class="tl-body">
+            <h3 class="tl-role">Full-Stack Engineer Intern<span class="tl-at">GrowthAlpha</span></h3>
+            <p class="tl-text">Took a multi-tenant SaaS from 0→1, including a custom JSON-to-SQL query generator, and prototyped Text-to-SQL with open-source LLMs. Shipped on AWS.</p>
+            <ul class="tl-tags"><li>Multi-tenant SaaS</li><li>Text-to-SQL</li><li>AWS</li></ul>
           </div>
+        </li>
 
-          <ol class="timeline-list">
-            <li class="timeline-item reveal">
-              <h4 class="h4 timeline-item-title"><img src="./assets/images/csulb_cecs.jpeg" alt="CSULB CECS"
-                  class="timeline-logo" loading="lazy" />
-                California State University, Long Beach
-              </h4>
-              <span>Aug 2024 — May 2026 (Expected)</span>
-              <p class="timeline-text">
-                Master of Science in Computer Science
-              </p>
-            </li>
-
-            <li class="timeline-item reveal">
-              <h4 class="h4 timeline-item-title"><img src="./assets/images/csulb_cob.jpeg" alt="Ramaiah Institute"
-                  class="timeline-logo" loading="lazy" />
-                Ramaiah Institute of Technology, Bengaluru
-              </h4>
-              <span>Aug 2017 — May 2021</span>
-              <p class="timeline-text">
-                B.E. in Information Science and Engineering
-              </p>
-            </li>
-          </ol>
-        </section>
-
-        <!-- Experience Timeline -->
-        <section class="timeline">
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><rect x="32" y="128" width="448" height="320" rx="48" ry="48" stroke-linejoin="round" class="ionicon-fill-none ionicon-stroke-width"/><path d="M144 128V96a32 32 0 0132-32h160a32 32 0 0132 32v32M480 240H32M320 240v24a8 8 0 01-8 8H200a8 8 0 01-8-8v-24" stroke-linecap="round" stroke-linejoin="round" class="ionicon-fill-none ionicon-stroke-width"/></svg>
-            </div>
-            <h3 class="h3">Experience</h3>
+        <li class="tl-item reveal">
+          <p class="tl-date">Feb 2025 — May 2025</p>
+            <div class="tl-rail" aria-hidden="true"><span></span></div>
+          <div class="tl-body">
+            <h3 class="tl-role">Research Assistant<span class="tl-at">CSULB — College of Business</span></h3>
+            <p class="tl-text">Neuromarketing research: generated real-time gaze heatmaps over video saliency datasets (TurkerGaze) and explored attention patterns.</p>
+            <ul class="tl-tags"><li>Computer vision</li><li>Research</li></ul>
           </div>
+        </li>
 
-          <ol class="timeline-list">
-            <li class="timeline-item reveal">
-              <h4 class="h4 timeline-item-title"><img src="./assets/images/csulb_cob.jpeg"
-                  alt="CSULB College of Business" class="timeline-logo" loading="lazy" /> Instructional Student
-                Assistant — Explainable &amp; Ethical AI, CSULB</h4>
-              <span>Sep 2025 — Present</span>
-              <p class="timeline-text">Teaching assistant for Explainable &amp; Ethical AI; supported labs, grading, and
-                student guidance on model interpretability.</p>
-            </li>
-
-            <li class="timeline-item reveal">
-              <h4 class="h4 timeline-item-title"><img src="./assets/images/growth_alpha.jpeg" alt="GrowthAlpha"
-                  class="timeline-logo" loading="lazy" /> Full-Stack Engineer Intern — GrowthAlpha</h4>
-              <span>May 2025 — Jul 2025</span>
-              <p class="timeline-text">Built a multi-tenant SaaS from 0→1 with a custom JSON-to-SQL query generator;
-                prototyped Text-to-SQL with open-source LLMs; shipped on AWS.</p>
-            </li>
-
-            <li class="timeline-item reveal">
-              <h4 class="h4 timeline-item-title"><img src="./assets/images/csulb_cob.jpeg"
-                  alt="CSULB College of Business" class="timeline-logo" loading="lazy" /> Research Assistant — CSULB,
-                College of Business</h4>
-              <span>Feb 2025 — May 2025</span>
-              <p class="timeline-text">Neuromarketing research: generated real-time gaze heatmaps on video saliency
-                datasets (TurkerGaze) and explored attention patterns.</p>
-            </li>
-
-            <li class="timeline-item reveal">
-              <h4 class="h4 timeline-item-title"><img src="./assets/images/ciq.jpeg" alt="CommerceIQ"
-                  class="timeline-logo" loading="lazy" /> Software Development Engineer II — CommerceIQ</h4>
-              <span>Sep 2023 — Aug 2024</span>
-              <p class="timeline-text">Built an AWS-based media budget recommendation pipeline (Step Functions, SQS,
-                Lambda, 40 SQL modules) saving $200K/yr and cutting processing time from 1 day to 3 minutes; delivered
-                cold-start recommendations with 90% accuracy; migrated budget prediction Snowflake→Databricks (−52%
-                cost, −80% latency).</p>
-            </li>
-
-            <li class="timeline-item reveal">
-              <h4 class="h4 timeline-item-title"><img src="./assets/images/ciq.jpeg" alt="CommerceIQ"
-                  class="timeline-logo" loading="lazy" /> Software Development Engineer I — CommerceIQ</h4>
-              <span>Aug 2021 — Jul 2023</span>
-              <p class="timeline-text">Engineered an Amazon ads campaign platform and an automated strategy pipeline for
-                Criteo ads, reducing manual ops by 60%.</p>
-            </li>
-
-            <li class="timeline-item reveal">
-              <h4 class="h4 timeline-item-title"><img src="./assets/images/ciq.jpeg" alt="CommerceIQ"
-                  class="timeline-logo" loading="lazy" /> Software Engineer Intern — CommerceIQ</h4>
-              <span>Feb 2021 — May 2021</span>
-              <p class="timeline-text">Simulated Snowflake multi-cluster workloads to test concurrency; built TP99
-                performance dashboards with New Relic.</p>
-            </li>
-          </ol>
-        </section>
-      </article>
-
-      <!--
-  #PORTFOLIO
--->
-      <article class="portfolio" data-page="portfolio">
-        <header>
-          <h2 class="h2 article-title">Portfolio</h2>
-          <p class="subtitle">Enterprise-grade solutions showcasing scalable architecture and data-driven innovation</p>
-        </header>
-
-        <section class="projects">
-          <!-- filter buttons -->
-          <ul class="filter-list">
-            <li class="filter-item"><button class="active" data-filter-btn>All</button></li>
-            <li class="filter-item"><button data-filter-btn>Data Engineering</button></li>
-            <li class="filter-item"><button data-filter-btn>Backend Systems</button></li>
-            <li class="filter-item"><button data-filter-btn>AI/ML</button></li>
-          </ul>
-
-          <!-- dropdown for mobile -->
-          <div class="filter-select-box">
-            <button class="filter-select" data-select>
-              <div class="select-value" data-selecct-value>Select category</div>
-              <div class="select-icon"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 184l144 144 144-144" class="ionicon-fill-none"/></svg></div>
-            </button>
-
-            <ul class="select-list">
-              <li class="select-item"><button data-select-item>All</button></li>
-              <li class="select-item"><button data-select-item>Data Engineering</button></li>
-              <li class="select-item"><button data-select-item>Backend Systems</button></li>
-              <li class="select-item"><button data-select-item>AI/ML</button></li>
+        <li class="tl-item tl-item--major reveal">
+          <p class="tl-date">Sep 2023 — Aug 2024</p>
+            <div class="tl-rail" aria-hidden="true"><span></span></div>
+          <div class="tl-body">
+            <h3 class="tl-role">Software Development Engineer II<span class="tl-at">CommerceIQ</span></h3>
+            <p class="tl-text">Built an AWS media budget recommendation pipeline — Step Functions, SQS, Lambda and 40 SQL modules — that cut a one-day run to three minutes. Delivered cold-start recommendations at 90% accuracy and migrated budget prediction from Snowflake to Databricks.</p>
+            <ul class="tl-metrics">
+              <li><strong>$200K</strong><span>saved / yr</span></li>
+              <li><strong>1 day → 3 min</strong><span>run time</span></li>
+              <li><strong>−52%</strong><span>cost</span></li>
+              <li><strong>−80%</strong><span>latency</span></li>
             </ul>
+            <ul class="tl-tags"><li>Step Functions</li><li>Databricks</li><li>Snowflake</li><li>SQS</li></ul>
           </div>
+        </li>
 
-          <!-- projects grid -->
-          <ul class="project-list">
-            <!-- Ella AI Assistant -->
-            <li class="project-item active" data-filter-item data-category="ai/ml">
-              <a href="https://github.com/ishank-dev/google-adk-hackathon" target="_blank" rel="noopener">
-                <figure class="project-img">
-                  <div class="project-item-icon-box"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M268 112l144 144-144 144M392 256H100" class="ionicon-fill-none"/></svg></div>
-                  <img src="./assets/images/ai_agent.webp" alt="Ella AI Assistant" loading="lazy">
-                </figure>
-                <h3 class="project-title">Ella AI Assistant</h3>
-                <p class="project-category">AI/ML</p>
-                <div class="project-description">
-                  <p>Self-learning Slack bot using Vertex AI and RAG to answer questions, escalate unknowns to FAQ
-                    channels, and build knowledge base.</p>
-                  <div class="tech-stack">
-                    <span class="tech-tag">Vertex AI</span>
-                    <span class="tech-tag">RAG</span>
-                    <span class="tech-tag">Slack API</span>
-                    <span class="tech-tag">FastAPI</span>
-                  </div>
-                </div>
+        <li class="tl-item reveal">
+          <p class="tl-date">Aug 2021 — Jul 2023</p>
+            <div class="tl-rail" aria-hidden="true"><span></span></div>
+          <div class="tl-body">
+            <h3 class="tl-role">Software Development Engineer I<span class="tl-at">CommerceIQ</span></h3>
+            <p class="tl-text">Engineered an Amazon ads campaign platform and an automated strategy pipeline for Criteo ads, cutting manual operations by 60%.</p>
+            <ul class="tl-tags"><li>Ads platform</li><li>Automation</li></ul>
+          </div>
+        </li>
+
+        <li class="tl-item reveal">
+          <p class="tl-date">Feb 2021 — May 2021</p>
+            <div class="tl-rail" aria-hidden="true"><span></span></div>
+          <div class="tl-body">
+            <h3 class="tl-role">Software Engineer Intern<span class="tl-at">CommerceIQ</span></h3>
+            <p class="tl-text">Simulated Snowflake multi-cluster workloads to test concurrency and built TP99 performance dashboards in New Relic.</p>
+            <ul class="tl-tags"><li>Benchmarking</li><li>Observability</li></ul>
+          </div>
+        </li>
+      </ol>
+
+      <div class="edu">
+        <h3 class="edu-title"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path stroke-linecap="round" stroke-linejoin="round" d="M32 192L256 64l224 128-224 128L32 192z" class="ionicon-fill-none ionicon-stroke-width"/><path stroke-linecap="round" stroke-linejoin="round" d="M112 240v128l144 80 144-80V240M480 368V192M256 320v128" class="ionicon-fill-none ionicon-stroke-width"/></svg> Education</h3>
+        <div class="edu-grid">
+          <article class="edu-card reveal">
+            <img src="./assets/images/csulb_cecs.jpeg" alt="" width="48" height="48" loading="lazy" />
+            <div>
+              <h4>California State University, Long Beach</h4>
+              <p>MS, Computer Science</p>
+              <p class="edu-date">Aug 2024 — May 2026 (expected)</p>
+            </div>
+          </article>
+          <article class="edu-card reveal" style="--d:90ms">
+            <img src="./assets/images/csulb_cob.jpeg" alt="" width="48" height="48" loading="lazy" />
+            <div>
+              <h4>Ramaiah Institute of Technology, Bengaluru</h4>
+              <p>B.E., Information Science &amp; Engineering</p>
+              <p class="edu-date">Aug 2017 — May 2021</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ PROJECTS ============================ -->
+    <section class="section" id="projects" data-shape="3">
+      <div class="section-head">
+        <p class="kicker">03 — Projects</p>
+        <h2 class="section-title">Things I built to find out if they'd work</h2>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filter projects">
+        <button class="chip-btn is-active" data-filter="all" aria-pressed="true">All <span>6</span></button>
+        <button class="chip-btn" data-filter="ai" aria-pressed="false">AI / ML <span>3</span></button>
+        <button class="chip-btn" data-filter="data" aria-pressed="false">Data <span>1</span></button>
+        <button class="chip-btn" data-filter="backend" aria-pressed="false">Backend <span>2</span></button>
+      </div>
+
+      <ul class="project-grid" data-projects>
+        <li class="project is-shown" data-cat="ai">
+          <a href="https://github.com/ishank-dev/google-adk-hackathon" target="_blank" rel="noopener" data-tilt>
+            <div class="project-media">
+              <img src="./assets/images/ai_agent.webp" alt="Architecture diagram of the Ella Slack assistant" loading="lazy" />
+              <div class="project-glare" aria-hidden="true"></div>
+            </div>
+            <div class="project-body">
+              <p class="project-cat">AI / ML</p>
+              <h3 class="project-title">Ella AI Assistant</h3>
+              <p class="project-text">A self-learning Slack bot on Vertex AI. It answers from a RAG index, escalates what it doesn't know to an FAQ channel, then folds the answer back into its own knowledge base.</p>
+              <ul class="project-tags"><li>Vertex AI</li><li>RAG</li><li>Slack API</li><li>FastAPI</li></ul>
+              <span class="project-link">View repository <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M268 112l144 144-144 144M392 256H100" class="ionicon-fill-none"/></svg></span>
+            </div>
+          </a>
+        </li>
+
+        <li class="project is-shown" data-cat="ai">
+          <a href="https://github.com/ishank-dev/semantic-data-navigator/tree/main" target="_blank" rel="noopener" data-tilt>
+            <div class="project-media">
+              <img src="./assets/images/vector_visualisation.webp" alt="t-SNE plot of document embeddings" loading="lazy" />
+              <div class="project-glare" aria-hidden="true"></div>
+            </div>
+            <div class="project-body">
+              <p class="project-cat">AI / ML</p>
+              <h3 class="project-title">Semantic Data Navigator</h3>
+              <p class="project-text">Semantic document search over a ChromaDB vector store, with t-SNE projections you can actually poke at through a Gradio UI.</p>
+              <ul class="project-tags"><li>LangChain</li><li>ChromaDB</li><li>Gradio</li><li>t-SNE</li></ul>
+              <span class="project-link">View repository <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M268 112l144 144-144 144M392 256H100" class="ionicon-fill-none"/></svg></span>
+            </div>
+          </a>
+        </li>
+
+        <li class="project is-shown" data-cat="ai">
+          <a href="https://github.com/ishank-dev/CECS_CSULB_2026/tree/main/CECS_551_AI" target="_blank" rel="noopener" data-tilt>
+            <div class="project-media">
+              <img src="./assets/images/CNN.webp" alt="Convolutional neural network illustration" loading="lazy" />
+              <div class="project-glare" aria-hidden="true"></div>
+            </div>
+            <div class="project-body">
+              <p class="project-cat">AI / ML</p>
+              <h3 class="project-title">CECS 551 — AI Coursework</h3>
+              <p class="project-text">An MLP written from scratch, a hyperparameter sweep across optimizers, and CNN classification on CIFAR-100. Graduate AI with the workings shown.</p>
+              <ul class="project-tags"><li>PyTorch</li><li>NumPy</li><li>CNN</li><li>MLP</li></ul>
+              <span class="project-link">View repository <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M268 112l144 144-144 144M392 256H100" class="ionicon-fill-none"/></svg></span>
+            </div>
+          </a>
+        </li>
+
+        <li class="project is-shown" data-cat="data">
+          <a href="https://github.com/ishank-dev/firebolt-demo/tree/main/geospatial-application-demo" target="_blank" rel="noopener" data-tilt>
+            <div class="project-media">
+              <img src="./assets/images/firebolt_demo.webp" alt="Geospatial accident heatmap" loading="lazy" />
+              <div class="project-glare" aria-hidden="true"></div>
+            </div>
+            <div class="project-body">
+              <p class="project-cat">Data Engineering</p>
+              <h3 class="project-title">Firebolt Geospatial Analytics</h3>
+              <p class="project-text">Real-time accident data on a map — clustered and heatmap views, dynamic filters, and connection pooling to keep Firebolt queries snappy under load.</p>
+              <ul class="project-tags"><li>Firebolt</li><li>Flask</li><li>Mapbox</li><li>Python</li></ul>
+              <span class="project-link">View repository <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M268 112l144 144-144 144M392 256H100" class="ionicon-fill-none"/></svg></span>
+            </div>
+          </a>
+        </li>
+
+        <li class="project is-shown" data-cat="backend">
+          <a href="https://github.com/ishank-dev/NodeJS-MockServer" target="_blank" rel="noopener" data-tilt>
+            <div class="project-media">
+              <img src="./assets/images/mock_server.webp" alt="REST API operations illustration" loading="lazy" />
+              <div class="project-glare" aria-hidden="true"></div>
+            </div>
+            <div class="project-body">
+              <p class="project-cat">Backend</p>
+              <h3 class="project-title">Mock Server Framework</h3>
+              <p class="project-text">A REST mock server with full CRUD, filtering, search and JSON persistence — so front-end work never waits on the real API.</p>
+              <ul class="project-tags"><li>Node.js</li><li>Express</li><li>REST</li></ul>
+              <span class="project-link">View repository <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M268 112l144 144-144 144M392 256H100" class="ionicon-fill-none"/></svg></span>
+            </div>
+          </a>
+        </li>
+
+        <li class="project is-shown" data-cat="backend">
+          <a href="https://github.com/On-Duty-Org/Beats-Allocation-SIH" target="_blank" rel="noopener" data-tilt>
+            <div class="project-media">
+              <img src="./assets/images/beats_alloc.webp" alt="Patrol allocation dashboard" loading="lazy" />
+              <div class="project-glare" aria-hidden="true"></div>
+              <span class="project-badge">SIH 2020 winner</span>
+            </div>
+            <div class="project-body">
+              <p class="project-cat">Backend</p>
+              <h3 class="project-title">Police Beats Allocation</h3>
+              <p class="project-text">An admin dashboard for the National Crime Records Bureau: live officer tracking, alerts, SMS notifications and customisable patrol zones.</p>
+              <ul class="project-tags"><li>Django REST</li><li>Mapbox</li><li>Firebase</li></ul>
+              <span class="project-link">View repository <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M268 112l144 144-144 144M392 256H100" class="ionicon-fill-none"/></svg></span>
+            </div>
+          </a>
+        </li>
+      </ul>
+
+      <p class="empty-state" data-empty hidden>Nothing in this category yet.</p>
+    </section>
+
+    <!-- ============================ WRITING ============================ -->
+    <section class="section" id="writing" data-shape="4">
+      <div class="section-head">
+        <p class="kicker">04 — Writing</p>
+        <h2 class="section-title">Notes from the build</h2>
+        <a class="section-link" href="https://medium.com/@ishankdev" target="_blank" rel="noopener">
+          All posts on Medium <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M384 224v184a40 40 0 01-40 40H104a40 40 0 01-40-40V168a40 40 0 0140-40h167.48M336 64h112v112M224 288L440 72" stroke-linecap="round" stroke-linejoin="round" class="ionicon-fill-none ionicon-stroke-width"/></svg>
+        </a>
+      </div>
+
+      <div class="posts">
+        <div class="posts-loading" data-posts-loading>
+          <span class="spinner" aria-hidden="true"></span>
+          <p>Fetching the latest posts…</p>
+        </div>
+        <ul class="posts-list" data-posts-list></ul>
+        <div class="posts-error" data-posts-error hidden>
+          <p>Couldn't reach the Medium feed just now.</p>
+          <a class="btn btn-ghost" href="https://medium.com/@ishankdev" target="_blank" rel="noopener">
+            Read on Medium <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M384 224v184a40 40 0 01-40 40H104a40 40 0 01-40-40V168a40 40 0 0140-40h167.48M336 64h112v112M224 288L440 72" stroke-linecap="round" stroke-linejoin="round" class="ionicon-fill-none ionicon-stroke-width"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ AWARDS ============================ -->
+    <section class="section" id="awards" data-shape="5">
+      <div class="section-head">
+        <p class="kicker">05 — Recognition</p>
+        <h2 class="section-title">Hackathons &amp; awards</h2>
+      </div>
+
+      <ul class="awards-grid">
+        <li class="award award--win reveal">
+          <span class="award-rank">Winner</span>
+          <h3>Smart India Hackathon</h3>
+          <p>Built for the National Crime Records Bureau — digitalising and optimising the daily operations of Indian police. Team Avocado.</p>
+        </li>
+        <li class="award reveal" style="--d:70ms">
+          <span class="award-rank">Runner-up</span>
+          <h3>Microsoft IncubateIND</h3>
+          <p>Extended the Women Suraksha project with MapmyIndia APIs to alert family and emergency services in distress situations.</p>
+        </li>
+        <li class="award reveal" style="--d:140ms">
+          <span class="award-rank">Honorable mention</span>
+          <h3>CommerceIQ AI Hackathon</h3>
+          <p>Used LLMs to classify review sentiment, turning competitor comparison and brand positioning into something you could query.</p>
+        </li>
+        <li class="award reveal" style="--d:210ms">
+          <span class="award-rank">Honorable mention</span>
+          <h3>GE Healthcare Precision</h3>
+          <p>Hospital workflow automation that measurably reduced patient wait times.</p>
+        </li>
+        <li class="award reveal" style="--d:280ms">
+          <span class="award-rank">Runner-up</span>
+          <h3>Reverie Language Hackathon</h3>
+          <p>Real-time translation between speakers of different languages, built on Reverie's APIs.</p>
+        </li>
+        <li class="award reveal" style="--d:350ms">
+          <span class="award-rank">Runner-up</span>
+          <h3>IEEE Ideathon</h3>
+          <p>A build aimed squarely at a concrete societal need.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ============================ CONTACT ============================ -->
+    <section class="section section--contact" id="contact" data-shape="5">
+      <div class="contact-wrap">
+        <div class="contact-intro">
+          <p class="kicker">06 — Contact</p>
+          <h2 class="section-title">Let's build something<br /><em>worth paging for.</em></h2>
+          <p class="contact-note">
+            Open to software engineering roles and interesting collaborations.
+            The fastest way to reach me is email — I answer everything.
+          </p>
+
+          <ul class="contact-links">
+            <li>
+              <a href="mailto:ishankdev@gmail.com">
+                <span class="ci"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><rect x="48" y="96" width="416" height="320" rx="40" ry="40" stroke-linecap="round" stroke-linejoin="round" class="ionicon-fill-none ionicon-stroke-width"/><path stroke-linecap="round" stroke-linejoin="round" d="M112 160l144 112 144-112" class="ionicon-fill-none ionicon-stroke-width"/></svg></span>
+                <span class="cl"><small>Email</small>ishankdev@gmail.com</span>
+              </a>
+              <button class="copy-btn" data-copy="ishankdev@gmail.com" aria-label="Copy email address"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><rect x="128" y="128" width="336" height="336" rx="57" ry="57" stroke-linejoin="round" class="ionicon-fill-none ionicon-stroke-width"/><path d="M383.5 128l.5-24a56.16 56.16 0 00-56-56H112a64.19 64.19 0 00-64 64v216a56.16 56.16 0 0056 56h24" stroke-linecap="round" stroke-linejoin="round" class="ionicon-fill-none ionicon-stroke-width"/></svg></button>
+            </li>
+            <li>
+              <a href="https://github.com/ishank-dev" target="_blank" rel="noopener">
+                <span class="ci"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M256 32C132.3 32 32 134.9 32 261.7c0 101.5 64.2 187.5 153.2 217.9a17.56 17.56 0 003.8.4c8.3 0 11.5-6.1 11.5-11.4 0-5.5-.2-19.9-.3-39.1a102.4 102.4 0 01-22.6 2.7c-43.1 0-52.9-33.5-52.9-33.5-10.2-26.5-24.9-33.6-24.9-33.6-19.5-13.7-.1-14.1 1.4-14.1h.1c22.5 2 34.3 23.8 34.3 23.8 11.2 19.6 26.2 25.1 39.6 25.1a63 63 0 0025.6-6c2-14.8 7.8-24.9 14.2-30.7-49.7-5.8-102-25.5-102-113.5 0-25.1 8.7-45.6 23-61.6-2.3-5.8-10-29.2 2.2-60.8a18.64 18.64 0 015-.5c8.1 0 26.4 3.1 56.6 24.1a208.21 208.21 0 01112.2 0c30.2-21 48.5-24.1 56.6-24.1a18.64 18.64 0 015 .5c12.2 31.6 4.5 55 2.2 60.8 14.3 16.1 23 36.6 23 61.6 0 88.2-52.4 107.6-102.3 113.3 8 7.1 15.2 21.1 15.2 42.5 0 30.7-.3 55.5-.3 63 0 5.4 3.1 11.5 11.4 11.5a19.35 19.35 0 004-.4C415.9 449.2 480 363.1 480 261.7 480 134.9 379.7 32 256 32z"/></svg></span>
+                <span class="cl"><small>GitHub</small>@ishank-dev</span>
               </a>
             </li>
-
-            <!-- Semantic Data Navigator -->
-            <li class="project-item active" data-filter-item data-category="ai/ml">
-              <a href="https://github.com/ishank-dev/semantic-data-navigator/tree/main" target="_blank" rel="noopener">
-                <figure class="project-img">
-                  <div class="project-item-icon-box"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M268 112l144 144-144 144M392 256H100" class="ionicon-fill-none"/></svg></div>
-                  <img src="./assets/images/vector_visualisation.webp" alt="RAG Vector Visualisation" loading="lazy">
-                </figure>
-                <h3 class="project-title">Semantic Data Navigator</h3>
-                <p class="project-category">AI/ML</p>
-                <div class="project-description">
-                  <p>RAG system for semantic document search with ChromaDB vector storage, t-SNE visualizations, and
-                    interactive Gradio UI.</p>
-                  <div class="tech-stack">
-                    <span class="tech-tag">LangChain</span>
-                    <span class="tech-tag">ChromaDB</span>
-                    <span class="tech-tag">Gradio</span>
-                    <span class="tech-tag">t-SNE</span>
-                  </div>
-                </div>
+            <li>
+              <a href="https://www.linkedin.com/in/ishank-sharma-438a32144/" target="_blank" rel="noopener">
+                <span class="ci"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M444.17 32H70.28C49.85 32 32 46.7 32 66.89v374.72C32 461.91 49.85 480 70.28 480h373.78c20.54 0 35.94-18.21 35.94-38.39V66.89C480.12 46.7 464.6 32 444.17 32zm-273.3 373.43h-64.18V205.88h64.18zM141 175.54h-.46c-20.54 0-33.84-15.29-33.84-34.43 0-19.49 13.65-34.42 34.65-34.42s33.85 14.82 34.31 34.42c-.01 19.14-13.31 34.43-34.66 34.43zm264.43 229.89h-64.18V296.32c0-26.14-9.34-44-32.56-44-17.74 0-28.24 12-32.91 23.69-1.75 4.2-2.22 9.92-2.22 15.76v113.66h-64.18V205.88h64.18v27.77c9.34-13.3 23.93-32.44 57.88-32.44 42.13 0 74 27.77 74 87.64z"/></svg></span>
+                <span class="cl"><small>LinkedIn</small>Ishank Sharma</span>
               </a>
             </li>
-
-            <!-- CECS 551 AI Projects -->
-            <li class="project-item active" data-filter-item data-category="ai/ml">
-              <a href="https://github.com/ishank-dev/CECS_CSULB_2026/tree/main/CECS_551_AI" target="_blank"
-                rel="noopener">
-                <figure class="project-img">
-                  <div class="project-item-icon-box"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M268 112l144 144-144 144M392 256H100" class="ionicon-fill-none"/></svg></div>
-                  <img src="./assets/images/CNN.webp" alt="CECS 551 AI Projects" loading="lazy">
-                </figure>
-                <h3 class="project-title">CECS 551 AI Projects</h3>
-                <p class="project-category">AI/ML</p>
-                <div class="project-description">
-                  <p>Academic AI coursework including custom MLP implementation, hyperparameter tuning across
-                    optimizers, and CNN classification on CIFAR-100 dataset.</p>
-                  <div class="tech-stack">
-                    <span class="tech-tag">PyTorch</span>
-                    <span class="tech-tag">NumPy</span>
-                    <span class="tech-tag">CNN</span>
-                    <span class="tech-tag">MLP</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-
-            <!-- Firebolt Geospatial Analytics Platform -->
-            <li class="project-item active" data-filter-item data-category="data engineering">
-              <a href="https://github.com/ishank-dev/firebolt-demo/tree/main/geospatial-application-demo" target="_blank"
-                rel="noopener">
-                <figure class="project-img">
-                  <div class="project-item-icon-box"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M268 112l144 144-144 144M392 256H100" class="ionicon-fill-none"/></svg></div>
-                  <img src="./assets/images/firebolt_demo.webp" alt="Firebolt Map Analytics Demo" loading="lazy">
-                </figure>
-                <h3 class="project-title">Firebolt Geospatial Analytics</h3>
-                <p class="project-category">Data Engineering</p>
-                <div class="project-description">
-                  <p>Interactive platform for real-time accident data visualization with clustered/heatmap views,
-                    dynamic filtering, and connection pooling.</p>
-                  <div class="tech-stack">
-                    <span class="tech-tag">Firebolt</span>
-                    <span class="tech-tag">Flask</span>
-                    <span class="tech-tag">Mapbox</span>
-                    <span class="tech-tag">Python</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-
-            <!-- NodeJS Mock Server Framework -->
-            <li class="project-item active" data-filter-item data-category="backend systems">
-              <a href="https://github.com/ishank-dev/NodeJS-MockServer" target="_blank" rel="noopener">
-                <figure class="project-img">
-                  <div class="project-item-icon-box"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M268 112l144 144-144 144M392 256H100" class="ionicon-fill-none"/></svg></div>
-                  <img src="./assets/images/mock_server.webp" alt="NodeJS Mock Server" loading="lazy">
-                </figure>
-                <h3 class="project-title">Mock Server Framework</h3>
-                <p class="project-category">Backend Systems</p>
-                <div class="project-description">
-                  <p>REST mock server with full CRUD operations, filtering, search, and JSON persistence for rapid API
-                    prototyping.</p>
-                  <div class="tech-stack">
-                    <span class="tech-tag">Node.js</span>
-                    <span class="tech-tag">Express</span>
-                    <span class="tech-tag">REST API</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-
-            <!-- Police Beats Allocation System -->
-            <li class="project-item active" data-filter-item data-category="backend systems">
-              <a href="https://github.com/On-Duty-Org/Beats-Allocation-SIH" target="_blank" rel="noopener">
-                <figure class="project-img">
-                  <div class="project-item-icon-box"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M268 112l144 144-144 144M392 256H100" class="ionicon-fill-none"/></svg></div>
-                  <img src="./assets/images/beats_alloc.webp" alt="Police Patrol Allocation for NCRB" loading="lazy">
-                </figure>
-                <h3 class="project-title">Police Beats Allocation</h3>
-                <p class="project-category">Backend Systems</p>
-                <div class="project-description">
-                  <p>Admin dashboard for NCRB with real-time officer tracking, live alerts, SMS notifications, and
-                    customizable zones. SIH 2020 Winner.</p>
-                  <div class="tech-stack">
-                    <span class="tech-tag">Django REST</span>
-                    <span class="tech-tag">Mapbox</span>
-                    <span class="tech-tag">Firebase</span>
-                  </div>
-                </div>
+            <li>
+              <a href="https://medium.com/@ishankdev" target="_blank" rel="noopener">
+                <span class="ci"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M28 28v456h456V28H28zm378.83 108.04l-24.46 23.45a7.162 7.162 0 00-2.72 6.86v172.28c-.44 2.61.61 5.26 2.72 6.86l23.88 23.45v5.15H286.13v-5.15l24.74-24.02c2.43-2.43 2.43-3.15 2.43-6.86V198.81l-68.79 174.71h-9.3l-80.09-174.71v117.1c-.67 4.92.97 9.88 4.43 13.44l32.18 39.03v5.15h-91.24v-5.15l32.18-39.03c3.44-3.57 4.98-8.56 4.15-13.44V180.5c.38-3.76-1.05-7.48-3.86-10.01l-28.6-34.46v-5.15h88.81l68.65 150.55 60.35-150.55h84.66v5.16z"/></svg></span>
+                <span class="cl"><small>Medium</small>@ishankdev</span>
               </a>
             </li>
           </ul>
-        </section>
-      </article>
+        </div>
 
-      <!--
-        #BLOG
-      -->
-      <article class="blog" data-page="blog">
-        <header>
-          <h2 class="h2 article-title">Blog</h2>
-          <p class="subtitle">Latest articles from my Medium publications</p>
-        </header>
-
-        <section class="blog-posts">
-          <div class="blog-loading" id="blog-loading">
-            <div class="loading-spinner"></div>
-            <p>Loading articles...</p>
+        <form class="contact-form" data-form novalidate>
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required placeholder="Your name" />
+            <p class="field-error" data-error-for="name"></p>
           </div>
-
-          <div class="blog-error" id="blog-error" style="display: none;">
-            <p>Unable to load articles. Please try again later.</p>
-            <button class="retry-btn" onclick="loadMediumArticles()">Retry</button>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@company.com" />
+            <p class="field-error" data-error-for="email"></p>
           </div>
-
-          <ul class="blog-posts-list" id="blog-posts-list">
-            <!-- Blog posts will be dynamically loaded here -->
-          </ul>
-        </section>
-      </article>
-
-      <!-- AWARDS SECTION -->
-      <article class="awards" data-page="awards">
-        <header>
-          <h2 class="h2 article-title">Awards</h2>
-        </header>
-
-        <section class="timeline">
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path stroke-linecap="round" stroke-linejoin="round" d="M176 464h160M256 464V336M384 224c0-50.64-.08-134.63-.12-160a16 16 0 00-16-16l-223.79.26a16 16 0 00-16 15.95c0 30.58-.13 129.17-.13 159.79 0 64.28 83 112 128 112S384 288.28 384 224z" class="ionicon-fill-none ionicon-stroke-width"/><path d="M128 96H48v16c0 55.22 33.55 112 80 112M384 96h80v16c0 55.22-33.55 112-80 112" stroke-linecap="round" stroke-linejoin="round" class="ionicon-fill-none ionicon-stroke-width"/></svg>
-            </div>
-            <h3 class="h3">Hackathons &amp; Achievements</h3>
+          <div class="field">
+            <label for="subject">Subject <span class="opt">optional</span></label>
+            <input id="subject" name="subject" type="text" placeholder="What's this about?" />
           </div>
-
-          <ol class="timeline-list">
-            <!-- 1. CommerceIQ AI Hackathon -->
-            <li class="timeline-item reveal">
-              <h4 class="h4 timeline-item-title">CommerceIQ AI Hackathon</h4>
-              <span>Honorable Mention</span>
-              <p class="timeline-text">
-                Leveraged LLMs to classify product reviews by sentiment, enabling
-                direct competitor comparisons and actionable insights for
-                strategic brand positioning.
-              </p>
-            </li>
-
-            <!-- 2. Smart India Hackathon -->
-            <li class="timeline-item reveal">
-              <h4 class="h4 timeline-item-title">Smart India Hackathon</h4>
-              <span>Winner (Team Avocado)</span>
-              <p class="timeline-text">
-                Created solutions for the National Crime Records Bureau to
-                "digitalize, automate, and optimize daily operations of Indian police."
-              </p>
-            </li>
-
-            <!-- 3. Microsoft IncubateIND -->
-            <li class="timeline-item reveal">
-              <h4 class="h4 timeline-item-title">
-                Microsoft IncubateIND Innovation Series Hackathon
-              </h4>
-              <span>Runner Up</span>
-              <p class="timeline-text">
-                Extended Women Suraksha project using MapmyIndia APIs to
-                alert family/emergency services in case of distress.
-              </p>
-            </li>
-
-            <!-- 4. GE Healthcare Precision Hackathon -->
-            <li class="timeline-item reveal">
-              <h4 class="h4 timeline-item-title">GE Healthcare Precision Hackathon</h4>
-              <span>Honorable Mention</span>
-              <p class="timeline-text">
-                Focused on hospital internal workflow automation, successfully
-                reducing patient wait times.
-              </p>
-            </li>
-
-            <!-- 5. Reverie Language Hackathon -->
-            <li class="timeline-item reveal">
-              <h4 class="h4 timeline-item-title">Reverie Language Hackathon</h4>
-              <span>Runner Up</span>
-              <p class="timeline-text">
-                Used Reverie translation APIs to facilitate real-time communication
-                between speakers of different languages.
-              </p>
-            </li>
-
-            <!-- 6. IEEE Ideathon -->
-            <li class="timeline-item reveal">
-              <h4 class="h4 timeline-item-title">IEEE Ideathon</h4>
-              <span>Runner Up</span>
-              <p class="timeline-text">
-                Project focused on solving key societal needs.
-              </p>
-            </li>
-          </ol>
-        </section>
-      </article>
-
-      <!--
-          - #CONTACT
-        -->
-      <article class="contact" data-page="contact">
-        <header>
-          <h2 class="h2 article-title">Contact</h2>
-          <p class="contact-subtitle">Ready to collaborate, discuss opportunities, or just chat about tech? I'd love to
-            hear from you.</p>
-        </header>
-
-        <!-- Contact Information Cards -->
-        <section class="contact-info-section">
-          <div class="contact-info-grid">
-            <div class="contact-info-card reveal">
-              <div class="contact-card-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><rect x="48" y="96" width="416" height="320" rx="40" ry="40" stroke-linecap="round" stroke-linejoin="round" class="ionicon-fill-none ionicon-stroke-width"/><path stroke-linecap="round" stroke-linejoin="round" d="M112 160l144 112 144-112" class="ionicon-fill-none ionicon-stroke-width"/></svg>
-              </div>
-              <div class="contact-card-content">
-                <h4>Email</h4>
-                <a href="mailto:ishankdev@gmail.com" class="contact-card-link">ishankdev@gmail.com</a>
-                <p>Drop me a line anytime</p>
-              </div>
-            </div>
-
-            <div class="contact-info-card reveal" style="--reveal-delay: 90ms">
-              <div class="contact-card-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M444.17 32H70.28C49.85 32 32 46.7 32 66.89v374.72C32 461.91 49.85 480 70.28 480h373.78c20.54 0 35.94-18.21 35.94-38.39V66.89C480.12 46.7 464.6 32 444.17 32zm-273.3 373.43h-64.18V205.88h64.18zM141 175.54h-.46c-20.54 0-33.84-15.29-33.84-34.43 0-19.49 13.65-34.42 34.65-34.42s33.85 14.82 34.31 34.42c-.01 19.14-13.31 34.43-34.66 34.43zm264.43 229.89h-64.18V296.32c0-26.14-9.34-44-32.56-44-17.74 0-28.24 12-32.91 23.69-1.75 4.2-2.22 9.92-2.22 15.76v113.66h-64.18V205.88h64.18v27.77c9.34-13.3 23.93-32.44 57.88-32.44 42.13 0 74 27.77 74 87.64z"/></svg>
-              </div>
-              <div class="contact-card-content">
-                <h4>LinkedIn</h4>
-                <a href="https://www.linkedin.com/in/ishank-sharma-438a32144/" class="contact-card-link" target="_blank"
-                  rel="noopener">Connect with me</a>
-                <p>Professional networking</p>
-              </div>
-            </div>
-
-            <div class="contact-info-card reveal" style="--reveal-delay: 180ms">
-              <div class="contact-card-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M256 32C132.3 32 32 134.9 32 261.7c0 101.5 64.2 187.5 153.2 217.9a17.56 17.56 0 003.8.4c8.3 0 11.5-6.1 11.5-11.4 0-5.5-.2-19.9-.3-39.1a102.4 102.4 0 01-22.6 2.7c-43.1 0-52.9-33.5-52.9-33.5-10.2-26.5-24.9-33.6-24.9-33.6-19.5-13.7-.1-14.1 1.4-14.1h.1c22.5 2 34.3 23.8 34.3 23.8 11.2 19.6 26.2 25.1 39.6 25.1a63 63 0 0025.6-6c2-14.8 7.8-24.9 14.2-30.7-49.7-5.8-102-25.5-102-113.5 0-25.1 8.7-45.6 23-61.6-2.3-5.8-10-29.2 2.2-60.8a18.64 18.64 0 015-.5c8.1 0 26.4 3.1 56.6 24.1a208.21 208.21 0 01112.2 0c30.2-21 48.5-24.1 56.6-24.1a18.64 18.64 0 015 .5c12.2 31.6 4.5 55 2.2 60.8 14.3 16.1 23 36.6 23 61.6 0 88.2-52.4 107.6-102.3 113.3 8 7.1 15.2 21.1 15.2 42.5 0 30.7-.3 55.5-.3 63 0 5.4 3.1 11.5 11.4 11.5a19.35 19.35 0 004-.4C415.9 449.2 480 363.1 480 261.7 480 134.9 379.7 32 256 32z"/></svg>
-              </div>
-              <div class="contact-card-content">
-                <h4>GitHub</h4>
-                <a href="https://github.com/ishank-dev" class="contact-card-link" target="_blank"
-                  rel="noopener">@ishank-dev</a>
-                <p>Check out my code</p>
-              </div>
-            </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required placeholder="A sentence or two is plenty."></textarea>
+            <p class="field-error" data-error-for="message"></p>
           </div>
-        </section>
-
-        <!-- Interactive Map Section -->
-        <section class="mapbox" data-mapbox>
-          <div class="map-header">
-            <h3 class="map-title">
-              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M256 48c-79.5 0-144 61.39-144 137 0 87 96 224.87 131.25 272.49a15.77 15.77 0 0025.5 0C304 409.89 400 272.07 400 185c0-75.61-64.5-137-144-137z" stroke-linecap="round" stroke-linejoin="round" class="ionicon-fill-none ionicon-stroke-width"/><circle cx="256" cy="192" r="48" stroke-linecap="round" stroke-linejoin="round" class="ionicon-fill-none ionicon-stroke-width"/></svg>
-              Find Me at CSULB
-            </h3>
-            <p class="map-description">Currently pursuing my Master's in Computer Science</p>
-          </div>
-          <figure class="map-container">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3303.59764853765!2d-118.1162035!3d33.7837675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dd2c7ecfb8f13b%3A0x5c724ea9f6ec8138!2sCalifornia%20State%20University%2C%20Long%20Beach!5e0!3m2!1sen!2sus!4v1720259107273!5m2!1sen!2sus"
-              width="400" height="300" loading="lazy" title="CSULB Location Map"></iframe>
-          </figure>
-        </section>
-
-        <!-- Enhanced Contact Form -->
-        <section class="contact-form">
-          <div class="form-header">
-            <h3 class="h3 form-title">
-              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M87.48 380c1.2-4.38-1.43-10.47-3.94-14.86a42.63 42.63 0 00-2.54-3.8 199.81 199.81 0 01-33-110C47.64 139.09 140.72 48 255.82 48 356.2 48 440 117.54 459.57 209.85a199 199 0 014.43 41.64c0 112.41-89.49 204.93-204.59 204.93-18.31 0-43-4.6-56.47-8.37s-26.92-8.77-30.39-10.11a31.14 31.14 0 00-11.13-2.07 30.7 30.7 0 00-12.08 2.43L81.5 462.78a15.92 15.92 0 01-4.66 1.22 9.61 9.61 0 01-9.58-9.74 15.85 15.85 0 01.6-3.29z" stroke-linecap="round" stroke-miterlimit="10" class="ionicon-fill-none ionicon-stroke-width"/><circle cx="160" cy="256" r="32"/><circle cx="256" cy="256" r="32"/><circle cx="352" cy="256" r="32"/></svg>
-              Send a Message
-            </h3>
-            <p class="form-description">Have a project in mind or want to discuss opportunities? Let's start a
-              conversation.</p>
-          </div>
-
-          <form action="#" class="form" data-form>
-            <div class="input-wrapper">
-              <div class="input-group">
-                <label for="fullname" class="input-label">Full Name *</label>
-                <input type="text" name="fullname" id="fullname" class="form-input" placeholder="Your full name"
-                  required data-form-input />
-                <div class="input-highlight"></div>
-              </div>
-
-              <div class="input-group">
-                <label for="email" class="input-label">Email Address *</label>
-                <input type="email" name="email" id="email" class="form-input" placeholder="your.email@example.com"
-                  required data-form-input />
-                <div class="input-highlight"></div>
-              </div>
-            </div>
-
-            <div class="input-group">
-              <label for="subject" class="input-label">Subject</label>
-              <input type="text" name="subject" id="subject" class="form-input" placeholder="What's this about?"
-                data-form-input />
-              <div class="input-highlight"></div>
-            </div>
-
-            <div class="input-group">
-              <label for="message" class="input-label">Message *</label>
-              <textarea name="message" id="message" class="form-input"
-                placeholder="Tell me about your project, opportunity, or just say hello..." required data-form-input
-                rows="6"></textarea>
-              <div class="input-highlight"></div>
-            </div>
-
-            <button class="form-btn" type="submit" disabled data-form-btn>
-              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M473 39.05a24 24 0 00-25.5-5.46L47.47 185h-.08a24 24 0 001 45.16l.41.13 137.3 58.63a16 16 0 0015.54-3.59L422 80a7.07 7.07 0 0110 10L226.66 310.26a16 16 0 00-3.59 15.54l58.65 137.38c.06.2.12.38.19.57 3.2 9.27 11.3 15.81 21.09 16.25h1a24.63 24.63 0 0023-15.46L478.39 64.62A24 24 0 00473 39.05z"/></svg>
-              <span>Send Message</span>
-              <div class="btn-ripple"></div>
-            </button>
-
-            <p class="form-note">
-              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path stroke-linecap="round" stroke-linejoin="round" d="M336 176L225.2 304 176 255.8" class="ionicon-fill-none ionicon-stroke-width"/><path d="M463.1 112.37C373.68 96.33 336.71 84.45 256 48c-80.71 36.45-117.68 48.33-207.1 64.37C32.7 369.13 240.58 457.79 256 464c15.42-6.21 223.3-94.87 207.1-351.63z" stroke-linecap="round" stroke-linejoin="round" class="ionicon-fill-none ionicon-stroke-width"/></svg>
-              Your information is safe and will only be used to respond to your message.
-            </p>
-          </form>
-        </section>
-      </article>
-    </div>
+          <button class="btn btn-primary btn-block" type="submit">
+            <span>Send message</span><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M53.12 199.94l400-151.39a8 8 0 0110.33 10.33l-151.39 400a8 8 0 01-15-.34l-67.4-166.09a16 16 0 00-10.11-10.11L53.46 215a8 8 0 01-.34-15.06zM460 52L227 285" stroke-linecap="round" stroke-linejoin="round" class="ionicon-fill-none ionicon-stroke-width"/></svg>
+          </button>
+          <p class="form-hint" data-form-status role="status" aria-live="polite">
+            Opens in your mail client — nothing is stored or sent anywhere else.
+          </p>
+        </form>
+      </div>
+    </section>
   </main>
 
-  <!-- custom js link -->
-  <script src="./assets/js/script.js"></script>
+  <footer class="footer">
+    <p>© <span data-year>2026</span> Ishank Sharma — hand-built, hosted on GitHub Pages.</p>
+    <div class="footer-links">
+      <a href="https://github.com/ishank-dev" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/ishank-sharma-438a32144/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://medium.com/@ishankdev" target="_blank" rel="noopener">Medium</a>
+      <a href="mailto:ishankdev@gmail.com">Email</a>
+    </div>
+  </footer>
+
+  <button class="to-top" data-to-top aria-label="Back to top" hidden><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 244l144-144 144 144M256 120v292" class="ionicon-fill-none"/></svg></button>
+
+  <!-- ============================ COMMAND PALETTE ============================ -->
+  <div class="palette" data-palette hidden>
+    <div class="palette-backdrop" data-palette-close></div>
+    <div class="palette-box" role="dialog" aria-modal="true" aria-label="Command palette">
+      <div class="palette-input">
+        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" aria-hidden="true" focusable="false" viewBox="0 0 512 512"><path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" stroke-miterlimit="10" class="ionicon-fill-none ionicon-stroke-width"/><path stroke-linecap="round" stroke-miterlimit="10" d="M338.29 338.29L448 448" class="ionicon-fill-none ionicon-stroke-width"/></svg>
+        <input type="text" placeholder="Jump to a section, project or link…" data-palette-input
+          aria-label="Search sections and links" autocomplete="off" spellcheck="false" />
+        <kbd>esc</kbd>
+      </div>
+      <ul class="palette-list" data-palette-list role="listbox" aria-label="Results"></ul>
+      <div class="palette-foot">
+        <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+        <span><kbd>↵</kbd> open</span>
+        <span><kbd>esc</kbd> close</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" data-toast role="status" aria-live="polite" hidden></div>
+
+  <script src="./assets/js/scene.js" defer></script>
+  <script src="./assets/js/main.js" defer></script>
 </body>
 
 </html>
