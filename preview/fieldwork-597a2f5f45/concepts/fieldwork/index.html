@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ishank Sharma. Forward Deployed Engineer at Prentis AI. Turning ambiguous problems into AI products people can use and trust.">
+  <meta name="theme-color" content="#f4f6fa">
+  <title>Ishank Sharma — Fieldwork</title>
+  <link rel="icon" href="../../assets/images/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@400;450;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css?v=kinetic-3">
+  <script src="./script.js?v=kinetic-2" defer></script>
+  <link rel="stylesheet" href="./kinetic.css?v=3">
+  <script src="./scene.js?v=kinetic-3" type="module"></script>
+</head>
+<body>
+  <canvas id="ambient-scene" aria-hidden="true" hidden></canvas>
+  <div class="view-switch" aria-label="Compare Fieldwork views"><a href="?view=2d" data-view="2d">2D / Still</a><a href="?view=3d" data-view="3d">3D / Motion</a><button id="motion-toggle" type="button" aria-pressed="false" hidden>Pause motion</button></div>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="identity" href="#" aria-label="Ishank Sharma, home"><span class="monogram" aria-hidden="true">is.</span><span>Ishank Sharma</span></a>
+    <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#approach">Approach</a><a href="#about">About</a></nav>
+    <a class="header-contact" href="mailto:ishankdev@gmail.com">Let’s talk <span aria-hidden="true">↗</span></a>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-topline"><p><span class="status-dot" aria-hidden="true"></span>Forward Deployed Engineer at Prentis AI</p><p>Los Angeles, California <span aria-hidden="true">↙</span></p></div>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <h1 id="hero-title">The messy part<br>is my kind<br>of work.</h1>
+          <p class="intro">I’m Ishank. I turn ambiguous problems into AI products that work in the real world. From the first customer conversation to the last mile of production.</p>
+          <a class="pill-button" href="#work">Explore my work <span class="circle-icon" aria-hidden="true">↓</span></a>
+        </div>
+        <div class="problem-playground" id="playground">
+          <div class="playground-stage">
+            <span class="stage-note">A familiar starting point</span>
+            <svg class="problem-art" viewBox="0 0 520 470" role="img" aria-labelledby="art-title art-desc">
+              <title id="art-title">Turning a tangled problem into a clear system</title>
+              <desc id="art-desc">A set of tangled blue paths connects customer needs, AI, and legacy systems. Use the button below to see an organized path from discovery to delivery.</desc>
+              <defs><pattern id="dot-grid" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#2447df" opacity=".13"/></pattern></defs>
+              <circle cx="266" cy="237" r="183" fill="#d8eacb"/>
+              <rect width="520" height="470" fill="url(#dot-grid)"/>
+              <g class="chaos-lines" fill="none" stroke="#2447df" stroke-width="3.5" stroke-linecap="round">
+                <path d="M48 142C87 81 313 405 364 218S81 149 214 302 470 306 461 117"/>
+                <path d="M41 332C97 290 176 30 341 135S87 374 166 180 490 184 459 352"/>
+                <path d="M104 76C189 151 75 303 255 268S421 75 310 99 292 415 407 405"/>
+                <path d="M39 229C93 348 425 272 374 147S141 131 186 257 475 370 485 228"/>
+              </g>
+              <g class="clear-lines" fill="none" stroke="#2447df" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M47 143H140Q160 143 160 163V214Q160 235 181 235H260"/>
+                <path d="M41 333H140Q160 333 160 313V256Q160 235 181 235"/>
+                <path d="M105 76H236Q260 76 260 100V235H370Q390 235 390 215V143H460"/>
+                <path d="M39 235H140M260 235V355Q260 377 282 377H408M390 235V332H460M390 235H485"/>
+                <circle cx="260" cy="235" r="25" fill="#2447df"/><path d="m249 235 8 8 16-17" stroke="#fff" stroke-width="3"/>
+              </g>
+              <g fill="#f4f6fa" stroke="#2447df" stroke-width="3"><circle cx="47" cy="143" r="7"/><circle cx="41" cy="333" r="7"/><circle cx="105" cy="76" r="7"/><circle cx="39" cy="235" r="7"/><circle cx="460" cy="143" r="7"/><circle cx="460" cy="333" r="7"/><circle cx="408" cy="377" r="7"/><circle cx="485" cy="235" r="7"/></g>
+            </svg>
+            <canvas class="fieldwork-canvas" id="fieldwork-hero" tabindex="0" aria-label="3D ribbon sculpture. Drag or use arrow keys to rotate. Make it make sense untangles the system. Home resets the view." hidden></canvas>
+            <span class="floating-label label-customer">Real people</span><span class="floating-label label-legacy">Legacy systems</span><span class="floating-label label-ai">A little AI</span><span class="floating-label label-unknown">A lot of unknowns</span>
+            <span class="diagram-signature" aria-hidden="true">There’s a system in here somewhere.</span>
+          </div>
+          <div class="playground-controls"><button type="button" class="untangle-button" aria-pressed="false" aria-describedby="playground-caption">Make it make sense <span aria-hidden="true">↗</span></button><p id="playground-caption" aria-live="polite">A little like my day job. Give it a click.</p><div class="three-hint" hidden><span>Drag to explore in 3D</span><button type="button" id="reset-fieldwork">Reset view</button></div></div>
+        </div>
+      </div>
+      <div class="hero-bottom"><p>Customer context meets engineering depth.</p><div><span>Applied AI</span><span>Backend systems</span><span>0-to-1 ownership</span></div></div>
+    </section>
+
+    <section class="work-section" id="work" aria-labelledby="work-title">
+      <div class="wrap">
+        <div class="section-heading"><h2 id="work-title">Things I’ve<br>put into motion.</h2><p>Useful software starts with a real problem.<br>Here are a few of mine.</p></div>
+        <article class="featured-project">
+          <div class="featured-copy"><p class="project-context">Prentis AI / 2026–present</p><h3>From possibility.<br>To product.</h3><p>Forward Deployed Engineer at Prentis AI, building AI-powered products from discovery to production.</p><ul class="project-tags"><li>Applied AI</li><li>Product engineering</li><li>0-to-1</li></ul></div>
+          <div class="work-visual" aria-label="Abstract illustration of ideas taking shape">
+            <svg class="work-art" viewBox="0 0 520 440" role="img" aria-label="Abstract interlocking shapes"><circle cx="260" cy="220" r="145" fill="#c6dbb5"/><g fill="none" stroke-width="32"><ellipse cx="245" cy="220" rx="147" ry="77" transform="rotate(-35 245 220)" stroke="#2447df"/><ellipse cx="279" cy="211" rx="142" ry="73" transform="rotate(43 279 211)" stroke="#f4f6fa"/><ellipse cx="255" cy="217" rx="69" ry="139" transform="rotate(-12 255 217)" stroke="#8096ef"/></g><circle cx="254" cy="211" r="34" fill="#2447df"/></svg>
+            <canvas class="fieldwork-canvas" id="fieldwork-work" tabindex="0" aria-label="Abstract 3D sculpture of ideas taking shape. Drag or use arrow keys to rotate. Home resets the view." hidden></canvas>
+            <p class="illustration-note">Ideas, taking shape.</p>
+            <button class="work-reset" type="button" hidden>Reset 3D view</button>
+          </div>
+        </article>
+
+
+        <div class="project-pair">
+          <article class="project-story budget-project"><div class="project-art budget-art" aria-label="Budget recommendation processing improved from one day to about three minutes"><div class="time-before"><span>From</span><strong>1 day</strong><div class="time-track"><i></i></div></div><div class="time-after"><span>To</span><strong>3 min</strong><div class="time-track"><i></i></div></div><p>Same decision. A much shorter wait.</p></div><div class="project-story-text"><p class="project-context">CommerceIQ / Data & infrastructure</p><h3>Making the waiting disappear.</h3><p>A media budget recommendation pipeline built with AWS and roughly 40 SQL modules. Processing fell from a day to about three minutes, with approximately $200K in annual client savings.</p><span class="project-footnote">Step Functions, SQS, Lambda, SQL</span></div></article>
+          <article class="project-story ella-project"><div class="project-art ella-art"><div class="question-bubble">Has anyone solved this before?</div><div class="reply-bubble"><span class="ella-mark" aria-hidden="true">e.</span><p>Let’s start with what<br>your team already knows.</p></div><div class="knowledge-path" aria-hidden="true"><span>Ask</span><i></i><span>Learn</span><i></i><span>Remember</span></div></div><div class="project-story-text"><p class="project-context">Ella / Knowledge systems</p><h3>A better memory for the team.</h3><p>A Slack assistant that finds answers in company knowledge, escalates unanswered questions, and turns those answers into knowledge the next person can use.</p><a class="text-link" href="https://github.com/ishank-dev/google-adk-hackathon" target="_blank" rel="noopener">Explore the project <span aria-hidden="true">↗</span></a></div></article>
+        </div>
+
+        <div class="more-work"><h3>Also on my workbench</h3><a href="https://github.com/ishank-dev/firebolt-demo/tree/main/geospatial-application-demo" target="_blank" rel="noopener"><span>Firebolt Geospatial Analytics</span><span>Data, maps, and millions of records</span><b aria-hidden="true">↗</b></a><a href="https://github.com/ishank-dev/semantic-data-navigator/tree/main" target="_blank" rel="noopener"><span>Semantic Data Navigator</span><span>Finding meaning in documents</span><b aria-hidden="true">↗</b></a><a href="https://github.com/On-Duty-Org/Beats-Allocation-SIH" target="_blank" rel="noopener"><span>Police Beats Allocation</span><span>Smart India Hackathon winner</span><b aria-hidden="true">↗</b></a><a href="https://github.com/ishank-dev/NodeJS-MockServer" target="_blank" rel="noopener"><span>Mock Server Framework</span><span>Faster API prototyping</span><b aria-hidden="true">↗</b></a></div>
+      </div>
+    </section>
+
+    <section class="approach-section" id="approach" aria-labelledby="approach-title"><canvas id="approach-scene" aria-hidden="true" hidden></canvas><div class="wrap approach-layout"><div class="approach-intro"><span class="small-heading">How I work</span><h2 id="approach-title">Close to the problem.<br>All the way<br>through.</h2><p>The interesting part is connecting the pieces: what people need, what the model can do, and what the system must guarantee.</p><div class="approach-symbol" aria-hidden="true">✳</div></div><ol class="approach-steps"><li><span class="step-number">1</span><div><h3>Understand the actual work.</h3><p>Talk to the people doing it. Trace the workarounds. Find the problem beneath the feature request.</p></div></li><li><span class="step-number">2</span><div><h3>Use AI where it earns its place.</h3><p>Models for ambiguity. Deterministic code for rules. Clear boundaries between the two.</p></div></li><li><span class="step-number">3</span><div><h3>Own the last mile.</h3><p>Integration, evaluation, recovery, and adoption. The job is done when the workflow actually works.</p></div></li></ol></div></section>
+
+    <section class="about-section wrap" id="about" aria-labelledby="about-title"><div class="about-heading"><span class="small-heading">A little about me</span><h2 id="about-title">Engineer by trade.<br>Curious by default.</h2></div><div class="about-grid"><figure class="portrait"><img src="../../assets/images/my-avatar.jpeg" alt="Ishank Sharma in San Francisco" width="440" height="480" loading="lazy"><figcaption>Usually asking one more question.</figcaption></figure><div class="about-copy"><p class="about-lead">I like problems that don’t arrive neatly packaged.</p><p>My foundation is in backend, data, and distributed systems. At CommerceIQ, I built pipelines, optimized infrastructure, and grew into Forward Deployed Engineering. At Prentis AI, I’m taking on the whole journey: discovery, product, engineering, and production.</p><p>I completed my M.S. in Computer Science at CSULB in May 2026. These days, I’m based in Los Angeles, working at the intersection of customer context and applied AI.</p><p>Outside the implementation details, I’m drawn to philosophy, psychology, and questions about how people think. There’s usually a good film somewhere in the mix, too.</p><div class="about-links"><a class="text-link" href="/" target="_blank" rel="noopener">Full profile & résumé <span aria-hidden="true">↗</span></a><a class="text-link" href="https://www.linkedin.com/in/ishank-sharma-438a32144/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a></div></div></div>
+      <div class="journey"><h3>The journey so far</h3><div class="journey-row"><span>2026–now</span><div><strong>Prentis AI</strong><p>Forward Deployed Engineer</p></div><span>Discovery to production</span></div><div class="journey-row"><span>2026</span><div><strong>CommerceIQ</strong><p>Forward Deployed Engineer</p></div><span>Analytics & applied AI</span></div><div class="journey-row"><span>2025</span><div><strong>Stealth startup</strong><p>Full Stack Engineer</p></div><span>Text-to-SQL & LLM systems</span></div><div class="journey-row"><span>2021–2024</span><div><strong>CommerceIQ</strong><p>Software Engineer, SDE 1 to SDE 2</p></div><span>Backend & data foundations</span></div></div>
+      <div class="toolbox"><h3>Some familiar tools</h3><p>Python <span>SQL</span> Claude <span>Amazon Bedrock</span> FastAPI <span>AWS</span> PostgreSQL <span>Docker</span> Databricks <span>JavaScript</span></p></div>
+      <div class="recognition"><span class="recognition-symbol" aria-hidden="true">✴</span><div><h3>Built with a competitive streak.</h3><p>Smart India Hackathon winner. Microsoft IncubateIND and Reverie hackathon runner-up. Honorable mentions at CommerceIQ AI and GE Healthcare.</p></div></div>
+    </section>
+
+    <section class="writing-section wrap"><div><span class="small-heading">Thinking out loud</span><h2>A few ideas<br>outside the code.</h2></div><div><p>From data visualization to the fourth dimension. Writing is where I work through the questions that stay with me.</p><a class="text-link" href="https://medium.com/@ishankdev" target="_blank" rel="noopener">Read my writing on Medium <span aria-hidden="true">↗</span></a></div></section>
+    <footer class="contact-section" id="contact"><div class="wrap"><p>Have something interesting on your hands?</p><a class="big-contact" href="mailto:ishankdev@gmail.com">Let’s make<br>it work.<span aria-hidden="true">↗</span></a><div class="footer-bottom"><a href="mailto:ishankdev@gmail.com">ishankdev@gmail.com</a><div><a href="https://github.com/ishank-dev" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/ishank-sharma-438a32144/" target="_blank" rel="noopener">LinkedIn</a><a href="../../">Compare 2D / 3D</a></div><span>Made with intent. Los Angeles.</span></div></div></footer>
+  </main>
+</body>
+</html>
