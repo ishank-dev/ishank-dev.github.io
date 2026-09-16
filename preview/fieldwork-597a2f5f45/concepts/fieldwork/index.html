@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta name="robots" content="noindex, nofollow, noarchive">
   <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Ishank Sharma. Forward Deployed Engineer at Prentis AI. Turning ambiguous problems into AI products people can use and trust.">
   <meta name="theme-color" content="#f4f6fa">
@@ -12,13 +12,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@400;450;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css?v=kinetic-3">
-  <script src="./script.js?v=kinetic-2" defer></script>
-  <link rel="stylesheet" href="./kinetic.css?v=3">
-  <script src="./scene.js?v=kinetic-3" type="module"></script>
+  <script src="./script.js?v=field-notes-1" defer></script>
+  <link rel="stylesheet" href="./kinetic.css?v=field-notes-1">
+  <script src="./scene.js?v=field-notes-1" type="module"></script>
 </head>
 <body>
   <canvas id="ambient-scene" aria-hidden="true" hidden></canvas>
-  <div class="view-switch" aria-label="Compare Fieldwork views"><a href="?view=2d" data-view="2d">2D / Still</a><a href="?view=3d" data-view="3d">3D / Motion</a><button id="motion-toggle" type="button" aria-pressed="false" hidden>Pause motion</button></div>
+  <div class="view-switch" aria-label="Compare Fieldwork views"><a href="?view=2d" data-view="2d">2D / Field notes</a><a href="?view=3d" data-view="3d">3D / Motion</a><button id="motion-toggle" type="button" aria-pressed="false" hidden>Pause motion</button></div>
   <a class="skip" href="#main">Skip to content</a>
   <header class="site-header wrap">
     <a class="identity" href="#" aria-label="Ishank Sharma, home"><span class="monogram" aria-hidden="true">is.</span><span>Ishank Sharma</span></a>
@@ -37,26 +37,45 @@
         <div class="problem-playground" id="playground">
           <div class="playground-stage">
             <span class="stage-note">A familiar starting point</span>
-            <svg class="problem-art" viewBox="0 0 520 470" role="img" aria-labelledby="art-title art-desc">
-              <title id="art-title">Turning a tangled problem into a clear system</title>
-              <desc id="art-desc">A set of tangled blue paths connects customer needs, AI, and legacy systems. Use the button below to see an organized path from discovery to delivery.</desc>
-              <defs><pattern id="dot-grid" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#2447df" opacity=".13"/></pattern></defs>
-              <circle cx="266" cy="237" r="183" fill="#d8eacb"/>
-              <rect width="520" height="470" fill="url(#dot-grid)"/>
-              <g class="chaos-lines" fill="none" stroke="#2447df" stroke-width="3.5" stroke-linecap="round">
-                <path d="M48 142C87 81 313 405 364 218S81 149 214 302 470 306 461 117"/>
-                <path d="M41 332C97 290 176 30 341 135S87 374 166 180 490 184 459 352"/>
-                <path d="M104 76C189 151 75 303 255 268S421 75 310 99 292 415 407 405"/>
-                <path d="M39 229C93 348 425 272 374 147S141 131 186 257 475 370 485 228"/>
+            <svg class="problem-art field-map" viewBox="0 0 520 470" role="img" aria-labelledby="art-title art-desc">
+              <title id="art-title">The messy middle of forward deployed engineering</title>
+              <desc id="art-desc">Scattered customer asks, people, data, legacy tools, risks, and ownership questions. Make it make sense arranges them into discovery, framing, building, validation, operations, and handoff.</desc>
+              <defs>
+                <pattern id="dot-grid" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#2447df" opacity=".12"/></pattern>
+                <marker id="field-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="m2 1 6 4-6 4" fill="none" stroke="#2447df" stroke-width="1.5"/></marker>
+              </defs>
+              <rect x="6" y="42" width="508" height="385" rx="8" fill="url(#dot-grid)"/>
+              <path d="M18 82V54H46M474 54H502V82M18 385V413H46M474 413H502V385" fill="none" stroke="#2447df" opacity=".25"/>
+              <g class="chaos-lines" fill="none" stroke="#2447df" stroke-width="2" stroke-linecap="round">
+                <path d="M101 137C180 62 403 370 258 325S86 218 244 204 499 164 427 107"/>
+                <path d="M87 315C198 376 379 79 288 146S124 273 241 312 419 374 427 290"/>
+                <path class="field-signal" d="M101 137C331 12 491 290 241 312S198 390 87 315"/>
               </g>
-              <g class="clear-lines" fill="none" stroke="#2447df" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M47 143H140Q160 143 160 163V214Q160 235 181 235H260"/>
-                <path d="M41 333H140Q160 333 160 313V256Q160 235 181 235"/>
-                <path d="M105 76H236Q260 76 260 100V235H370Q390 235 390 215V143H460"/>
-                <path d="M39 235H140M260 235V355Q260 377 282 377H408M390 235V332H460M390 235H485"/>
-                <circle cx="260" cy="235" r="25" fill="#2447df"/><path d="m249 235 8 8 16-17" stroke="#fff" stroke-width="3"/>
+              <g class="clear-lines" fill="none" stroke="#2447df" stroke-width="2" stroke-linejoin="round">
+                <path marker-end="url(#field-arrow)" d="M166 151H188"/><path marker-end="url(#field-arrow)" d="M328 151H350"/>
+                <path marker-end="url(#field-arrow)" d="M420 198V262"/><path marker-end="url(#field-arrow)" d="M350 309H328"/><path marker-end="url(#field-arrow)" d="M188 309H166"/>
+                <path class="field-signal" d="M96 363V396H476V76H96V101" opacity=".35"/>
               </g>
-              <g fill="#f4f6fa" stroke="#2447df" stroke-width="3"><circle cx="47" cy="143" r="7"/><circle cx="41" cy="333" r="7"/><circle cx="105" cy="76" r="7"/><circle cx="39" cy="235" r="7"/><circle cx="460" cy="143" r="7"/><circle cx="460" cy="333" r="7"/><circle cx="408" cy="377" r="7"/><circle cx="485" cy="235" r="7"/></g>
+              <g class="field-note" style="--mx:28px;--my:94px;--angle:-9deg;--cx:26px;--cy:104px;--delay:-1s"><g class="note-paper">
+                <rect class="note-face" width="140" height="94" rx="5" fill="#fff"/><path class="note-icon" d="M17 18h22v15H27l-7 6v-6h-3z"/><text class="note-messy" x="17" y="59">A vague ask</text><text class="note-clear" x="17" y="59">Discover</text><text class="note-detail note-messy" x="17" y="79">“Can we add AI?”</text><text class="note-detail note-clear" x="17" y="79">Find the real need</text>
+              </g></g>
+              <g class="field-note" style="--mx:342px;--my:75px;--angle:8deg;--cx:188px;--cy:104px;--delay:-4s"><g class="note-paper">
+                <rect class="note-face" width="140" height="94" rx="5" fill="#e8dff4"/><path class="note-icon" d="M19 32v-7q0-5 6-5t6 5v7m5 0v-5q0-5 6-5m-13-8h.1m12 3h.1"/><text class="note-messy" x="17" y="59">People</text><text class="note-clear" x="17" y="59">Frame</text><text class="note-detail note-messy" x="17" y="79">Different priorities</text><text class="note-detail note-clear" x="17" y="79">Agree what matters</text>
+              </g></g>
+              <g class="field-note" style="--mx:190px;--my:164px;--angle:-5deg;--cx:350px;--cy:104px;--delay:-2s"><g class="note-paper">
+                <rect class="note-face" width="140" height="94" rx="5" fill="#e9edff"/><path class="note-icon" d="m23 18-7 8 7 8m10-16 7 8-7 8m-3-20-4 24"/><text class="note-messy" x="17" y="59">Legacy tools</text><text class="note-clear" x="17" y="59">Build</text><text class="note-detail note-messy" x="17" y="79">Hidden dependencies</text><text class="note-detail note-clear" x="17" y="79">Fit the environment</text>
+              </g></g>
+              <g class="field-note" style="--mx:344px;--my:268px;--angle:7deg;--cx:350px;--cy:262px;--delay:-5s"><g class="note-paper">
+                <rect class="note-face" width="140" height="94" rx="5" fill="#fff"/><path class="note-icon" d="M18 17h24v21H18zm0 7h24m-16-7v21m8-21v21"/><text class="note-messy" x="17" y="59">Messy data</text><text class="note-clear" x="17" y="59">Validate</text><text class="note-detail note-messy" x="17" y="79">What can we trust?</text><text class="note-detail note-clear" x="17" y="79">Prove it in real use</text>
+              </g></g>
+              <g class="field-note" style="--mx:179px;--my:310px;--angle:-8deg;--cx:188px;--cy:262px;--delay:-3s"><g class="note-paper">
+                <rect class="note-face" width="140" height="94" rx="5" fill="#f8e6d9"/><path class="note-icon" d="m18 35 12-20 12 20zm12-12v5m0 3v1"/><text class="note-messy" x="17" y="59">Unknowns</text><text class="note-clear" x="17" y="59">Operate</text><text class="note-detail note-messy" x="17" y="79">What if it breaks?</text><text class="note-detail note-clear" x="17" y="79">Recover. Improve.</text>
+              </g></g>
+              <g class="field-note" style="--mx:27px;--my:257px;--angle:5deg;--cx:26px;--cy:262px;--delay:-6s"><g class="note-paper">
+                <rect class="note-face" width="140" height="94" rx="5" fill="#d8eacb"/><path class="note-icon" d="M18 26h24m-7-7 7 7-7 7M18 18v20"/><text class="note-messy" x="17" y="59">Who owns it?</text><text class="note-clear" x="17" y="59">Transfer</text><text class="note-detail note-messy" x="17" y="79">Beyond the demo</text><text class="note-detail note-clear" x="17" y="79">A team can own it</text>
+              </g></g>
+              <text class="map-footnote note-messy" x="260" y="443" text-anchor="middle">The real brief is rarely a neat brief.</text>
+              <text class="map-footnote note-clear" x="260" y="443" text-anchor="middle">Learn in the field. Feed it back.</text>
             </svg>
             <canvas class="fieldwork-canvas" id="fieldwork-hero" tabindex="0" aria-label="3D ribbon sculpture. Drag or use arrow keys to rotate. Make it make sense untangles the system. Home resets the view." hidden></canvas>
             <span class="floating-label label-customer">Real people</span><span class="floating-label label-legacy">Legacy systems</span><span class="floating-label label-ai">A little AI</span><span class="floating-label label-unknown">A lot of unknowns</span>
@@ -73,10 +92,19 @@
         <div class="section-heading"><h2 id="work-title">Things I’ve<br>put into motion.</h2><p>Useful software starts with a real problem.<br>Here are a few of mine.</p></div>
         <article class="featured-project">
           <div class="featured-copy"><p class="project-context">Prentis AI / 2026–present</p><h3>From possibility.<br>To product.</h3><p>Forward Deployed Engineer at Prentis AI, building AI-powered products from discovery to production.</p><ul class="project-tags"><li>Applied AI</li><li>Product engineering</li><li>0-to-1</li></ul></div>
-          <div class="work-visual" aria-label="Abstract illustration of ideas taking shape">
-            <svg class="work-art" viewBox="0 0 520 440" role="img" aria-label="Abstract interlocking shapes"><circle cx="260" cy="220" r="145" fill="#c6dbb5"/><g fill="none" stroke-width="32"><ellipse cx="245" cy="220" rx="147" ry="77" transform="rotate(-35 245 220)" stroke="#2447df"/><ellipse cx="279" cy="211" rx="142" ry="73" transform="rotate(43 279 211)" stroke="#f4f6fa"/><ellipse cx="255" cy="217" rx="69" ry="139" transform="rotate(-12 255 217)" stroke="#8096ef"/></g><circle cx="254" cy="211" r="34" fill="#2447df"/></svg>
+          <div class="work-visual" aria-label="Conceptual illustration of forward deployed engineering, not a client architecture">
+            <svg class="work-art delivery-map" viewBox="0 0 520 440" role="img" aria-labelledby="delivery-title delivery-desc">
+              <title id="delivery-title">Three kinds of judgment. One working workflow.</title><desc id="delivery-desc">AI interprets, code checks, and people decide. Together they support a reliable workflow with evidence, feedback, and a team that can own it. A generic illustration, not a client system.</desc>
+              <path class="delivery-route" d="M102 147V180Q102 194 116 194H404Q418 194 418 208V231M260 147V231M418 147V180Q418 194 404 194"/>
+              <path class="delivery-route field-signal" d="M102 147V180Q102 194 116 194H246Q260 194 260 208V231"/>
+              <g class="judgment-note" style="--delay:-1s" transform="translate(40 60)"><rect width="124" height="88" rx="5" fill="#e9edff"/><path class="note-icon" d="m23 16 4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/><text x="49" y="33">AI</text><text class="note-detail" x="17" y="65">Interpret</text></g>
+              <g class="judgment-note" style="--delay:-3s" transform="translate(198 60)"><rect width="124" height="88" rx="5" fill="#fff"/><path class="note-icon" d="m23 20-7 8 7 8m10-16 7 8-7 8"/><text x="49" y="33">Code</text><text class="note-detail" x="17" y="65">Check</text></g>
+              <g class="judgment-note" style="--delay:-5s" transform="translate(356 60)"><rect width="124" height="88" rx="5" fill="#e8dff4"/><path class="note-icon" d="M17 37v-6q0-7 10-7t10 7v6m-10-22h.1"/><text x="47" y="33">People</text><text class="note-detail" x="17" y="65">Decide</text></g>
+              <g class="workflow-output"><rect x="70" y="231" width="380" height="119" rx="5" fill="#2447df"/><path d="m96 262 6 6 12-13" fill="none" stroke="#d8eacb" stroke-width="3"/><text x="130" y="269" fill="#fff">A workflow that works.</text><path d="M96 287H424" stroke="#ffffff44"/><text class="output-detail" x="96" y="317" fill="#fff">Evidence. Recovery. A named owner.</text></g>
+              <path class="delivery-feedback" d="M260 350V384H30V104H40"/><text class="feedback-label" x="272" y="390">Real use → better product</text>
+            </svg>
             <canvas class="fieldwork-canvas" id="fieldwork-work" tabindex="0" aria-label="Abstract 3D sculpture of ideas taking shape. Drag or use arrow keys to rotate. Home resets the view." hidden></canvas>
-            <p class="illustration-note">Ideas, taking shape.</p>
+            <p class="illustration-note">A way of working. Not a client blueprint.</p>
             <button class="work-reset" type="button" hidden>Reset 3D view</button>
           </div>
         </article>

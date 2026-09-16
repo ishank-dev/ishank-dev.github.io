@@ -12,3 +12,34 @@ html[data-view="2d"] #ambient-scene{display:none}html[data-view="2d"] .contact-s
 #approach-scene{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.28}#approach-scene[hidden]{display:none}
 @media(max-width:360px){.budget-art{padding:25px;gap:18px}.budget-art strong{font-size:42px;white-space:nowrap}.budget-art>p{left:25px;font-size:10px}}
 @media(prefers-reduced-motion:reduce){.view-switch{backdrop-filter:none}}
+
+/* Field notes: the work moves from ambiguity to a customer-owned system. */
+.playground-stage:not(.has-3d) .floating-label,.playground-stage:not(.has-3d) .diagram-signature{display:none}
+.playground-stage:not(.has-3d) .stage-note{right:12px;top:3px;transform:none;font-size:11px}
+.field-map text,.delivery-map text{font-family:var(--body);font-size:17px;font-weight:600;fill:var(--ink)}
+.field-map .note-detail,.delivery-map .note-detail{font-size:12px;font-weight:400;fill:#526079}
+.field-map .map-footnote{font-family:var(--display);font-size:14px;font-weight:400;fill:var(--blue)}
+.field-note{transform:translate(var(--mx),var(--my)) rotate(var(--angle));transform-box:view-box;transition:transform 1.15s cubic-bezier(.22,1,.36,1)}
+.note-face,.judgment-note rect{stroke:#2447df35;stroke-width:1;filter:drop-shadow(0 4px 0 #17243e0a)}
+.note-icon{fill:none;stroke:var(--blue);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.note-paper{animation:field-drift 7s ease-in-out var(--delay) infinite;animation-play-state:paused}
+.note-clear{opacity:0}.note-messy,.note-clear{transition:opacity .4s}
+.is-clear .field-note{transform:translate(var(--cx),var(--cy)) rotate(0deg)}
+.is-clear .note-messy{opacity:0}.is-clear .note-clear{opacity:1;transition-delay:.3s}
+.field-map .clear-lines,.field-map .chaos-lines{transform:none;transition:opacity .65s}
+.field-map .clear-lines{transition-delay:.35s}.field-map .chaos-lines{stroke-opacity:.55}
+.field-signal{stroke-dasharray:4 14;animation:field-flow 6s linear infinite;animation-play-state:paused}
+.delivery-map{padding:10px;overflow:visible}.delivery-route{fill:none;stroke:#2447df;stroke-width:2;stroke-opacity:.45}.delivery-route.field-signal{stroke-opacity:1;stroke-width:3}
+.delivery-map .workflow-output text{fill:#fff;font-size:22px}.delivery-map .workflow-output .output-detail{font-size:15px;font-weight:400}
+.delivery-feedback{fill:none;stroke:#435b39;stroke-width:1.5;stroke-dasharray:4 6}.delivery-map .feedback-label{font-size:13px;font-weight:400;fill:#435b39}
+.judgment-note{animation:judgment-drift 8s ease-in-out var(--delay) infinite;animation-play-state:paused}
+html[data-view="2d"][data-motion="playing"] .field-signal,html[data-view="2d"][data-motion="playing"] .note-paper,html[data-view="2d"][data-motion="playing"] .judgment-note{animation-play-state:running}
+html[data-view="2d"][data-motion="playing"] .is-clear .note-paper,html[data-view="2d"][data-tab-hidden="true"] .field-signal,html[data-view="2d"][data-tab-hidden="true"] .note-paper,html[data-view="2d"][data-tab-hidden="true"] .judgment-note,html[data-view="2d"] [data-in-view="false"] .field-signal,html[data-view="2d"] [data-in-view="false"] .note-paper,html[data-view="2d"] [data-in-view="false"] .judgment-note{animation-play-state:paused}
+.view-switch button:disabled{cursor:default;color:#657187}
+html[data-view="2d"] .is-clear .note-paper{animation:none}
+html[data-view="2d"] .untangle-button:hover span{display:inline-block;transform:translate(3px,-3px)}
+@keyframes field-drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes judgment-drift{0%,100%{translate:0 0}50%{translate:0 -4px}}
+@keyframes field-flow{to{stroke-dashoffset:-108}}
+@media(max-width:600px){.delivery-map{padding:0}.playground-stage:not(.has-3d) .stage-note{font-size:10px}.work-visual .illustration-note{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.field-note,.note-messy,.note-clear{transition:none!important}.note-paper,.judgment-note,.field-signal{animation:none!important}html[data-view="2d"] .untangle-button:hover span{transform:none}}

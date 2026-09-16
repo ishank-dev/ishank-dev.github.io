@@ -1,4 +1,4 @@
-import { presentation, advanceMorph } from './motion.mjs';
+import { presentation, advanceMorph, motionControl } from './motion.mjs?v=field-notes-1';
 
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const mode = presentation(location.search, reduced.matches);
@@ -8,13 +8,26 @@ const motionButton = document.getElementById('motion-toggle');
 const views = [];
 let playing = mode.playing;
 function updateMotionButton() {
-  motionButton.textContent = playing ? 'Pause motion' : 'Play motion';
+  const control = motionControl(playing, mode.dimensional, reduced.matches);
+  motionButton.textContent = control.label;
+  motionButton.disabled = control.disabled;
   motionButton.setAttribute('aria-pressed', String(playing));
   document.documentElement.dataset.motion = playing ? 'playing' : 'paused';
 }
 motionButton.addEventListener('click', () => { playing = !playing; updateMotionButton(); views.forEach(view => view.draw()); });
-reduced.addEventListener('change', () => { playing = !reduced.matches && mode.dimensional; updateMotionButton(); views.forEach(view => view.draw()); });
+reduced.addEventListener('change', () => { playing = !reduced.matches; updateMotionButton(); views.forEach(view => view.draw()); });
 updateMotionButton();
+
+if (!mode.dimensional) {
+  motionButton.hidden = false;
+  const visibility = () => { document.documentElement.dataset.tabHidden = String(document.hidden); };
+  document.addEventListener('visibilitychange', visibility);
+  visibility();
+  const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+    entry.target.dataset.inView = String(entry.isIntersecting);
+  }));
+  document.querySelectorAll('.problem-playground,.work-visual').forEach(element => observer.observe(element));
+}
 
 if (mode.dimensional) {
   try {

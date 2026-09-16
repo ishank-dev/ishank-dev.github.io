@@ -1,6 +1,10 @@
 export function presentation(search, reducedMotion) {
   const dimensional = new URLSearchParams(search).get('view') !== '2d';
-  return { dimensional, playing: dimensional && !reducedMotion };
+  return { dimensional, playing: !reducedMotion };
+}
+export function motionControl(playing, dimensional, reducedMotion) {
+  const disabled = !dimensional && reducedMotion;
+  return { label: disabled ? 'Reduced motion' : playing ? 'Pause motion' : 'Play motion', disabled };
 }
 export function advanceMorph(current, target, delta, instant) {
   if (instant) return target;
