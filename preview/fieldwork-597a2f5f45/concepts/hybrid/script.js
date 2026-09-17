@@ -20,7 +20,7 @@ updateMotion();
 const observer = new IntersectionObserver(entries => entries.forEach(entry => {
   entry.target.dataset.inView = String(entry.isIntersecting);
 }));
-document.querySelectorAll('.problem-playground,.work-visual').forEach(element => observer.observe(element));
+document.querySelectorAll('.problem-playground,.work-visual,.project-motion').forEach(element => observer.observe(element));
 
 const items = [...document.querySelectorAll('[data-project]')].map(element => ({ id: element.id, category: element.dataset.category, element }));
 const filters = [...document.querySelectorAll('[data-project-filter]')];
