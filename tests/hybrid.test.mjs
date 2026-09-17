@@ -60,8 +60,14 @@ test('root homepage publishes the hybrid portfolio while preserving the old port
   assert.match(rootHtml, /<h1 id="hero-title">The messy part/);
   assert.match(rootHtml, /Forward Deployed Engineer<\/p>/);
   assert.doesNotMatch(rootHtml, /Forward Deployed Engineer at Prentis AI<\/p>/);
+  assert.doesNotMatch(rootHtml, /I like building the kind of backend/);
+  assert.doesNotMatch(rootHtml, /What started as curiosity about how data moves/);
   assert.doesNotMatch(rootHtml, /class="header-resume"/);
   assert.doesNotMatch(rootHtml, /noindex, nofollow, noarchive/);
+  assert.match(rootHtml, /href="https:\/\/github\.com\/ishank-dev"/);
+  assert.match(rootHtml, /href="https:\/\/www\.linkedin\.com\/in\/ishank-sharma-438a32144\/"/);
+  assert.doesNotMatch(rootHtml, /github\.com\/ishank-dev\/google-adk-hackathon/);
+  assert.doesNotMatch(rootHtml, /github\.com\/ishank-dev\/CECS_CSULB_2026/);
   for (const [, path] of rootHtml.matchAll(/(?:src|href)="((?:\.\/)?(?:assets|concepts)\/[^"]+)"/g)) {
     assert.ok(existsSync(new URL(path.split('?')[0], rootURL)), path);
   }
