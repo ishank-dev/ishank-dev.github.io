@@ -1,0 +1,59 @@
+/* A quiet night sky. Keep the portfolio's content and interactions in focus. */
+:root{color-scheme:dark;--paper:#090e18;--ink:#e8edf6;--muted:#a8b5ca;--blue:#a3bfff;--green:#152333;--pink:#211e32;--line:#2b374b}
+html{scrollbar-color:#536783 var(--paper)}
+body{background:var(--paper)}
+::selection{background:#a3bfff;color:#090e18}
+:focus-visible{outline:2px solid #c4d5ff;outline-offset:6px}
+#starfield{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:-1}
+.site-header,.hero-bottom{border-color:var(--line)}
+.hero h1{color:var(--ink);font-size:clamp(64px,7vw,96px);letter-spacing:-.04em}
+h2,.featured-copy h3{letter-spacing:-.035em}
+.monogram{color:var(--ink);letter-spacing:-.04em}
+.work-section{background:#0d1420e8;border-block:1px solid var(--line)}
+.featured-project{background:#142131;border:1px solid var(--line);border-radius:12px}
+.featured-copy .project-context,.illustration-note,.portrait figcaption{color:var(--muted)}
+.project-tags li{border-color:#46556c}
+.approach-section{background:#111c2bea;border-block:1px solid var(--line)}
+.approach-symbol{color:var(--blue)}
+.approach-intro .small-heading,.approach-intro>p,.approach-steps p{color:var(--muted)}
+.approach-steps li,.approach-steps li:last-child,.step-number{border-color:#46556c}
+.budget-art,.archive-image{background:#162238}
+.ella-art{background:#211e32}
+.question-bubble,.reply-bubble{background:#302b44;color:var(--ink);border-color:#655a7a}
+.ella-mark,.knowledge-path{color:#d0bfe9}
+.time-track{background:#293b58}.time-track i{background:#6683b3}
+.time-before strong{color:#a8b5ca}
+.portrait{background:#1c2a3a;border:1px solid var(--line);transform:rotate(-2deg)}
+.awards-section{background:#101b2be8;border-block:1px solid var(--line)}
+.awards-intro p,.award-list p{color:var(--muted)}
+.award-list li{border-color:var(--line)}
+.contact-section{background:#111c2bed;color:var(--ink);border-top:1px solid var(--line)}
+.contact-layout p,.contact-form label,.contact-form .form-note,.footer-bottom>span{color:var(--muted)}
+.contact-form input,.contact-form textarea{background:#0c1422;border-color:#46556c;color:var(--ink)}
+.contact-form input::placeholder,.contact-form textarea::placeholder{color:#9dabc2}
+.contact-links a,.footer-bottom{border-color:var(--line)}
+.contact-form button,.project-filters button[aria-pressed=true],.circle-icon,.skip{color:#090e18;background:var(--blue)}
+.pill-button:hover{color:#090e18}.pill-button:hover .circle-icon{background:#090e18;color:var(--blue)}
+.field-map .note-face,.delivery-map .judgment-note rect{fill:#18263b;stroke:#526987;filter:none}
+.field-map .note-detail,.delivery-map .note-detail{fill:var(--muted)}
+.field-map .chaos-lines,.field-map .clear-lines,.delivery-route,.delivery-feedback{stroke:var(--blue)}
+.field-map>rect{opacity:.35}
+.field-map>path{stroke:var(--blue)}
+.delivery-map .feedback-label{fill:var(--muted)}
+.delivery-map .workflow-output rect{fill:#a3bfff}
+.delivery-map .workflow-output text,.delivery-map .workflow-output .output-detail{fill:#090e18}
+/* Existing diagrams use a light illustration palette; give them a dark atlas palette. */
+.project-motion-svg [fill="#fff"],.project-motion-svg [fill="#ffffff"],.project-motion-svg [fill="#faf7ff"]{fill:#24334a}
+.project-motion-svg [fill="#e9edff"],.project-motion-svg [fill="#edf0f8"]{fill:#182840}
+.project-motion-svg [fill="#e8dff4"]{fill:#332d48}
+.project-motion-svg [fill="#d8eacb"]{fill:#27423c}
+.project-motion-svg [fill="#2447df"]{fill:#a3bfff}
+.project-motion-svg [stroke="#2447df"],.pm-line{stroke:#a3bfff}
+.project-motion-svg text{fill:var(--ink)}
+.project-motion-svg [fill="#f4f6fa"]{fill:#182840}
+.project-motion-svg [fill="#f8e6d9"]{fill:#302839}
+.project-motion-svg [fill="#17243e"]{fill:#c0d0e9}
+.project-motion-svg [stroke="#68508a"]{stroke:#b6a2d2}
+.project-motion-svg [stroke="#435b39"]{stroke:#95b8ac}
+.playground-stage:not(.has-3d) .stage-note,.project-tags li,.footer-bottom>span{font-size:11px}
+@media(max-width:600px){.hero h1{font-size:clamp(45px,13.5vw,72px);letter-spacing:-.04em}}
