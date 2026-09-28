@@ -1,0 +1,57 @@
+/* The hero: a dust cloud that becomes a working system. Layers, back to front: dust canvas, orbit rings, WebGL bodies,
+   then the plate with the labels. Every label carries a dark halo so it reads over dust, rings and planets. */
+@media(min-width:901px){html[data-theme="space"] .problem-playground{width:100%;max-width:540px;justify-self:end}}
+@media(max-width:900px){html[data-theme="space"] .problem-playground{justify-self:center;max-width:520px}}
+[data-orbits]{aspect-ratio:520/420;user-select:none;-webkit-user-select:none;touch-action:pan-y}
+.o-canvas,.o-orbit-plate,.o-bodies{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.o-orbit-plate,.o-plate{display:block;overflow:visible}
+.o-plate{position:relative;width:100%;height:100%;cursor:grab}
+.o-plate.is-holding{cursor:progress}
+.o-plate.is-tilting{cursor:grabbing}
+
+.o-ring{fill:none;stroke:#26366f;stroke-width:1;transition:opacity .5s,stroke .3s}
+.o-ring.is-hot{stroke:var(--tone);stroke-opacity:.75}
+.o-planet{stroke:none}
+.is-gl .o-planet,.is-gl .o-core{display:none}
+.o-hit{fill:transparent;cursor:pointer}
+.o-body.is-hot .o-planet{filter:brightness(1.25)}
+
+.o-label text,.o-footnote{paint-order:stroke fill;stroke:#0b1330;stroke-opacity:.92;stroke-width:4px;stroke-linejoin:round}
+.o-label text{font-family:var(--body);transition:opacity .4s}
+.o-name{font-size:14px;font-weight:600}
+.o-detail{font-size:11.5px}
+.o-name.messy{fill:var(--star-2);font-weight:500;font-style:italic}
+.o-detail.messy{fill:var(--star-3)}
+.o-name.clear{fill:var(--star);font-family:var(--display);font-size:15.5px;opacity:0}
+.o-detail.clear{fill:var(--star-2);opacity:0}
+.o-label.is-clear .messy{opacity:0}
+.o-label.is-clear .clear{opacity:1}
+.o-label.is-hot .o-name.clear{fill:var(--amber)}
+.o-leader{stroke:var(--star-3);stroke-width:1;opacity:0}
+.o-footnote{font-family:var(--display);font-size:14px;fill:var(--vega)}
+.o-hint{margin:0 0 12px;font-size:13px;line-height:1.45;color:var(--star-2)}
+
+/* The hero's own control: a secondary pill beside the primary "Explore my work", with a converge mark instead of the
+   external-link arrow (it acts in place). */
+html[data-theme="space"] .problem-playground .playground-controls{margin-top:10px}
+html[data-theme="space"] .playground-controls .untangle-button{display:inline-flex;align-items:center;gap:12px;min-height:46px;padding:0 20px 0 22px;border:1px solid var(--vega);border-radius:40px;background:transparent;color:var(--star);font-size:14.5px;font-weight:600;letter-spacing:.005em;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s}
+html[data-theme="space"] .playground-controls .untangle-button:hover{background:var(--vega);border-color:var(--vega);color:var(--sky)}
+html[data-theme="space"] .playground-controls .untangle-button[aria-pressed="true"]{border-color:#8ea6ff80}
+html[data-theme="space"] .playground-controls .untangle-button span{margin:0}
+.converge{display:inline-block;width:18px;height:18px;background:currentColor;transition:rotate .5s cubic-bezier(.2,.8,.2,1);
+  --converge:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cg fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 2l4 4M6 3v3H3M16 2l-4 4M12 3v3h3M2 16l4-4M6 15v-3H3M16 16l-4-4M12 15v-3h3'/%3E%3Ccircle cx='9' cy='9' r='1.3' fill='%23000' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
+  -webkit-mask:var(--converge) center/contain no-repeat;mask:var(--converge) center/contain no-repeat}
+.untangle-button[aria-pressed="true"] .converge{rotate:45deg}
+html[data-theme="space"] #playground-caption{font-size:12.5px;color:var(--star-3);margin-top:12px}
+
+/* Before the script runs (or without it): the story as a plain list. */
+.orbits-static{position:absolute;inset:14% 6%;margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;align-content:center;gap:18px 24px;font-size:13px;color:var(--star-2)}
+.orbits-static b{display:block;font-family:var(--display);font-weight:600;font-size:15px;color:var(--star)}
+
+/* Phones: the plate scales down, so its type scales up to stay readable (about 12.5px names, 11px details). */
+@media(prefers-reduced-motion:reduce){.converge{transition:none}}
+@media(max-width:600px){
+  .o-name{font-size:19px}.o-name.clear{font-size:20px}.o-detail{font-size:16px}
+  .o-footnote{font-size:17px}
+  .o-label text,.o-footnote{stroke-width:5px}
+}
