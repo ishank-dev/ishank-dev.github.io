@@ -5,7 +5,7 @@ import { existsSync, readFileSync } from 'node:fs';
 const source = new URL('../concepts/hybrid/interactions.mjs', import.meta.url);
 const htmlURL = new URL('../concepts/hybrid/index.html', import.meta.url);
 const html = readFileSync(htmlURL, 'utf8');
-const rootURL = new URL('../index.html', import.meta.url);
+const rootURL = new URL('../space.html', import.meta.url);
 const rootHtml = readFileSync(rootURL, 'utf8');
 test('hybrid keeps complete portfolio sections, valid anchors, and local assets', () => {
   const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
@@ -55,7 +55,7 @@ test('contact drafts preserve visitor text and encode it as data in a fixed mail
   assert.equal(new URL(contactDraft({name:'Alex',email:'a@example.com',subject:' ',message:'Hi'})).searchParams.get('subject'), 'Portfolio enquiry from Alex');
 });
 
-test('root homepage publishes the hybrid portfolio while preserving the old portfolio in archive', () => {
+test('the space page publishes the hybrid portfolio while preserving the old portfolio in archive', () => {
   assert.match(rootHtml, /<body>/);
   assert.match(rootHtml, /<h1 id="hero-title">The messy part/);
   assert.match(rootHtml, /Forward Deployed Engineer<\/p>/);

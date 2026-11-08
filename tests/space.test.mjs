@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 
 const skyURL = new URL('../concepts/space/sky.mjs', import.meta.url);
-const rootURL = new URL('../index.html', import.meta.url);
+const rootURL = new URL('../space.html', import.meta.url);
 const load = () => import(skyURL);
 
 test('the same seed and viewport always produce the same sky', async () => {
@@ -68,7 +68,7 @@ test('twinkling changes brightness over time without leaving the visible range',
   assert.equal(twinkle({ ...star, twinkle: 0 }, 3), 0.8, 'steady stars stay steady');
 });
 
-test('the homepage wears the space theme without losing the hybrid portfolio', () => {
+test('the space page wears the space theme without losing the hybrid portfolio', () => {
   const html = readFileSync(rootURL, 'utf8');
   assert.match(html, /<html lang="en" data-view="2d" data-theme="space">/);
   assert.match(html, /<meta name="theme-color" content="#0b1330">/);

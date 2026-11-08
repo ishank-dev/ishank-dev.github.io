@@ -3,10 +3,10 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 
 const journeyURL = new URL('../concepts/space/journey.mjs', import.meta.url);
-const rootURL = new URL('../index.html', import.meta.url);
+const rootURL = new URL('../space.html', import.meta.url);
 const load = () => import(journeyURL);
 
-test('the journey visits one real destination per homepage section, in page order', async () => {
+test('the journey visits one real destination per space-page section, in page order', async () => {
   assert.ok(existsSync(journeyURL), 'journey module exists');
   const { WAYPOINTS } = await load();
   assert.deepEqual(WAYPOINTS.map(w => w.id), ['hero', 'work', 'approach', 'about', 'experience', 'awards', 'writing', 'contact']);
@@ -70,7 +70,7 @@ test('journey policy: reduced motion never travels, pause stops the drift, hidde
   assert.deepEqual(journeyPolicy({ reduced: false, playing: true, hidden: true }), { render: false, drift: false, travel: true });
 });
 
-test('the homepage mounts the universe canvas, the flight readout, and its own pause control', () => {
+test('the space page mounts the universe canvas, the flight readout, and its own pause control', () => {
   const html = readFileSync(rootURL, 'utf8');
   assert.match(html, /<canvas id="universe" aria-hidden="true"><\/canvas>/);
   assert.match(html, /<script src="\.\/concepts\/space\/universe\.js[^"]*" type="module"><\/script>/);
@@ -91,7 +91,7 @@ test('fly-bys fade in on approach, slide outward toward their edge, and fade out
   assert.ok(late.x > early.x && late.y < early.y, 'slides further out toward its own edge');
 });
 
-test('the homepage uses drawn icons, not Unicode arrows or asterisks', () => {
+test('the space page uses drawn icons, not Unicode arrows or asterisks', () => {
   const html = readFileSync(rootURL, 'utf8');
   assert.doesNotMatch(html, /[↗↙↑↓✳]/);
   assert.match(html, /class="arrow"/);

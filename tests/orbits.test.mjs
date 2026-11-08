@@ -4,7 +4,7 @@ import { existsSync, readFileSync } from 'node:fs';
 
 const orbits = new URL('../concepts/space/orbits/', import.meta.url);
 const read = name => readFileSync(new URL(name, orbits), 'utf8');
-const home = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+const home = readFileSync(new URL('../space.html', import.meta.url), 'utf8');
 
 test('the hero story keeps the six phases in order, one planet each', async () => {
   const { PHASES, COPY, stateCopy } = await import(new URL('story.mjs', orbits));
@@ -16,7 +16,7 @@ test('the hero story keeps the six phases in order, one planet each', async () =
   for (const phase of PHASES) assert.ok(phase.messyDetail && phase.clearDetail && /^#[0-9a-f]{6}$/.test(phase.tone), phase.id);
 });
 
-test('the homepage mounts the swarms hero in place of the old field map', () => {
+test('the space page mounts the swarms hero in place of the old field map', () => {
   assert.match(home, /<div class="problem-playground" id="playground">\s*<div class="playground-stage" data-orbits>/);
   assert.match(home, /<script src="\.\/concepts\/space\/orbits\/orbits\.js\?v=\d+" type="module"><\/script>/);
   assert.match(home, /<link rel="stylesheet" href="\.\/concepts\/space\/orbits\/orbits\.css\?v=\d+">/);

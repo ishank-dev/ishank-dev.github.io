@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync, statSync } from 'node:fs';
 
 const planetsURL = new URL('../concepts/space/planets.mjs', import.meta.url);
-const rootURL = new URL('../index.html', import.meta.url);
+const rootURL = new URL('../space.html', import.meta.url);
 const load = () => import(planetsURL);
 
 // Column-major 3x3 helpers, matching how GLSL reads a mat3 uniform.
