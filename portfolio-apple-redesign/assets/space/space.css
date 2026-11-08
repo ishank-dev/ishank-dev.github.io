@@ -1,0 +1,249 @@
+/* Space backdrop under the Apple layout: the WebGL flight (or the 2D sky fallback) sits behind everything,
+   and the page's surfaces turn to tinted glass so the scene shows through. Loaded after site.css. */
+
+:root[data-space] {
+  --sky-deep: #070c22;
+  --star: #eef1ff;
+  --star-2: #cbd3f1;
+  --amber: #ffb86b;
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+
+  /* Glass tokens: deep-space blue instead of neutral grey, so tiles feel part of the scene. */
+  --tile: rgba(13, 20, 48, 0.55);
+  --bg-elev: rgba(22, 30, 66, 0.62);
+  --glass: rgba(7, 12, 34, 0.55);
+  --glass-edge: rgba(142, 166, 255, 0.14);
+  --hairline: rgba(142, 166, 255, 0.18);
+  --text-2: #b9c2e4;
+  --text-3: #8f99c2;
+  --solid: #0c1433;
+  background: var(--sky-deep);
+}
+:root[data-space] body { background: transparent; }
+
+/* The scene layers */
+#universe, #sky {
+  position: fixed; inset: 0; width: 100%; height: 100%;
+  display: block; z-index: -1; pointer-events: none; background: var(--sky-deep);
+}
+#universe, :root[data-universe="on"] #sky { display: none; }
+:root[data-universe="on"] #universe { display: block; }
+
+/* Glass surfaces */
+:root[data-space] :is(.tile, .card, .awards li, .segmented, .tags li) {
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: inset 0 0 0 1px var(--glass-edge);
+}
+/* Menu and sheet hold long reading or sit on other glass: keep them solid. */
+:root[data-space] .menu, :root[data-space] .sheet { background: var(--solid); }
+:root[data-space] .seg-thumb { background: rgba(142, 166, 255, 0.22); }
+
+/* Flight readout: destination, distance and pause, docked on the left edge */
+.flight { display: none; }
+:root[data-universe="on"] .flight {
+  position: fixed; left: 10px; top: 50%; translate: 0 -50%; z-index: 20;
+  display: flex; flex-direction: column; align-items: center; gap: 16px; color: var(--star);
+}
+.flight-track { display: flex; flex-direction: column; align-items: center; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.flight-track li { width: 3px; height: 16px; border-radius: 2px; background: #26366f; transition: background-color .5s, height .5s var(--ease-out); }
+.flight-track li.is-past { background: #8ea6ff8c; }
+.flight-track li.is-here { height: 30px; background: var(--amber); }
+.flight-now {
+  writing-mode: vertical-rl; text-orientation: sideways; rotate: 180deg;
+  display: flex; gap: 8px; margin: 0; padding: 12px 5px;
+  border: 1px solid #2c3d7a99; border-radius: 14px; background: #050a1ce0;
+  font-size: 12px; line-height: 1.45; letter-spacing: 0; white-space: nowrap;
+}
+.flight-name { font-size: 14px; font-weight: 600; color: var(--star); }
+.flight-distance { color: var(--amber); font-variant-numeric: tabular-nums; }
+.flight-caption { color: var(--star-2); }
+.flight-caption:empty { display: none; }
+.flight-pause {
+  display: grid; place-items: center; width: 34px; height: 34px; padding: 0; cursor: pointer;
+  border: 1px solid #26366f; border-radius: 50%; background: #050a1ccc; color: var(--star-2);
+  transition: border-color .2s, color .2s, opacity .3s, translate .35s var(--ease-out);
+}
+.flight-pause:not(:disabled):hover { border-color: #8ea6ff; color: var(--star); }
+.flight-pause svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.flight-pause .icon-play { display: none; fill: currentColor; stroke: none; }
+:root[data-motion="paused"] .flight-pause .icon-pause { display: none; }
+:root[data-motion="paused"] .flight-pause .icon-play { display: block; }
+.flight.is-changing .flight-now { animation: hud-swap .8s var(--ease-out) both; }
+@keyframes hud-swap { from { opacity: 0; filter: blur(5px); } to { opacity: 1; filter: blur(0); } }
+
+/* Narrow or short windows: the readout becomes a toast beside a corner pause button. */
+@media (max-width: 1100px), (max-height: 620px) {
+  :root[data-universe="on"] .flight { left: auto; right: 14px; top: auto; bottom: 16px; translate: none; flex-direction: row; gap: 10px; }
+  .flight-track { display: none; }
+  .flight-now {
+    position: absolute; right: 52px; bottom: 2px; writing-mode: horizontal-tb; text-orientation: mixed; rotate: none;
+    flex-direction: column; gap: 0; padding: 9px 14px; border-color: #2c3d7acc; background: #050a1ceb;
+    opacity: 0; pointer-events: none;
+  }
+  .flight-pause { width: 44px; height: 44px; }
+  .flight.is-changing .flight-now { animation: toast 3.6s var(--ease-out) both; }
+}
+@keyframes toast { 0% { opacity: 0; translate: 10px 0; } 10%, 80% { opacity: 1; translate: 0 0; } 100% { opacity: 0; translate: 0 0; } }
+
+/* Phones: no toast over the text, and the pause button tucks away while scrolling. */
+@media (max-width: 600px) {
+  :root[data-universe="on"] .flight-now { display: none; }
+  :root[data-universe="on"] .flight { right: 6px; bottom: max(14px, env(safe-area-inset-bottom)); }
+  :root[data-universe="on"] .flight-pause { position: relative; width: 36px; height: 36px; background: #050a1cf2; box-shadow: 0 8px 18px -8px #000; }
+  :root[data-universe="on"] .flight-pause::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; }
+  .flight.is-tucked .flight-pause { opacity: 0; translate: 0 14px; pointer-events: none; }
+  :root[data-universe="on"] .footer { padding-bottom: 68px; }
+}
+
+/* Reduced motion: the scene renders one still frame and the readout steps away. */
+@media (prefers-reduced-motion: reduce) {
+  :root[data-universe="on"] .flight { display: none; }
+}
+
+/* Reduced transparency or more contrast: solid surfaces over the scene. */
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  :root[data-space] { --tile: #0d1430; --bg-elev: #141c3e; --glass: #070c22; }
+  :root[data-space] :is(.tile, .card, .awards li, .segmented, .tags li) { -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+
+/* ---------- Hero: copy beside the problem cloud (ported from the live space homepage) ---------- */
+:root[data-space] {
+  --vega: #8ea6ff; --star-3: #a6b0d8; --sky: #0b1330; --grid: #26366f;
+  --display: -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", sans-serif; --body: var(--display);
+}
+@media (min-width: 60rem) {
+  .hero-split { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); align-items: center; gap: 2rem; }
+  .hero-split .display { font-size: clamp(3rem, 5.6vw, 5rem); }
+}
+.problem-playground { width: 100%; max-width: 540px; justify-self: end; }
+@media (max-width: 59.99rem) { .problem-playground { margin: 2.5rem auto 0; } }
+
+[data-orbits] { position: relative; aspect-ratio: 520 / 420; user-select: none; -webkit-user-select: none; touch-action: pan-y; }
+.o-canvas, .o-orbit-plate, .o-bodies { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.o-orbit-plate, .o-plate { display: block; overflow: visible; }
+.o-plate { position: relative; width: 100%; height: 100%; cursor: grab; }
+.o-plate.is-holding { cursor: progress; }
+.o-plate.is-tilting { cursor: grabbing; }
+.o-ring { fill: none; stroke: var(--grid); stroke-width: 1; transition: opacity .5s, stroke .3s; }
+.o-ring.is-hot { stroke: var(--tone); stroke-opacity: .75; }
+.o-planet { stroke: none; }
+.is-gl .o-planet, .is-gl .o-core { display: none; }
+.o-hit { fill: transparent; cursor: pointer; }
+.o-body.is-hot .o-planet { filter: brightness(1.25); }
+.o-label text, .o-footnote { paint-order: stroke fill; stroke: #0b1330; stroke-opacity: .92; stroke-width: 4px; stroke-linejoin: round; letter-spacing: 0; }
+.o-label text { font-family: var(--body); transition: opacity .4s; }
+.o-name { font-size: 14px; font-weight: 600; }
+.o-detail { font-size: 11.5px; }
+.o-name.messy { fill: var(--star-2); font-weight: 500; font-style: italic; }
+.o-detail.messy { fill: var(--star-3); }
+.o-name.clear { fill: var(--star); font-size: 15.5px; opacity: 0; }
+.o-detail.clear { fill: var(--star-2); opacity: 0; }
+.o-label.is-clear .messy { opacity: 0; }
+.o-label.is-clear .clear { opacity: 1; }
+.o-label.is-hot .o-name.clear { fill: var(--amber); }
+.o-leader { stroke: var(--star-3); stroke-width: 1; opacity: 0; }
+.o-footnote { font-size: 14px; fill: var(--vega); }
+.o-hint { margin: 0 0 12px; font-size: 13px; line-height: 1.45; color: var(--star-2); }
+
+.playground-controls { margin-top: .75rem; text-align: center; }
+.untangle-button {
+  display: inline-flex; align-items: center; gap: .75rem; min-height: 2.75rem; padding: 0 1.25rem 0 1.375rem;
+  border: 1px solid var(--vega); border-radius: 999px; background: transparent; color: var(--star);
+  font: inherit; font-size: .9375rem; font-weight: 600; letter-spacing: -0.01em; cursor: pointer;
+  transition: background-color .2s, color .2s, border-color .2s;
+}
+.untangle-button:hover { background: var(--vega); color: var(--sky); }
+.untangle-button[aria-pressed="true"] { border-color: #8ea6ff80; }
+.converge {
+  display: inline-block; width: 18px; height: 18px; background: currentColor; transition: rotate .5s cubic-bezier(.2,.8,.2,1);
+  --converge: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cg fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 2l4 4M6 3v3H3M16 2l-4 4M12 3v3h3M2 16l4-4M6 15v-3H3M16 16l-4-4M12 15v-3h3'/%3E%3Ccircle cx='9' cy='9' r='1.3' fill='%23000' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
+  -webkit-mask: var(--converge) center / contain no-repeat; mask: var(--converge) center / contain no-repeat;
+}
+.untangle-button[aria-pressed="true"] .converge { rotate: 45deg; }
+#playground-caption { margin-top: .75rem; font-size: .8125rem; letter-spacing: 0; color: var(--star-3); }
+
+/* Without the script: the story as a plain list. */
+.orbits-static { position: absolute; inset: 14% 6%; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: 1fr 1fr; align-content: center; gap: 18px 24px; font-size: 13px; color: var(--star-2); }
+.orbits-static b { display: block; font-weight: 600; font-size: 15px; color: var(--star); }
+
+@media (max-width: 600px) {
+  .o-name { font-size: 19px; } .o-name.clear { font-size: 20px; } .o-detail { font-size: 16px; }
+  .o-footnote { font-size: 17px; }
+  .o-label text, .o-footnote { stroke-width: 5px; }
+}
+@media (prefers-reduced-motion: reduce) { .converge { transition: none; } }
+
+/* ---------- CommerceIQ stat: two dots orbiting at the real 1 day : 3 min ratio ---------- */
+.stat-row .budget-orbits { position: relative; flex: none; width: clamp(96px, 16vw, 150px); aspect-ratio: 1; }
+.budget-orbits i { position: absolute; border-radius: 50%; animation: orbit 720s linear infinite; animation-delay: -150s; animation-play-state: paused; }
+.budget-orbits .orbit-slow { inset: 0; border: 1px dashed var(--grid); }
+.budget-orbits .orbit-fast { inset: 31%; border: 1px solid #8ea6ff66; animation-duration: 1.5s; animation-delay: 0s; }
+.budget-orbits i::after { content: ''; position: absolute; top: -4px; left: 50%; width: 8px; height: 8px; margin-left: -4px; border-radius: 50%; background: var(--star-3); }
+.budget-orbits .orbit-fast::after { top: -3.5px; width: 7px; height: 7px; margin-left: -3.5px; background: var(--amber); box-shadow: 0 0 0 3px #ffb86b26; }
+.budget-orbits b { position: absolute; inset: 45%; border-radius: 50%; background: radial-gradient(circle at 35% 32%, #e6ecff, #8ea6ff 52%, #34488f); }
+:root[data-motion="playing"] .budget-orbits i { animation-play-state: running; }
+@keyframes orbit { to { rotate: 360deg; } }
+.orbit-caption { margin: .5rem auto 1.25rem; max-width: 30rem; font-size: .875rem; letter-spacing: -0.005em; color: var(--text-3); }
+
+/* ---------- Entrance choreography, matched to production ---------- */
+/* The Apple reveal steps aside; production's own timings take over. */
+:root[data-space].js .reveal { transform: none; transition: none; }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Launch: the headline and chart settle in as the page-load warp slows to cruise. */
+  :root[data-space] .hero .display { animation: launch-in 1.4s var(--ease-out) .45s both; }
+  :root[data-space] :is(.hero .eyebrow, .hero .lede, .hero .actions, .hero .tags) { animation: launch-in 1.1s var(--ease-out) .75s both; }
+  :root[data-space] .problem-playground { animation: chart-in 1.8s var(--ease-out) .3s both; }
+}
+@keyframes launch-in { from { opacity: 0; translate: 0 30px; filter: blur(12px); } to { opacity: 1; translate: 0 0; filter: blur(0); } }
+@keyframes chart-in { from { opacity: 0; scale: .86; } to { opacity: 1; scale: 1; } }
+
+/* Arrivals: headings come in out of the depth; everything else gets a short, quiet lift. Scroll-linked. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    :root[data-space] :is(.section > .headline, .section-head .headline, .about .headline, .contact .display) { animation: arrive linear both; animation-timeline: view(); animation-range: entry 0% entry 100%; }
+    :root[data-space] :is(.tile, .work-grid-list > li, .principles li, .about .body-copy, .timeline li, .awards li, .rows li, .segmented) { animation: lift linear both; animation-timeline: view(); animation-range: entry 0% entry 85%; }
+    :root[data-space] .avatar { animation: plate-in linear both; animation-timeline: view(); animation-range: entry 0% cover 34%; }
+    :root[data-space] :is(.timeline li, .awards li) { view-timeline: --beacon block; }
+    :root[data-space] :is(.timeline li, .awards li)::before { animation: ignite linear both; animation-timeline: --beacon; animation-range: entry 40% cover 40%; }
+  }
+}
+@keyframes arrive { from { opacity: 0; translate: 0 48px; scale: .94; filter: blur(10px); } to { opacity: 1; translate: 0 0; scale: 1; filter: blur(0); } }
+@keyframes lift { from { opacity: 0; translate: 0 26px; } to { opacity: 1; translate: 0 0; } }
+@keyframes plate-in { from { opacity: 0; translate: -40px 60px; rotate: -9deg; } to { opacity: 1; translate: 0 0; rotate: 0deg; } }
+@keyframes ignite { 0% { scale: 0; opacity: 0; } 70% { scale: 1.9; opacity: 1; } 100% { scale: 1; opacity: 1; } }
+
+/* Beacons: a star on each career line, sized award stars (the win burns amber). */
+:root[data-space] .timeline li { position: relative; border-top-color: var(--grid); }
+:root[data-space] .timeline li::before { content: ''; position: absolute; left: 0; top: -4.5px; width: 8px; height: 8px; border-radius: 50%; background: var(--star-3); box-shadow: 0 0 0 4px var(--sky-deep); }
+:root[data-space] .timeline li:first-child::before { background: var(--amber); box-shadow: 0 0 0 4px var(--sky-deep), 0 0 12px #ffb86b80; }
+:root[data-space] .awards li { position: relative; --mag: 9px; }
+:root[data-space] .awards li:nth-child(3), :root[data-space] .awards li:nth-child(4) { --mag: 6px; }
+:root[data-space] .awards li:first-child { --mag: 13px; }
+:root[data-space] .awards li::before { content: ''; position: absolute; right: calc(1.75rem - var(--mag) / 2 + 4px); top: calc(2.1rem - var(--mag) / 2); width: var(--mag); height: var(--mag); border-radius: 50%; background: var(--star); box-shadow: 0 0 14px #eef1ff59; }
+:root[data-space] .awards li:first-child::before { background: var(--amber); box-shadow: 0 0 16px #ffb86b8c; }
+
+/* Status beacon in the hero eyebrow */
+.status-dot { display: inline-block; width: 7px; height: 7px; margin-right: .6rem; vertical-align: .12em; border-radius: 50%; background: var(--amber); box-shadow: 0 0 0 3px #ffb86b24; animation: beacon 3s ease-in-out infinite; animation-play-state: paused; }
+:root[data-motion="playing"][data-tab-hidden="false"] .status-dot { animation-play-state: running; }
+@keyframes beacon { 0%, 100% { box-shadow: 0 0 0 2px #ffb86b30; } 50% { box-shadow: 0 0 0 7px #ffb86b00; } }
+
+/* Approach: the slowly turning amber star */
+.approach-symbol {
+  display: block; width: 80px; height: 80px; margin-top: 2.25rem; background: var(--amber);
+  --star-mark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9 4.9 19.1' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  -webkit-mask: var(--star-mark) center / contain no-repeat; mask: var(--star-mark) center / contain no-repeat;
+  animation: star-turn 120s linear infinite; animation-play-state: paused;
+}
+:root[data-motion="playing"][data-tab-hidden="false"] .approach-symbol { animation-play-state: running; }
+@keyframes star-turn { to { rotate: 360deg; } }
+:root[data-motion="playing"][data-tab-hidden="false"] .budget-orbits i { animation-play-state: running; }
+
+/* ---------- Workbench: a plain grid instead of the horizontal rail ---------- */
+.work-grid { margin-top: 2.5rem; }
+.work-grid-list { display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin: 0; padding: 0; list-style: none; }
+.work-grid-list li { display: flex; }
+.work-grid-list .card { width: 100%; cursor: pointer; }
+.work-grid-list .card .archive-image { aspect-ratio: 16 / 10; }
+@media (min-width: 40rem) { .work-grid-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
