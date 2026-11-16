@@ -65,7 +65,7 @@ test('the space page publishes the hybrid portfolio while preserving the old por
   assert.doesNotMatch(rootHtml, /class="header-resume"/);
   assert.doesNotMatch(rootHtml, /noindex, nofollow, noarchive/);
   assert.match(rootHtml, /href="https:\/\/github\.com\/ishank-dev"/);
-  assert.match(rootHtml, /href="https:\/\/www\.linkedin\.com\/in\/ishank-sharma-438a32144\/"/);
+  assert.match(rootHtml, /href="https:\/\/www\.linkedin\.com\/in\/ishank47\/"/);
   assert.doesNotMatch(rootHtml, /github\.com\/ishank-dev\/google-adk-hackathon/);
   assert.doesNotMatch(rootHtml, /github\.com\/ishank-dev\/CECS_CSULB_2026/);
   for (const [, path] of rootHtml.matchAll(/(?:src|href)="((?:\.\/)?(?:assets|concepts)\/[^"]+)"/g)) {
