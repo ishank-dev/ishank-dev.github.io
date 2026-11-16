@@ -307,6 +307,7 @@ main { padding-top: 3.25rem; }
 }
 .tile .title { margin-bottom: 0.75rem; }
 .tile .title-sm { margin-bottom: 0.5rem; }
+.tile .body-copy + .body-copy { margin-top: 0.75rem; }
 .tile-hero { padding: clamp(2rem, 6vw, 4.5rem); text-align: center; }
 .tile-hero .body-copy { max-width: 38rem; margin: 0 auto; }
 .tile-pair, .tile-trio { display: grid; gap: 1rem; margin-top: 1rem; }
